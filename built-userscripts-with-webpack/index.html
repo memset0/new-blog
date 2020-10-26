@@ -1,0 +1,237 @@
+
+<!DOCTYPE html>
+<html lang="en" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Userscript × Webpack - Hexo</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Fechin,"> 
+    <meta name="description" content="大家好，这里是诈尸更博的 memset0。
+之前好长一段时间没怎么出现了啦（感觉上有一年？）。
+主要是不知道写点什么，发现 OI 中的题解大部分是重复劳动，自己写的东西对他人也难有什么启发。本人的 ,"> 
+    <meta name="author" content="John Doe"> 
+    <link rel="alternative" href="atom.xml" title="Hexo" type="application/atom+xml"> 
+    <link rel="icon" href="/new-blog/img/favicon.png"> 
+    
+    
+<link rel="stylesheet" href="/new-blog/css/diaspora.css">
+
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8691406134231910",
+              enable_page_level_ads: true
+         });
+    </script>
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">Hexo</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="https://memset0.github.io/new-blog"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">Userscript × Webpack</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">Userscript × Webpack</h1>
+        <div class="stuff">
+            <span>十月 26, 2020</span>
+            
+
+        </div>
+        <div class="content markdown">
+            <p>大家好，这里是诈尸更博的 memset0。</p>
+<p>之前好长一段时间没怎么出现了啦（感觉上有一年？）。</p>
+<p>主要是不知道写点什么，发现 OI 中的题解大部分是重复劳动，自己写的东西对他人也难有什么启发。本人的 OI 水平和语言表述能力也属于略次的一档，在一众大佬们的博客面前不禁自惭形秽。想多了这种问题以后自然就开始咕咕咕了（？</p>
+<p>所以这次也大胆的尝试一下别的主题，假装自己不是 OIer，而是一个萌萌哒的前端码农。然后写点看起来蛮有意思容易带来自我满足的东西，分享给其他的 OIer？</p>
+<a id="more"></a>
+
+<h4 id="好，那我们就开始吧-XD"><a href="#好，那我们就开始吧-XD" class="headerlink" title="好，那我们就开始吧 XD"></a>好，那我们就开始吧 XD</h4><p>这次想写的内容是 Userscript 相关，这大概像是所谓「极客」 喜欢的玩具。原理说起来很简单，是通过一个浏览器插件（通常是 Tamper Monkey），使你自定义的 Javascript 运行在指定网页上，从而通过简短的代码实现一些有趣或是实用的功能。</p>
+<p>比如前段日子，我给集训队作业的 OJ <a target="_blank" rel="noopener" href="https://ioihw20.duck-ac.cn/">ioihw20.duck-ac.cn</a> 写了个脚本。</p>
+<p>出于一些原因，这个 OJ 的用户名是顺序编码（形如 <code>ioi2021_08</code>、<code>ioi2021_11</code>）；大家还有一个指标，就是要完成里面的 150 道作业题。对着数字编码人工脑补出这人是谁就很费劲，想看看谁是卷王（点名批评 @gcz）更只能一个一个点，那怎么办？？<del>当然谁卷阿鲁巴谁</del>。</p>
+<p>当然是写个 Userscript。他可以根据内嵌的数据表，建立出用户名（形如 <code>ioihw2021_11</code>）和真实姓名（xxx）的对应关系。OIer 们的大脑内一般对互相的真名和 id 建立过比较熟练的对应表， 所以看到真名基本就能很快认识到<del>啊这就是那个卷王 gcz 啊，怎么还没有被阿鲁巴</del>，从而达到所谓认人的需求。</p>
+<p>至于排行榜的功能，注意到 UOJ 的前端实现中有用到 jQuery 库。这时候 Userscript 的好处就体现出来了，我们可以直接调用 UOJ 的 jQuery！通过 <code>Promise.all()</code> 和 <code>$.get()</code> 方法，我们可以很快的取得每个人的个人信息页面 <code>/user/profile/ioi2021_&lt;xx&gt;</code>。并用我们的 Javascript 脚本进行数据处理。然后汇总到页面上。</p>
+<p><img src="https://static.memset0.cn/img/v2/20201026005507.png"></p>
+<p>此外，出于一些或是恶趣味的东西，我还加了点小功能。比如会给排行版的 rk1 自带一个 <code>卷王</code> 的 tag。这样无论在提交记录页面或是哪里，都能明明白白的写着：这就是那个<del>卷王</del>毒瘤！！</p>
+<h4 id="你讲了这么多，和-Webpack-有啥关系？"><a href="#你讲了这么多，和-Webpack-有啥关系？" class="headerlink" title="你讲了这么多，和 Webpack 有啥关系？"></a>你讲了这么多，和 Webpack 有啥关系？</h4><p>欸对啊，这篇博文的标题不是 Webpack 嘛，怎么成了进来听 mem0 扯淡<del>吹逼</del>啊。</p>
+<p>注意到这么一个简简单单的脚本，我只进行了简单的函数封装，他已经有足足 10kb 了。如果我们想要完成更加复杂的脚本，这可怎么办呢？</p>
+<p>那就请出我们的主角 webpack 吧<del>（喂喂，这股小学生作文画风是怎么回事啊）</del>。它是一个静态的 Javascript 打包工具。会根据你的配置和代码，生成 Javascript 代码的依赖关系，并打包成一个或多个 bundle。</p>
+<p>这在 Vue.js 等开发工具中经常用到（他们也需要库和源代码全部打包到一个文件中），恰好和我们的需求也十分类似。</p>
+<p>那么，或许我们就可以用类似 node.js 的方式开发我们的 Userscript，然后通过 Webpack 打包，并应用到 Tampermonkey 中？</p>
+<h4 id="是是是，你说是那就是，不狡辩。"><a href="#是是是，你说是那就是，不狡辩。" class="headerlink" title="是是是，你说是那就是，不狡辩。"></a>是是是，你说是那就是，不狡辩。</h4><p>假设大家已经安装好了 Node.js 和 NPM。来考虑一下我们的目录结构：</p>
+<ul>
+<li><code>./src</code> 文件夹中，我们存放脚本的源代码。其中 <code>./src/app.js</code> 是我们的入口。</li>
+<li><code>./dist</code> 文件夹中，我们存放自动打包生成的文件，如 <code>bundle.js</code>。</li>
+<li><code>./node_modules</code> 文件夹，这是用来存放 NPM 安装的库的，我们无需关心。</li>
+<li><code>./package.json</code> 文件，用来存放 npm 的配置（如包的版本）。</li>
+<li><code>./webpack.config.js</code> 文件，用来存放 webpack 的配置。</li>
+</ul>
+<p>编辑 <code>package.json</code> 和 <code>webpack.config.js</code> 之前，我们先来冷静一下我们开发和调试的需求。</p>
+<ul>
+<li>开发环境（Development）：在 Tampermonkey 中 @require 一个本地脚本。在 Chrome 设置中允许 Tampermonkey 访问本地文件。这样我们更新到打包更新到 bundle 文件的内容，就能实时应用到浏览器中。</li>
+<li>生成环境（Production）：通过 webpack 的工具进行打包和压缩。加上 Tampermonkey 所需的文件头，以作为独立的 TamperMonkey 脚本运行。进一步的，可以考虑使用 Github Action 等自动化工具部署。</li>
+</ul>
+<p>编辑 <code>package.json</code> 文件（请自行替换尖括号内的内容）：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;name&quot;</span>: <span class="string">&quot;&lt;name&gt;&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;version&quot;</span>: <span class="string">&quot;&lt;version&gt;&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;description&quot;</span>: <span class="string">&quot;&lt;description&gt;&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;author&quot;</span>: <span class="string">&quot;&lt;author&gt;&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;license&quot;</span>: <span class="string">&quot;&lt;license&gt;&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;scripts&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;build&quot;</span>: <span class="string">&quot;webpack --env production &amp;&amp; node pack.js&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;dev&quot;</span>: <span class="string">&quot;webpack --env development --watch&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">&quot;dependencies&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;css-loader&quot;</span>: <span class="string">&quot;^4.2.1&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;less&quot;</span>: <span class="string">&quot;^3.12.2&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;less-loader&quot;</span>: <span class="string">&quot;^6.2.0&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;style-loader&quot;</span>: <span class="string">&quot;^1.2.1&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;webpack&quot;</span>: <span class="string">&quot;^4.44.1&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;webpack-bundle-analyzer&quot;</span>: <span class="string">&quot;^3.9.0&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;webpack-cli&quot;</span>: <span class="string">&quot;^3.3.12&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;webpack-merge&quot;</span>: <span class="string">&quot;^5.2.0&quot;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>编辑 <code>webpack.config.js</code> 文件：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">&#x27;path&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> &#123; merge &#125; = <span class="built_in">require</span>(<span class="string">&#x27;webpack-merge&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> config = &#123;</span><br><span class="line">  public: &#123; <span class="comment">// 公共的配置</span></span><br><span class="line">    entry: &#123;</span><br><span class="line">      app: <span class="string">&#x27;./src/app.js&#x27;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    output: &#123;</span><br><span class="line">      filename: <span class="string">&#x27;bundle.js&#x27;</span>,</span><br><span class="line">      path: path.resolve(__dirname, <span class="string">&#x27;dist&#x27;</span>)</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="built_in">module</span>: &#123;</span><br><span class="line">      rules: [</span><br><span class="line">        &#123;</span><br><span class="line">          test: <span class="regexp">/\.less$/</span>,</span><br><span class="line">          use: [</span><br><span class="line">            <span class="string">&#x27;style-loader&#x27;</span>,</span><br><span class="line">            &#123; <span class="attr">loader</span>: <span class="string">&#x27;css-loader&#x27;</span>, <span class="attr">options</span>: &#123; <span class="attr">importLoaders</span>: <span class="number">1</span> &#125; &#125;,</span><br><span class="line">            <span class="string">&#x27;less-loader&#x27;</span>,</span><br><span class="line">          ],</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">          test: <span class="regexp">/\.css$/</span>,</span><br><span class="line">          use: [</span><br><span class="line">            <span class="string">&#x27;style-loader&#x27;</span>,</span><br><span class="line">            <span class="string">&#x27;css-loader&#x27;</span>,</span><br><span class="line">          ],</span><br><span class="line">        &#125;,</span><br><span class="line">      ],</span><br><span class="line">    &#125;,</span><br><span class="line">    plugins: [],</span><br><span class="line">  &#125;,</span><br><span class="line">  production: &#123; <span class="comment">// 生产环境的配置</span></span><br><span class="line">    mode: <span class="string">&#x27;production&#x27;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  development: &#123; <span class="comment">// 开发环境的配置</span></span><br><span class="line">    mode: <span class="string">&#x27;development&#x27;</span>,</span><br><span class="line">    devtool: <span class="string">&#x27;inline-source-map&#x27;</span>,</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = <span class="function">(<span class="params">env</span>) =&gt;</span> merge(</span><br><span class="line">  config.public,</span><br><span class="line">  env.includes(<span class="string">&#x27;production&#x27;</span>) ? config.production : config.development</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<p>运行 <code>npm install</code> 安装我们需要的库。</p>
+<p>创建 <code>src</code> 文件夹，新建 <code>app.js</code> 文件并写入</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> css <span class="keyword">from</span> <span class="string">&quot;./style.less&quot;</span>;</span><br><span class="line">alert(<span class="string">&quot;Hello, World&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>新建 <code>style.less</code> 文件并写入</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">* &#123; <span class="attribute">color</span>: red <span class="meta">!important</span>; &#125;</span><br></pre></td></tr></table></figure>
+
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title='0' data-url='http://link.hhtjim.com/163/425570952.mp3'></li>
+                        
+                    
+                        
+                            <li title='1' data-url='http://link.hhtjim.com/163/425570952.mp3'></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+		data-enable='false'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/new-blog/js/plugin.js"></script>
+<script src="/new-blog/js/typed.js"></script>
+<script src="/new-blog/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/new-blog/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/new-blog/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/new-blog/photoswipe/photoswipe.min.js"></script>
+<script src="/new-blog/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
+        tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
+        TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
+        messageStyle: "none"
+    });
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+
+</html>
