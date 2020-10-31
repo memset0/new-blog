@@ -1,0 +1,235 @@
+
+<!DOCTYPE html>
+<html lang="zh-cn" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>CF1336E2 Chiori and Doll Picking (hard version) - memset0&#39;s Blog</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Fechin,"> 
+    <meta name="description" content="给定 $n$ 个整数 $\langle a_1, a_2 … a_n \rangle$，在 $[0; 2^m)$ 的范围内。对于 $k \in [0; m]$，求选出一个子集使得异或和的二进制表示有,"> 
+    <meta name="author" content="memset0"> 
+    <link rel="alternative" href="atom.xml" title="memset0&#39;s Blog" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8691406134231910",
+              enable_page_level_ads: true
+         });
+    </script>
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">memset0&#39;s Blog</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://github-pages.memset0.cn"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">CF1336E2 Chiori and Doll Picking (hard version)</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">CF1336E2 Chiori and Doll Picking (hard version)</h1>
+        <div class="stuff">
+            <span>四月 26, 2020</span>
+            
+
+        </div>
+        <div class="content markdown">
+            <p>给定 $n$ 个整数 $\langle a_1, a_2 … a_n \rangle$，在 $[0; 2^m)$ 的范围内。对于 $k \in [0; m]$，求选出一个子集使得异或和的二进制表示有 $k$ 个 $1$ 的方案数。</p>
+<p>$1 \leq n \leq 2 \times 10^5,\ 0 \leq m \leq 53$。</p>
+<a id="more"></a>
+
+<h2 id="0x01"><a href="#0x01" class="headerlink" title="0x01"></a>0x01</h2><p>定义：</p>
+<ul>
+<li>$\operatorname{popcount}(x)$ 表示 $x$ 的二进制表示下 $1$ 的个数</li>
+<li>$\langle i, j \rangle = \operatorname{popcount(i \operatorname{and} j)}$</li>
+</ul>
+<p>对于线性基 $S$，定义：</p>
+<ul>
+<li>$\operatorname{span}(S)$ 表示 $S$ 张成的向量空间</li>
+<li>$F(S) = \sum_{x \in \operatorname{span}(S)} z^x$</li>
+<li>$P(S) = \sum_{x \in \operatorname{span}(S)} z^{\operatorname{popcount}(x)}$</li>
+</ul>
+<p>对于此题，定义</p>
+<ul>
+<li>$A$ 为由题中给定数得到的线性基</li>
+</ul>
+<p>首先你已经会了一个 $O(2^{\operatorname{rank}(A)})$ 的暴力，下文我们介绍一种 $O(2^{m-\operatorname{rank}(A)})$ 的算法，就可以通过分治在 $O(2^{m/2})$ 的时间复杂度内通过本题。</p>
+<h2 id="0x02"><a href="#0x02" class="headerlink" title="0x02"></a>0x02</h2><p>由线性基的基本性质，可以得到：</p>
+<p>$$<br>(z^x) * F(A) = F(A)<br>$$</p>
+<p>在此基础上枚举 $x \in \operatorname{span}(A)$ 有</p>
+<p>$$<br>\begin{aligned}<br>    F(A) * F(A) &amp;= F(A) \cdot 2^{\operatorname{rank}(A)} \<br>    \operatorname{FWT}(F(A)) \cdot \operatorname{FWT}(F(A)) &amp;= \operatorname{FWT}(F(A)) \cdot 2^{\operatorname{rank}(A)}<br>\end{aligned}<br>$$</p>
+<p>由于是按位相乘，考虑方程 $x^2=x+1$ 的实根仅有 $\left{ \begin{aligned} x_1 &amp;= 0 \ x_2 &amp;= 2^{\operatorname{rank}(A)} \end{aligned} \right.$，故 $[z^i] \operatorname{FWT}(F(A))  \in {0, 2^{\operatorname{rank}(A)}}$。</p>
+<h2 id="0x03"><a href="#0x03" class="headerlink" title="0x03"></a>0x03</h2><p>让我们再回到 $\operatorname{FWT}$ 运算本身的意义：</p>
+<p>$$<br>\begin{aligned}<br>[z^i] \operatorname{FWT}(F(A))<br>&amp;= \sum_{x \in \operatorname{span}(A)} (-1)^{\langle i,x \rangle} \<br>&amp;\in { 0, 2^{\operatorname{rank}(A)} } \<br>\end{aligned}<br>$$</p>
+<p>如果存在 $x$ 使得 $(-1)^{\langle i,x \rangle} = -1$，则 $\operatorname{FWT}(A)_i$ 只能为 $0$。</p>
+<p>$\langle x,y \rangle$ 和 $\oplus$ 运算满足结合律：</p>
+<p>$$<br>\langle i,x \rangle \oplus \langle j,x \rangle = \langle i \oplus j, x \rangle<br>$$</p>
+<p>可以通过把 $&amp;$ 理解为二进制按位乘法，$\oplus$ 理解为二进制不进位加法来证明。</p>
+<p>故我们只需检验 $A$ 中的每个基底而非 $\operatorname{span}(A)$ 即可判断这一位的值。</p>
+<h2 id="0x04"><a href="#0x04" class="headerlink" title="0x04"></a>0x04</h2><p>定义 $A$ 的正交线性基为 $B$，使得对于所有 $x \in \operatorname{span}(A), y \in \operatorname{span}(B)$，满足 $\operatorname{popcount(x &amp; y)}$ 是偶数，且 $\operatorname{rank}(A) + \operatorname{rank}(B) = m$。</p>
+<p>根据前面的引理，有</p>
+<p>$$<br>B \cdot 2^{\operatorname{rank}(A)} = \operatorname{FWT} (A) \Leftrightarrow \operatorname{IFWT}(B \cdot 2^{\operatorname{rank}(A)}) = A<br>$$</p>
+<p>一种简单的正交线性基构造方式是</p>
+<p><img src="https://i.loli.net/2020/04/26/wKc3le9s8vBzQYr.png"></p>
+<p>用高斯消元整理关键位，旋转右上角到左下角得到。</p>
+<p><img src="https://i.loli.net/2020/04/26/QckSaT4BjewVXNE.png"></p>
+<p>证明可以考虑图中圈出矩形的左上角和右上角一定为 $1$，而两向量的异或的 $\operatorname{popcount}$ 为偶数，那么左下角和右上角的数要么全为 $0$，要么全为 $1$。</p>
+<h2 id="0x05"><a href="#0x05" class="headerlink" title="0x05"></a>0x05</h2><p>知道了正交线性基怎么求，如何计算答案呢？</p>
+<p>考虑用 $\operatorname{FWT}$ 表示答案统计：</p>
+<p>$$<br>[z^c]P(A) = [z^0] (A * G^c) = [z^0] \operatorname{IFWT}(\operatorname{FWT}(F(A)) \cdot \operatorname{FWT}(G^c))<br>$$</p>
+<p>其中 $G^c$ 表示 $\sum_{x \geq 0} z^x [\operatorname{popcount}(x)=c]$。</p>
+<p>其中：</p>
+<p>$$<br>[z^0] \operatorname{IFWT}(X) = 2^{-m} [z^0] \operatorname{FWT}(X) = 2^{-m} \sum_{i \geq 0} [z^i] X<br>$$</p>
+<p>由于 $\operatorname{FWT}(F(A)) = F(B) \cdot 2^k$，而 $B$ 中的元素只有 $2^{\operatorname{rank}(B)} = 2^{m - \operatorname{rank}(A)}$ 个。故通过暴力得到 $P(B)$，即可通过组合数计算得 $P(A)$。</p>
+<p>$$<br>[z^c]P(A) = 2^{k-m} \sum_{d \geq 0} [z^d] P(B) \sum_{i \geq 0} (-1)^i \binom d i \binom {m-d} {c-i}<br>$$</p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title='0' data-url='https://static.memset0.cn/music/v1/時乃空/太陽系デスコときのそら.mp3'></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+		data-enable='false'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
+        tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
+        TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
+        messageStyle: "none"
+    });
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+
+</html>
