@@ -113,21 +113,79 @@
     </div>
     
     <div id="post0">
-        <p>四月 26, 2020</p>
-        <h2><a href="/cf1336e2/" title="CF1336E2 Chiori and Doll Picking (hard version)" class="posttitle">CF1336E2 Chiori and Doll Picking (hard version)</a></h2>
-        <p class="summary">给定 $n$ 个整数 $\langle a_1, a_2 … a_n \rangle$，在 $[0; 2^m)$ ...</p>
+        <p>五月 06, 2020</p>
+        <h2><a href="/uoj372/" title="UOJ372 【UR #17】滑稽树前做游戏" class="posttitle">UOJ372 【UR #17】滑稽树前做游戏</a></h2>
+        <p class="summary">给定一个 $n$ 个点 $m$ 条边的无向图，其中每个点的点权是 $[0;1]$ 范围内生成的连续型随机变量，求：...</p>
     </div>
     
 </div>
 
     <div id="primary">
         
+<div class="post">
+    <a href="/cf1336e2/" title="CF1336E2 Chiori and Doll Picking (hard version)">
+        <img src="/cover/1.png" class="cover" width="680" height="440">
+    </a>
+    <div class="else">
+        <p>四月 26, 2020</p>
+        <h3><a href="/cf1336e2/" title="CF1336E2 Chiori and Doll Picking (hard version)" class="posttitle">CF1336E2 Chiori and Doll Picking (hard version)</a></h3>
+        <!-- <p><p>给定 $n$ 个整数 $\langle a_1, a_2 … a_n \rangle$，在 $[0; 2^m)$ 的范围内。对于 $k \in [0; m]$，求选出一个子集使得异或和的二进制表示有 $k$ 个 $1$ 的方案数。</p>
+<p>$1 \leq n \leq 2 \times 10^5,\ 0 \leq m \leq 53$。</p>
+<a id="more"></a>
+
+<h2 id="0x01"><a href="#0x01" class="headerlink" title="0x01"></a>0x01</h2><p>定义：</p>
+<ul>
+<li>$\operatorname{popcount}(x)$ 表示 $x$ 的二进制表示下 $1$ 的个数</li>
+<li>$\langle i, j \rangle = \operatorname{popcount(i \operatorname{and} j)}$</li>
+</ul>
+<p>对于线性基 $S$，定义：</p>
+<ul>
+<li>$\operatorname{span}(S)$ 表示 $S$ 张成的向量空间</li>
+<li>$F(S) = \sum_{x \in \operatorname{span}(S)} z^x$</li>
+<li>$P(S) = \sum_{x \in \operatorname{span}(S)} z^{\operatorname{popcount}(x)}$</li>
+</ul>
+<p>对于此题，定义</p>
+<ul>
+<li>$A$ 为由题中给定数得到的线性基</li>
+</ul>
+<p>首先你已经会了一个 $O(2^{\operatorname{rank}(A)})$ 的暴力，下文我们介绍一种 $O(2^{m-\operatorname{rank}(A)})$ 的算法，就可以通过分治在 $O(2^{m/2})$ 的时间复杂度内通过本题。</p>
+<h2 id="0x02"><a href="#0x02" class="headerlink" title="0x02"></a>0x02</h2><p>由线性基的基本性质，可以得到：</p>
+<p>$$<br>(z^x) * F(A) = F(A)<br>$$</p>
+<p>在此基础上枚举 $x \in \operatorname{span}(A)$ 有</p>
+<p>$$<br>\begin{aligned}<br>    F(A) * F(A) &amp;= F(A) \cdot 2^{\operatorname{rank}(A)} \<br>    \operatorname{FWT}(F(A)) \cdot \operatorname{FWT}(F(A)) &amp;= \operatorname{FWT}(F(A)) \cdot 2^{\operatorname{rank}(A)}<br>\end{aligned}<br>$$</p>
+<p>由于是按位相乘，考虑方程 $x^2=x+1$ 的实根仅有 $\left{ \begin{aligned} x_1 &amp;= 0 \ x_2 &amp;= 2^{\operatorname{rank}(A)} \end{aligned} \right.$，故 $[z^i] \operatorname{FWT}(F(A))  \in {0, 2^{\operatorname{rank}(A)}}$。</p>
+<h2 id="0x03"><a href="#0x03" class="headerlink" title="0x03"></a>0x03</h2><p>让我们再回到 $\operatorname{FWT}$ 运算本身的意义：</p>
+<p>$$<br>\begin{aligned}<br>[z^i] \operatorname{FWT}(F(A))<br>&amp;= \sum_{x \in \operatorname{span}(A)} (-1)^{\langle i,x \rangle} \<br>&amp;\in { 0, 2^{\operatorname{rank}(A)} } \<br>\end{aligned}<br>$$</p>
+<p>如果存在 $x$ 使得 $(-1)^{\langle i,x \rangle} = -1$，则 $\operatorname{FWT}(A)_i$ 只能为 $0$。</p>
+<p>$\langle x,y \rangle$ 和 $\oplus$ 运算满足结合律：</p>
+<p>$$<br>\langle i,x \rangle \oplus \langle j,x \rangle = \langle i \oplus j, x \rangle<br>$$</p>
+<p>可以通过把 $&amp;$ 理解为二进制按位乘法，$\oplus$ 理解为二进制不进位加法来证明。</p>
+<p>故我们只需检验 $A$ 中的每个基底而非 $\operatorname{span}(A)$ 即可判断这一位的值。</p>
+<h2 id="0x04"><a href="#0x04" class="headerlink" title="0x04"></a>0x04</h2><p>定义 $A$ 的正交线性基为 $B$，使得对于所有 $x \in \operatorname{span}(A), y \in \operatorname{span}(B)$，满足 $\operatorname{popcount(x &amp; y)}$ 是偶数，且 $\operatorname{rank}(A) + \operatorname{rank}(B) = m$。</p>
+<p>根据前面的引理，有</p>
+<p>$$<br>B \cdot 2^{\operatorname{rank}(A)} = \operatorname{FWT} (A) \Leftrightarrow \operatorname{IFWT}(B \cdot 2^{\operatorname{rank}(A)}) = A<br>$$</p>
+<p>一种简单的正交线性基构造方式是</p>
+<p><img src="https://i.loli.net/2020/04/26/wKc3le9s8vBzQYr.png"></p>
+<p>用高斯消元整理关键位，旋转右上角到左下角得到。</p>
+<p><img src="https://i.loli.net/2020/04/26/QckSaT4BjewVXNE.png"></p>
+<p>证明可以考虑图中圈出矩形的左上角和右上角一定为 $1$，而两向量的异或的 $\operatorname{popcount}$ 为偶数，那么左下角和右上角的数要么全为 $0$，要么全为 $1$。</p>
+<h2 id="0x05"><a href="#0x05" class="headerlink" title="0x05"></a>0x05</h2><p>知道了正交线性基怎么求，如何计算答案呢？</p>
+<p>考虑用 $\operatorname{FWT}$ 表示答案统计：</p>
+<p>$$<br>[z^c]P(A) = [z^0] (A * G^c) = [z^0] \operatorname{IFWT}(\operatorname{FWT}(F(A)) \cdot \operatorname{FWT}(G^c))<br>$$</p>
+<p>其中 $G^c$ 表示 $\sum_{x \geq 0} z^x [\operatorname{popcount}(x)=c]$。</p>
+<p>其中：</p>
+<p>$$<br>[z^0] \operatorname{IFWT}(X) = 2^{-m} [z^0] \operatorname{FWT}(X) = 2^{-m} \sum_{i \geq 0} [z^i] X<br>$$</p>
+<p>由于 $\operatorname{FWT}(F(A)) = F(B) \cdot 2^k$，而 $B$ 中的元素只有 $2^{\operatorname{rank}(B)} = 2^{m - \operatorname{rank}(A)}$ 个。故通过暴力得到 $P(B)$，即可通过组合数计算得 $P(A)$。</p>
+<p>$$<br>[z^c]P(A) = 2^{k-m} \sum_{d \geq 0} [z^d] P(B) \sum_{i \geq 0} (-1)^i \binom d i \binom {m-d} {c-i}<br>$$</p>
+</p> -->
+    </div>
+</div>
+
+
     </div>
     
 </div>
 <div id="preview"></div>
-
-
 
 </body>
 
