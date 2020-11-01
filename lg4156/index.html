@@ -10,7 +10,8 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate" />
     <meta name="keywords" content="Fechin,"> 
-    <meta name="description" content="给定一个字符串 $s$，假设其 border 集合为 $S$，则每次你可以在 $s$ 后面接上一个长度为 $|s| - x$ 的字符串，其中 $x \in S$。问在总长度 $\leq w$ 的情况,"> 
+    <meta name="description" content="
+给定一个字符串 $s$，假设其 border 集合为 $S$，则每次你可以在 $s$ 后面接上一个长度为 $|s| - x$ 的字&amp;gt; 符串，其中 $x \in S$。问在总长度 $\leq ,"> 
     <meta name="author" content="memset0"> 
     <link rel="alternative" href="atom.xml" title="memset0&#39;s Blog" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -62,8 +63,10 @@
 
         </div>
         <div class="content markdown">
-            <p>给定一个字符串 $s$，假设其 border 集合为 $S$，则每次你可以在 $s$ 后面接上一个长度为 $|s| - x$ 的字符串，其中 $x \in S$。问在总长度 $\leq w$ 的情况下有多少种可能的本质不同的长度。</p>
+            <blockquote>
+<p>给定一个字符串 $s$，假设其 border 集合为 $S$，则每次你可以在 $s$ 后面接上一个长度为 $|s| - x$ 的字&gt; 符串，其中 $x \in S$。问在总长度 $\leq w$ 的情况下有多少种可能的本质不同的长度。</p>
 <p>$n \leq 5 \times 10^5,\ w \leq 10^{18}$。</p>
+</blockquote>
 <a id="more"></a>
 <h4 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h4><p>做法和哥哥们的好像不大一样，不过本质应该差不多，但还是厚颜无耻的来水一篇。</p>
 <p>border 的贡献是若干端等差数列，不妨设其中一段为 $kx + b$，其中 $x \in [0,l]$，考虑其产生的贡献整理后可以理解为三种：</p>

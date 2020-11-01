@@ -10,7 +10,8 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate" />
     <meta name="keywords" content="Fechin,"> 
-    <meta name="description" content="给定一个长度为 $n$ 的数组 $\{a_i\}_{i=1}^n$，$Q$ 次询问，每次给定 $l$ 和 $r$ 查询 $\operatorname{lcm}(\{a_i\}_{i=l}^r)$，答,"> 
+    <meta name="description" content="
+给定一个长度为 $n$ 的数组 $\{a_i\}_{i=1}^n$，$Q$ 次询问，每次给定 $l$ 和 $r$ 查询 $\operatorname{lcm}(\{a_i\}_{i=l}^r)$，,"> 
     <meta name="author" content="memset0"> 
     <link rel="alternative" href="atom.xml" title="memset0&#39;s Blog" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -62,8 +63,10 @@
 
         </div>
         <div class="content markdown">
-            <p>给定一个长度为 $n$ 的数组 $\{a_i\}_{i=1}^n$，$Q$ 次询问，每次给定 $l$ 和 $r$ 查询 $\operatorname{lcm}(\{a_i\}_{i=l}^r)$，答案对 $10^9+7$ 取模。</p>
+            <blockquote>
+<p>给定一个长度为 $n$ 的数组 $\{a_i\}_{i=1}^n$，$Q$ 次询问，每次给定 $l$ 和 $r$ 查询 $\operatorname{lcm}(\{a_i\}_{i=l}^r)$，答案对 $10^9+7$ 取模。</p>
 <p><strong>多组数据</strong>，$T,n,Q \leq 300,\ a_i \leq 10^{18}$。</p>
+</blockquote>
 <a id="more"></a>
 <h4 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h4><p>把 $&lt; 10^{4.5}$ 的质数分开来处理，这样剩余每个数至多剩余 $3$ 个不同的质因子。考虑我们不需把每个数分解质因数，只需要能够构造一个等价的质数集合即可。构造方法如下：</p>
 <p>对于所有 $1 \leq i &lt; j \leq n$，将 $\gcd(a_i, a_j), a_i / \gcd(a_i, a_j), a_j / \gcd(a_i, a_j)$ 加入到集合 $S$ 中。将其中存在 $S$ 中的数作为因数的数删掉，剩下的集合就是一个合法的质数集合。</p>

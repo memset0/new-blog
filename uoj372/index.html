@@ -10,9 +10,10 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate" />
     <meta name="keywords" content="Fechin,"> 
-    <meta name="description" content="给定一个 $n$ 个点 $m$ 条边的无向图，其中每个点的点权是 $[0;1]$ 范围内生成的连续型随机变量，求：
+    <meta name="description" content="
+给定一个 $n$ 个点 $m$ 条边的无向图，其中每个点的点权是 $[0;1]$ 范围内生成的连续型随机变量，求：
 
-\max \{ \max_{i \in V} x_i + \max_{(u,v),"> 
+\max \{ \max_{i \in V} x_i + \max_{(u,v,"> 
     <meta name="author" content="memset0"> 
     <link rel="alternative" href="atom.xml" title="memset0&#39;s Blog" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -64,10 +65,12 @@
 
         </div>
         <div class="content markdown">
-            <p>给定一个 $n$ 个点 $m$ 条边的无向图，其中每个点的点权是 $[0;1]$ 范围内生成的连续型随机变量，求：</p>
+            <blockquote>
+<p>给定一个 $n$ 个点 $m$ 条边的无向图，其中每个点的点权是 $[0;1]$ 范围内生成的连续型随机变量，求：</p>
 <script type="math/tex; mode=display">
 \max \{ \max_{i \in V} x_i + \max_{(u,v) \in E} (x_u + x_v) \}</script><p>的期望，答案对 $998244353$ 取模。</p>
 <p>$n \leq 25$。（实际上可以跑 $n \leq 30$。。。</p>
+</blockquote>
 <a id="more"></a>
 <h4 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h4><script type="math/tex; mode=display">
 ans = \int_0^2 Pr[\lambda = x] x \text dx = 2 - \int_0^2 Pr[\lambda \leq x] \text dx</script><p>考虑如何计算 $Pr[\lambda \leq x]$，设 $g(s,y,t)$ 表示对于点集 $s$，点权最大值 $\leq y$，答案 $\leq t$ 的概率。考虑其状态转义：</p>
