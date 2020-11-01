@@ -332,21 +332,6 @@ ajaxLoadList.push(renderLatex);
 
 
 
-<script type="text/javascript" src="http://cdn.repository.webfont.com/wwwroot/js/wf/youziku.api.min.js"></script>
-
-<script type="text/javascript">
-function renderWebfont() {
-	$.get("https://service.webfont.com/home/get", function(data) {
-		$(".ajax-Test-click").html("这是基于click事件的ajax数据:" + data);
-		$youziku.submit(encodeURIComponent(location.href.pathname));
-	});
-}
-renderWebfont();
-$webfont.load("body", "e72becd311da4f82be960a0eab76e8e8", "OldNewspapersSung");
-$webfont.draw();
-ajaxLoadList.push(renderWebfont);
-</script>
-
 
 
 
