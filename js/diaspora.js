@@ -19,8 +19,7 @@ var Diaspora = {
             success: function(data) {
                 f(data);
                 xhrUrl = '';
-                MathJax.Hub.Queue(["Typeset", MathJax.Hub, document.getElementsByClassName("post")[0]]);
-                MathJax.Hub.Queue(["Typeset", MathJax.Hub, document.getElementsByClassName("article")[0]]);
+                renderLatex();
             },
             error: function(a, b, c) {
                 if (b == 'abort') {
