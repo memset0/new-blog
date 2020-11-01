@@ -10,8 +10,9 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate" />
     <meta name="keywords" content="Fechin,"> 
-    <meta name="description" content="定义区间树为线段树的拓展，即每次断开的位置可以不是线段的中心。
-给定一个 $[1, n]$ 的区间树和 $q$ 次询问，每次询问包含一个正整数 $k$, 你需要求出有多少区间的时间复杂度恰好等于 $,"> 
+    <meta name="description" content="
+定义区间树为线段树的拓展，即每次断开的位置可以不是线段的中心。
+给定一个 $[1, n]$ 的区间树和 $q$ 次询问，每次询问包含一个正整数 $k$, 你需要求出有多少区间的时间复杂度恰好等于 ,"> 
     <meta name="author" content="memset0"> 
     <link rel="alternative" href="atom.xml" title="memset0&#39;s Blog" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -63,9 +64,11 @@
 
         </div>
         <div class="content markdown">
-            <p>定义区间树为线段树的拓展，即每次断开的位置可以不是线段的中心。</p>
+            <blockquote>
+<p>定义区间树为线段树的拓展，即每次断开的位置可以不是线段的中心。</p>
 <p>给定一个 $[1, n]$ 的区间树和 $q$ 次询问，每次询问包含一个正整数 $k$, 你需要求出有多少区间的时间复杂度恰好等于 $k$。</p>
 <p>$n, q\le 10^5,\ k\le 10^9$。</p>
+</blockquote>
 <a id="more"></a>
 <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>在线回答询问无意义，考虑利用生成函数处理出所有询问的答案。</p>
 <p>询问 $[l;r]$ 选中的线段（$ql=l \land qr=r$ 的线段，而非经过的线段），LCA 往两侧深度单调减（且中间平的一段的长度至多为 $2$）。</p>
