@@ -74,6 +74,10 @@
 
 </body>
 
+<script>
+    window.ajaxLoadList = [];
+</script>
+
 
 <script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
 <script src="/js/plugin.js"></script>
@@ -142,14 +146,14 @@
 <style>.MathJax:focus {outline: none;}</style>
 <!-- <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
-	extensions: ["tex2jax.js"],
-	jax: ["input/TeX","output/HTML-CSS"],
-	"fast-preview": {disabled: true},
-	tex2jax: {inlineMath:[ ["$", "$"] ],displayMath:[ ["$$","$$"] ],processEscapes: true},
-	"HTML-CSS": {
-		availableFonts: ["TeX"],
-		scale: 90,
-	}
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+  "fast-preview": {disabled: true},
+  tex2jax: {inlineMath:[ ["$", "$"] ],displayMath:[ ["$$","$$"] ],processEscapes: true},
+  "HTML-CSS": {
+    availableFonts: ["TeX"],
+    scale: 90,
+  }
 });
 </script>
 <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
@@ -158,17 +162,40 @@ MathJax.Hub.Config({
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
 
 <script>
-	function renderLatex() {
-		renderMathInElement(document.body, {
-			delimiters: [
-				{left: "$", right: "$", display: false},
-				{left: "$$", right: "$$", display: true},
-			]
-		});
-	}
+function renderLatex() {
+  renderMathInElement(document.body, {
+    delimiters: [
+      {left: "$", right: "$", display: false},
+      {left: "$$", right: "$$", display: true},
+    ]
+  });
+  $("script[type='math/tex; mode=display']").replaceWith(function () {
+    var rendered = katex.renderToString(this.innerText, {
+      displayMode: true
+    });
+    return '<div class="equation">' + rendered + '</div>';
+  });
+}
+ajaxLoadList.push(renderLatex);
 </script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous" onload="renderLatex()"></script>
 
+
+
+<script type="text/javascript" src="http://cdn.repository.webfont.com/wwwroot/js/wf/youziku.api.min.js"></script>
+
+<script type="text/javascript">
+function renderWebfont() {
+	$.get("https://service.webfont.com/home/get", function(data) {
+		$(".ajax-Test-click").html("这是基于click事件的ajax数据:" + data);
+		$youziku.submit(encodeURIComponent(location.href.pathname));
+	});
+}
+renderWebfont();
+$webfont.load("body", "e72becd311da4f82be960a0eab76e8e8", "OldNewspapersSung");
+$webfont.draw();
+ajaxLoadList.push(renderWebfont);
+</script>
 
 
 

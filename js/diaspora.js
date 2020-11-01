@@ -19,7 +19,7 @@ var Diaspora = {
             success: function(data) {
                 f(data);
                 xhrUrl = '';
-                renderLatex();
+                ajaxLoadList.forEach(loader => { loader() });
             },
             error: function(a, b, c) {
                 if (b == 'abort') {
@@ -496,12 +496,11 @@ $(function() {
                 break;
             // qrcode
             case (tag.indexOf('icon-scan') != -1):
-                if ($('.icon-scan').hasClass('tg')) {
-                    $('#qr').toggle()
-                } else {
+                if (!$('.icon-scan').hasClass('tg')) {
                     $('.icon-scan').addClass('tg')
-                    $('#qr').qrcode({ width: 128, height: 128, text: location.href}).toggle()
+                    $('#qr').qrcode({ width: 128, height: 128, text: location.href})
                 }
+                $('#qr').fadeToggle();
                 return false;
                 break;
             // audio play
