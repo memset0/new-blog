@@ -295,8 +295,10 @@ $(function() {
             $('.scrollbar').width(width)
             if (wt > 80 && window.innerWidth > 800) {
                 $('.subtitle').fadeIn()
+                $('#top').addClass('shadowed');
             } else {
                 $('.subtitle').fadeOut()
+                $('#top').removeClass('shadowed');
             }
         }
     })
