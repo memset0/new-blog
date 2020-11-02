@@ -242,10 +242,10 @@ $(function () {
           y = i * _h / _w;
         }
         $('.layer').css({
-          'width': _w + x,
-          'height': _h + y,
-          'marginLeft': - 0.5 * x,
-          'marginTop': - 0.5 * y
+          width: _w + x,
+          height: _h + y,
+          marginLeft: - 0.5 * x,
+          marginTop: - 0.5 * y
         })
         if (!cover.w) {
           cover.w = cover.t.width();
