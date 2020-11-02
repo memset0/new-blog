@@ -65,7 +65,7 @@ body.touch #top{position:relative;}
 .image-icon{-webkit-background-size:24px 24px;-moz-background-size:24px 24px;background-size:24px 24px;background-position:center center;background-repeat:no-repeat;width:24px;height:24px;position:absolute;left:14px;top:13px;color:#333;}
 .image-icon:hover{color:black;}
 .subtitle{color:#666;font-size:14px;margin-top:16px;display:none;}
-.icon-play,.icon-pause,.icon-images{position:absolute;left:70px;color:#666;top:13px;font-size:18px;cursor:pointer;}
+.icon-play,.icon-pause,.icon-images{position:absolute;left:70px;color:#666;top:13px;font-size:18px;cursor:pointer;width:24px;height:24px;line-height:24px;}
 .icon-images{left:100px;}
 .icon-images.active{color:#EF6D57;}
 #top .count{display:none;}
