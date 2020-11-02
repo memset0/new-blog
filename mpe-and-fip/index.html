@@ -58,17 +58,21 @@ document.getElementsByClassName("tips")[0].innerHTML=tiplist[Math.floor(Math.ran
 
   <div class="section">
     <div class="article">
-    <div class='main'>
-        <h1 class="title">多项式多点求值与快速插值学习笔记</h1>
-        <div class="stuff">
-            <span>二月 24, 2019</span>
-            
+  <div class="main">
+    <div class="cover">
+      <img src="/cover/5.png" id="post-cover" crossorigin="anonymous" width="1920" height="1080">
+    </div>
+    <div class="container">
+      <h1 class="title">多项式多点求值与快速插值学习笔记</h1>
+      <div class="stuff">
+        <span>二月 24, 2019</span>
+        
   <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/%E5%A4%9A%E9%A1%B9%E5%BC%8F/" rel="tag">多项式</a></li></ul>
 
 
-        </div>
-        <div class="content markdown">
-            <h2 id="多点求值"><a href="#多点求值" class="headerlink" title="多点求值"></a>多点求值</h2><p>我们若求一个一次函数 $f(x) = ax + b$ 在 $x_0$ 处的值，可以拿 $f(x)$ 对 $(x - x_0)$ 取模，得到的零次多项式即在 $x_0$ 处的点值，容易证明其正确性。</p>
+      </div>
+      <div class="content markdown">
+        <h2 id="多点求值"><a href="#多点求值" class="headerlink" title="多点求值"></a>多点求值</h2><p>我们若求一个一次函数 $f(x) = ax + b$ 在 $x_0$ 处的值，可以拿 $f(x)$ 对 $(x - x_0)$ 取模，得到的零次多项式即在 $x_0$ 处的点值，容易证明其正确性。</p>
 <p>考虑分治，假设我们需要求 $x_l$ ~ $x_r$ 处的点值，可以通过当前的 $f(x)$ 对 $\prod_{i=l}^{mid} (x-x_i)$ 取模得到递归到 $x_{mid + 1}$ ~ $x_r$ 的多项式，对 $\prod_{i=mid+1}^r (x-x_i)$ 取模得到递归到 $x_l$ ~ $x_mid$ 的多项式。其中上面两个连乘积可以通过分治 + 多项式乘法得到，保存在线段树状结构中。若多项式项数与待求值点数相同则在叶子节点我们可以直接获取点值。</p>
 <h2 id="快速插值"><a href="#快速插值" class="headerlink" title="快速插值"></a>快速插值</h2><p>这是朴素的拉格朗日插值</p>
 <script type="math/tex; mode=display">
@@ -99,25 +103,26 @@ f_{l \rightarrow r}(x)
         \prod_{j=l,j\not=i}^{mid} (x-x_j) \\
 \end{aligned}</script><p>可以直接调用之前分治 + 多项式乘法的结果，减小常数。</p>
 
-            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
-            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
-                <source type="audio/mpeg" src="">
-            </audio>
-            
-                <ul id="audio-list" style="display:none">
-                    
-                        
-                            <li title='0' data-url='/music/観月あんみ - Memories are here (クロハネエンディング).mp3'></li>
-                        
-                    
-                        
-                            <li title='1' data-url='/music/やなぎなぎ - 恋文.mp3'></li>
-                        
-                    
-                </ul>
-            
-        </div>
+        <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+        <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+          <source type="audio/mpeg" src="">
+        </audio>
         
+          <ul id="audio-list" style="display:none">
+            
+              
+                <li title='0' data-url='/music/観月あんみ - Memories are here (クロハネエンディング).mp3'></li>
+              
+            
+              
+                <li title='1' data-url='/music/やなぎなぎ - 恋文.mp3'></li>
+              
+            
+          </ul>
+        
+      </div>
+    </div>
+    
     <div id='gitalk-container' class="comment link"
 		data-enable='true'
         data-ae='true'
@@ -130,11 +135,9 @@ f_{l \rightarrow r}(x)
     >查看评论</div>
 
 
-    </div>
-    
+  </div>
+  
 </div>
-
-
   </div>
 </div>
 </body>
