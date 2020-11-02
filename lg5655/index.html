@@ -2,32 +2,32 @@
 <!DOCTYPE html>
 <html lang="zh-cn" class="loading">
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>洛谷5655 基础数论函数练习题 - memset0&#39;s Blog</title>
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="google" content="notranslate" />
-    <meta name="keywords" content="Fechin,"> 
-    <meta name="description" content="
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>洛谷5655 基础数论函数练习题 - memset0&#39;s Blog</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate" />
+  <meta name="keywords" content="Fechin,"> 
+  <meta name="description" content="
 给定一个长度为 $n$ 的数组 $\{a_i\}_{i=1}^n$，$Q$ 次询问，每次给定 $l$ 和 $r$ 查询 $\operatorname{lcm}(\{a_i\}_{i=l}^r)$，,"> 
-    <meta name="author" content="memset0"> 
-    <link rel="alternative" href="atom.xml" title="memset0&#39;s Blog" type="application/atom+xml"> 
-    <link rel="icon" href="/img/favicon.png"> 
-    
+  <meta name="author" content="memset0"> 
+  <link rel="alternative" href="atom.xml" title="memset0&#39;s Blog" type="application/atom+xml"> 
+  <link rel="icon" href="/img/favicon.png"> 
+  
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
 
-    
+  
 <link rel="stylesheet" href="/css/diaspora.css?ver=20201102&font-size=295692.css">
 
 <meta name="generator" content="Hexo 5.2.0"></head>
 
 <div class="tips-box" style="display:table;position:fixed;height:100%;width:100%;top:0;left:0;z-index:114514;">
-	<div style="display:table-cell;color:rgb(0,0,0,0.37);width:100%;text-align:center;vertical-align:middle;">
-		<br><br><br>
-		<span class="tips"></span>
-	</div>
+  <div style="display:table-cell;color:rgb(0,0,0,0.37);width:100%;text-align:center;vertical-align:middle;">
+    <br><br><br>
+    <span class="tips"></span>
+  </div>
 </div>
 <style>
 .tips-box{display:none!important;}
@@ -38,10 +38,10 @@ var tiplist=["为什么一个博客会和游戏一样有 tips 功能呢...","真
 document.getElementsByClassName("tips")[0].innerHTML=tiplist[Math.floor(Math.random()*tiplist.length)];
 </script>
 <body class="loading">
-    <span id="config-title" style="display:none">memset0&#39;s Blog</span>
-    <div id="loader"></div>
-    <div id="single">
-    <div id="top" style="display: block;">
+  <span id="config-title" style="display:none">memset0&#39;s Blog</span>
+  <div id="loader"></div>
+  <div id="single">
+  <div id="top" style="display: block;">
     <div class="bar" style="width: 0;"></div>
     <a class="iconfont icon-home image-icon" href="javascript:;" data-url="/"></a>
     <div title="播放/暂停" class="iconfont icon-play"></div>
@@ -57,8 +57,8 @@ document.getElementsByClassName("tips")[0].innerHTML=tiplist[Math.floor(Math.ran
     <div class="scrollbar"></div>
 </div>
 
-    <div class="section">
-        <div class="article">
+  <div class="section">
+    <div class="article">
     <div class='main'>
         <h1 class="title">洛谷5655 基础数论函数练习题</h1>
         <div class="stuff">
@@ -120,12 +120,11 @@ document.getElementsByClassName("tips")[0].innerHTML=tiplist[Math.floor(Math.ran
 </div>
 
 
-    </div>
+  </div>
 </div>
 </body>
-
 <script>
-    window.ajaxLoadList = [];
+  window.ajaxLoadList = [];
 </script>
 
 <script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
@@ -145,75 +144,45 @@ document.getElementsByClassName("tips")[0].innerHTML=tiplist[Math.floor(Math.ran
 <script src="/photoswipe/photoswipe.min.js"></script>
 <script src="/photoswipe/photoswipe-ui-default.min.js"></script>
 
-
-<!-- Root element of PhotoSwipe. Must have class pswp. -->
 <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-    <!-- Background of PhotoSwipe. 
-         It's a separate element as animating opacity is faster than rgba(). -->
-    <div class="pswp__bg"></div>
-    <!-- Slides wrapper with overflow:hidden. -->
-    <div class="pswp__scroll-wrap">
-        <!-- Container that holds slides. 
-            PhotoSwipe keeps only 3 of them in the DOM to save memory.
-            Don't modify these 3 pswp__item elements, data is added later on. -->
-        <div class="pswp__container">
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-        </div>
-        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
-        <div class="pswp__ui pswp__ui--hidden">
-            <div class="pswp__top-bar">
-                <!--  Controls are self-explanatory. Order can be changed. -->
-                <div class="pswp__counter"></div>
-                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-                <button class="pswp__button pswp__button--share" title="Share"></button>
-                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
-                <!-- element will get class pswp__preloader--active when preloader is running -->
-                <div class="pswp__preloader">
-                    <div class="pswp__preloader__icn">
-                      <div class="pswp__preloader__cut">
-                        <div class="pswp__preloader__donut"></div>
-                      </div>
-                    </div>
-                </div>
-            </div>
-            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                <div class="pswp__share-tooltip"></div> 
-            </div>
-            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
-            </button>
-            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
-            </button>
-            <div class="pswp__caption">
-                <div class="pswp__caption__center"></div>
-            </div>
-        </div>
+  <div class="pswp__bg"></div>
+  <div class="pswp__scroll-wrap">
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
     </div>
+    <div class="pswp__ui pswp__ui--hidden">
+      <div class="pswp__top-bar">
+        <div class="pswp__counter"></div>
+        <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+        <button class="pswp__button pswp__button--share" title="Share"></button>
+        <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+        <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+        <div class="pswp__preloader">
+          <div class="pswp__preloader__icn">
+            <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+        <div class="pswp__share-tooltip"></div> 
+      </div>
+      <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+      </button>
+      <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+      </button>
+      <div class="pswp__caption">
+        <div class="pswp__caption__center"></div>
+      </div>
+    </div>
+  </div>
 </div>
-
-
-
-<style>.MathJax:focus {outline: none;}</style>
-<!-- <script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  extensions: ["tex2jax.js"],
-  jax: ["input/TeX","output/HTML-CSS"],
-  "fast-preview": {disabled: true},
-  tex2jax: {inlineMath:[ ["$", "$"] ],displayMath:[ ["$$","$$"] ],processEscapes: true},
-  "HTML-CSS": {
-    availableFonts: ["TeX"],
-    scale: 90,
-  }
-});
-</script>
-<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
-
 <script>
 function renderLatex() {
   renderMathInElement(document.body, {
@@ -232,9 +201,6 @@ function renderLatex() {
 ajaxLoadList.push(renderLatex);
 </script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous" onload="renderLatex()"></script>
-
-
-
 
 
 
