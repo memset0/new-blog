@@ -1,0 +1,213 @@
+
+<!DOCTYPE html>
+<html lang="zh-cn" class="loading">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>「集训队作业 2020」Old Problem - memset0&#39;s Blog</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate" />
+  <meta name="keywords" content="Fechin,"> 
+  <meta name="description" content="给一个长度为 $n$ 的序列 $a_i$，和 $q$ 组询问 $(l,r,x)$，表示求 $\displaystyle\prod_{i=l}^r\left(1-\frac{a_i}{x}\right,"> 
+  <meta name="author" content="memset0"> 
+  <link rel="alternative" href="atom.xml" title="memset0&#39;s Blog" type="application/atom+xml"> 
+  <link rel="icon" href="/img/favicon.png"> 
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+  
+<link rel="stylesheet" href="/css/diaspora.css?ver=20201105.css">
+
+  <style>@font-face{font-family:'FZSHJW';src:url('/font/FZSHJW.ttf?size=325628');font-weight:normal;font-style:normal;}</style>
+<meta name="generator" content="Hexo 5.2.0"></head>
+<div class="tips-box" style="display:table;position:fixed;height:100%;width:100%;top:0;left:0;z-index:114514;">
+  <div style="display:table-cell;color:rgb(0,0,0,0.37);width:100%;text-align:center;vertical-align:middle;">
+    <br><br><br>
+    <span class="tips"></span>
+  </div>
+</div>
+<style>
+.tips-box{display:none!important;}
+body.loading .tips-box{display:table!important;}
+</style>
+<script>
+var tiplist=["为什么一个博客会和游戏一样有 tips 功能呢...","真的有人认为这是一个技术向博客吗，不会吧不会吧？","为什么网页打开慢啊，还不都是因为博主往里面塞老多字体和图片！","猜猜 cover 里的图片的出处是哪儿呢？","你觉得会有多少条 tips 啊...","感兴趣的话，能评价下这主题好看吗...","我永远喜欢神户小鸟（大声）！","有人会看这博客里的内容吗（提出疑问）...","不知道加载速度够不够你读完这条 tips...","会不会有人专门为了看 tips 点开 Devtools 啊...","所有 tips 都是乱写的，包括这一条...","所有 tips 都是认真的，不包括这一条...","少女祈祷中...","咕咕咕？咕咕，咕咕咕！咕咕咕咕咕咕咕...","你知道吗，这个功能在某些游戏里叫 tips...","其实点开文章还可以在左上角听音乐哦...","哎，感觉自己已经是个老年退役选手了呐...","在 tips 里面...放什么都可以吧？","tips 的出现概率...真的是随机的！","如果人生可以重来，你还愿意成为竞赛生吗...","没有 bug 吧... 应该没有吧","♩ 夢ならば覚めないで ♩","♩ Memories are here ~ fragile souvenir ~ ♩","「三年风雨初心未泯 歧路争锋浪子无悔」","「友情是珍珠，回忆是钻石」","「纵然已经踏上不归之路，也绝对不要回头呢」"];
+document.getElementsByClassName("tips")[0].innerHTML=tiplist[Math.floor(Math.random()*tiplist.length)];
+</script>
+<body class="loading">
+  <span id="config-title" style="display:none">memset0&#39;s Blog</span>
+  <div id="loader"></div>
+  <div id="single">
+  <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="/"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">「集训队作业 2020」Old Problem</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+  <div class="section">
+    <div class="article">
+  <div class="main">
+    <div class="cover">
+      <img src="/cover/13.png" id="post-cover" crossorigin="anonymous" width="1920" height="1080">
+    </div>
+    <div class="container">
+      <h1 class="title">「集训队作业 2020」Old Problem</h1>
+      <div class="stuff">
+        <span>十二月 17, 2020</span>
+        
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/%E5%89%8D%E7%BC%80%E5%92%8C/" rel="tag">前缀和</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/%E6%B3%B0%E5%8B%92%E5%B1%95%E5%BC%80/" rel="tag">泰勒展开</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/%E8%AF%AF%E5%B7%AE%E5%88%86%E6%9E%90/" rel="tag">误差分析</a></li></ul>
+
+
+      </div>
+      <div class="content markdown">
+        <p>给一个长度为 $n$ 的序列 $a_i$，和 $q$ 组询问 $(l,r,x)$，表示求 $\displaystyle\prod_{i=l}^r\left(1-\frac{a_i}{x}\right)$ 的值。实数输出，精度要求 $10^{-6}$。</p>
+<p>$n,q\le6\times10^5,\ 1\leq a_i &lt; x\leq 10^9$。</p>
+<a id="more"></a>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>按照 EI 的话说，这是一个误差分析题。</p>
+<p>首先需要注意到这个式子可以泰勒展开：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+ &\exp\left(\ln\left(\prod_{i=l}^r\left(1-\frac{a_i}{x}\right)\right)\right) \\
+=&\exp\left(\sum_{i=l}^r\ln\left(1-\frac{a_i}{x}\right)\right) \\
+=&\exp\left(-\sum_{i=l}^r\sum_{k=1}^{L}\frac{a_i^k}{k\cdot x^k}\right) \\
+\end{aligned}</script><p>然而，如果直接泰勒展开，需要的 $L$ 是数十万级别的，无益于我们解决问题。</p>
+<p>考虑到导致泰勒展开精度损失的主要原因，是因为当 $a_i/x$ 较大时，我们对 $\ln(1-a_i/x)$ 的精度要求很高。然而，$a_i/x$ 较大时，很容易导致答案小于我们要求的精度范围。</p>
+<p>故我们不妨设定一个阈值 $R=0.5$，当 $a_i/x\le R$ 时，考虑线段树维护泰勒展开；否则，当 $a_i/x&gt;R$ 时，优先找出这些位置并暴力计算。当答案小于精度要求时就退出。暴力计算的次数显然不会超过 $\log_2 10^6$ 次。</p>
+<p>这样就得到了一个 $O(n\log^2L)$ 的做法，实践得 $L$ 取 $20$ 左右即可。</p>
+<p>可以通过本题，但时间较大。实际上，线段树的部分可以直接换为前缀和。为什么精度还在接受范围内呢？注意到 $x&gt;a_i$ 对于任意 $x$ 和任意 $i$ 都成立。如果前缀和的部分因为 $a_i$ 太小被省略，他本身对泰勒展开的影响也是被省略的级别。换句话说，对于泰勒展开的值，前缀和能保证的精度范围，恰为 <code>double</code> 本身的精度范围。</p>
+<p>所以，直接将上述做法中的线段树替换为前缀和就能在 $O(n\log nL)$ 的时间复杂度内解决本题。<del>三个 log 年轻人不讲武德。</del></p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">6e5</span>+<span class="number">10</span>,K=<span class="number">20</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">double</span> eps=<span class="number">1e-10</span>;</span><br><span class="line"><span class="keyword">int</span> n,m,x,a[N],lg[N],st[<span class="number">20</span>][N];</span><br><span class="line"><span class="keyword">double</span> sum,ans;</span><br><span class="line"><span class="function">mt19937 <span class="title">rng</span><span class="params">(<span class="number">20040725</span>)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">better</span><span class="params">(<span class="keyword">int</span> i,<span class="keyword">int</span> j)</span></span>&#123;<span class="keyword">return</span> a[i]&lt;a[j]?j:i;&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(l==r)<span class="keyword">return</span> l;</span><br><span class="line">  <span class="keyword">int</span> k=lg[r-l];</span><br><span class="line">  <span class="keyword">return</span> better(st[k][l],st[k][r-(<span class="number">1</span>&lt;&lt;k)]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">segment</span>&#123;</span></span><br><span class="line">  <span class="keyword">int</span> l,r,mid;</span><br><span class="line">  <span class="keyword">double</span> s[K];</span><br><span class="line">&#125;p[N&lt;&lt;<span class="number">2</span>];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span>&#123;</span><br><span class="line">  p[u].l=l,p[u].r=r,p[u].mid=(l+r)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">  <span class="keyword">if</span>(l==r)&#123;</span><br><span class="line">    p[u].s[<span class="number">0</span>]=a[l];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;K;i++)p[u].s[i]=p[u].s[i<span class="number">-1</span>]*a[l];</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  build(u&lt;&lt;<span class="number">1</span>,l,p[u].mid);</span><br><span class="line">  build(u&lt;&lt;<span class="number">1</span>|<span class="number">1</span>,p[u].mid+<span class="number">1</span>,r);</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;K;i++)&#123;</span><br><span class="line">    p[u].s[i]=p[u&lt;&lt;<span class="number">1</span>].s[i]+p[u&lt;&lt;<span class="number">1</span>|<span class="number">1</span>].s[i];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(p[u].l==l&amp;&amp;p[u].r==r)&#123;</span><br><span class="line">    <span class="keyword">double</span> sum=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=K<span class="number">-1</span>;i&gt;=<span class="number">0</span>;i--)&#123;</span><br><span class="line">      sum=(sum+p[u].s[i]/(i+<span class="number">1</span>))/x;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> sum;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span>(r&lt;=p[u].mid)<span class="keyword">return</span> query(u&lt;&lt;<span class="number">1</span>,l,r);</span><br><span class="line">  <span class="keyword">if</span>(l&gt;p[u].mid)<span class="keyword">return</span> query(u&lt;&lt;<span class="number">1</span>|<span class="number">1</span>,l,r);</span><br><span class="line">  <span class="keyword">return</span> query(u&lt;&lt;<span class="number">1</span>,l,p[u].mid)+query(u&lt;&lt;<span class="number">1</span>|<span class="number">1</span>,p[u].mid+<span class="number">1</span>,r);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(l&gt;r||ans&lt;eps)&#123;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">int</span> pos=query(l,r);</span><br><span class="line">  <span class="keyword">if</span>(a[pos]&lt;(x&gt;&gt;<span class="number">1</span>))&#123;</span><br><span class="line">    ans*=<span class="built_in">exp</span>(-query(<span class="number">1</span>,l,r));</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  ans*=<span class="number">1</span>-a[pos]/(<span class="keyword">double</span>)x;</span><br><span class="line">  <span class="keyword">if</span>(rng()&amp;<span class="number">1</span>)&#123;</span><br><span class="line">    solve(l,pos<span class="number">-1</span>);</span><br><span class="line">    solve(pos+<span class="number">1</span>,r);</span><br><span class="line">  &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    solve(pos+<span class="number">1</span>,r);</span><br><span class="line">    solve(l,pos<span class="number">-1</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> memset0</span></span><br><span class="line">  freopen(<span class="string">&quot;1.in&quot;</span>,<span class="string">&quot;r&quot;</span>,<span class="built_in">stdin</span>);</span><br><span class="line"><span class="comment">//    freopen(&quot;ex_gjx3.in&quot;,&quot;r&quot;,stdin);</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">  ios::sync_with_stdio(<span class="number">0</span>),<span class="built_in">cin</span>.tie(<span class="number">0</span>),<span class="built_in">cout</span>.tie(<span class="number">0</span>);</span><br><span class="line">  <span class="built_in">cout</span>&lt;&lt;fixed&lt;&lt;setprecision(<span class="number">12</span>);</span><br><span class="line">  lg[<span class="number">0</span>]=<span class="number">-1</span>;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;N;i++)lg[i]=lg[i&gt;&gt;<span class="number">1</span>]+<span class="number">1</span>;</span><br><span class="line">  <span class="built_in">cin</span>&gt;&gt;n&gt;&gt;m;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)<span class="built_in">cin</span>&gt;&gt;a[i];</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;i++)&#123;</span><br><span class="line">    st[<span class="number">0</span>][i]=better(i,i+<span class="number">1</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;<span class="number">20</span>;i++)</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j+(<span class="number">1</span>&lt;&lt;i)&lt;=n;j++)&#123;</span><br><span class="line">      st[i][j]=better(st[i<span class="number">-1</span>][j],st[i<span class="number">-1</span>][j+(<span class="number">1</span>&lt;&lt;(i<span class="number">-1</span>))]);</span><br><span class="line">    &#125;</span><br><span class="line">  build(<span class="number">1</span>,<span class="number">1</span>,n);</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> l,r,i=<span class="number">1</span>;i&lt;=m;i++)&#123;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;l&gt;&gt;r&gt;&gt;x;</span><br><span class="line">    ans=<span class="number">1</span>;</span><br><span class="line">    solve(l,r);</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="number">1</span>-ans&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+        <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+          <source type="audio/mpeg" src="">
+        </audio>
+        
+          <ul id="audio-list" style="display:none">
+            
+              
+                <li title='0' data-url='/music/観月あんみ - Memories are here (クロハネエンディング).mp3'></li>
+              
+            
+              
+                <li title='1' data-url='/music/やなぎなぎ - 恋文.mp3'></li>
+              
+            
+          </ul>
+        
+      </div>
+      
+    <div id='gitalk-container' class="comment link"
+		data-enable='true'
+        data-ae='true'
+        data-ci='9a58625d1ff4c0e473ac'
+        data-cs='6a26bac24632719df98b6c266dbb57931253ebf1'
+        data-r='new-blog'
+        data-o='memset0'
+        data-a='memset0'
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+  </div>
+  
+</div>
+  </div>
+</div>
+</body>
+<script>
+  window.ajaxLoadList = [];
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/jquery.md5.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+
+
+<script src="/js/diaspora.js?ver=20201103.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="pswp__bg"></div>
+  <div class="pswp__scroll-wrap">
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    <div class="pswp__ui pswp__ui--hidden">
+      <div class="pswp__top-bar">
+        <div class="pswp__counter"></div>
+        <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+        <button class="pswp__button pswp__button--share" title="Share"></button>
+        <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+        <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+        <div class="pswp__preloader">
+          <div class="pswp__preloader__icn">
+            <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+        <div class="pswp__share-tooltip"></div> 
+      </div>
+      <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+      </button>
+      <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+      </button>
+      <div class="pswp__caption">
+        <div class="pswp__caption__center"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
+<script>
+function renderLatex() {
+  renderMathInElement(document.body, {
+    delimiters: [
+      {left: "$", right: "$", display: false},
+      {left: "$$", right: "$$", display: true},
+    ]
+  });
+  $("script[type='math/tex; mode=display']").replaceWith(function () {
+    var rendered = katex.renderToString(this.innerText, {
+      displayMode: true
+    });
+    return '<div class="equation">' + rendered + '</div>';
+  });
+}
+ajaxLoadList.push(renderLatex);
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous" onload="renderLatex()"></script>
+
+
+
+</html>
