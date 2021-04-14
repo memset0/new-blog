@@ -10,12 +10,13 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="google" content="notranslate" />
   <meta name="keywords" content="Fechin,"> 
-  <meta name="description" content="定义一个排列 $P$ 上的操作 $(t,S)$ 为：
+  <meta name="description" content="
+定义一个排列 $P$ 上的操作 $(t,S)$ 为：
 
 有两个空序列 $A$ 和 $B$
 枚举 $i$ 从 $1$ 到 $n$
 如果 $S_i=0$，不进行操作
-如果 $S_i=1$，如果 $P_i,"> 
+如果 $S_i=1$，如果 $P_,"> 
   <meta name="author" content="memset0"> 
   <link rel="alternative" href="atom.xml" title="memset0&#39;s Blog" type="application/atom+xml"> 
   <link rel="icon" href="/img/favicon.png"> 
@@ -38,7 +39,7 @@
 body.loading .tips-box{display:table!important;}
 </style>
 <script>
-var tiplist=["为什么一个博客会和游戏一样有 tips 功能呢...","真的有人认为这是一个技术向博客吗，不会吧不会吧？","为什么网页打开慢啊，还不都是因为博主往里面塞老多字体和图片！","猜猜 cover 里的图片的出处是哪儿呢？","你觉得会有多少条 tips 啊...","感兴趣的话，能评价下这主题好看吗...","我永远喜欢神户小鸟（大声）！","有人会看这博客里的内容吗（提出疑问）...","不知道加载速度够不够你读完这条 tips...","会不会有人专门为了看 tips 点开 Devtools 啊...","所有 tips 都是乱写的，包括这一条...","所有 tips 都是认真的，不包括这一条...","少女祈祷中...","咕咕咕？咕咕，咕咕咕！咕咕咕咕咕咕咕...","你知道吗，这个功能在某些游戏里叫 tips...","其实点开文章还可以在左上角听音乐哦...","哎，感觉自己已经是个老年退役选手了呐...","在 tips 里面...放什么都可以吧？","tips 的出现概率...真的是随机的！","如果人生可以重来，你还愿意成为竞赛生吗...","没有 bug 吧... 应该没有吧","♩ 夢ならば覚めないで ♩","♩ Memories are here ~ fragile souvenir ~ ♩","「三年风雨初心未泯 歧路争锋浪子无悔」","「友情是珍珠，回忆是钻石」","「纵然已经踏上不归之路，也绝对不要回头呢」"];
+var tiplist=["为什么一个博客会和游戏一样有 tips 功能呢...","真的有人认为这是一个技术向博客吗，不会吧不会吧？","如果觉得博客的内容对你有帮助的话，欢迎给博主留言哦~","为什么网页打开慢啊，还不都是因为博主往里面塞老多字体和图片！","猜猜 cover 里的图片的出处是哪儿呢？","你觉得会有多少条 tips 啊...","感兴趣的话，能评价下这主题好看吗...","我永远喜欢神户小鸟（大声）！","有人会看这博客里的内容吗（提出疑问）...","不知道加载速度够不够你读完这条 tips...","会不会有人专门为了看 tips 点开 Devtools 啊...","所有 tips 都是乱写的，包括这一条...","所有 tips 都是认真的，不包括这一条...","少女祈祷中...","咕咕咕？咕咕，咕咕咕！咕咕咕咕咕咕咕...","你知道吗，这个功能在某些游戏里叫 tips...","其实文章左上角还可以听音乐哦...","哎，自己已经是个老年退役选手了呐...","tips 的出现概率...真的是随机的！","如果人生可以重来，你还愿意成为竞赛生吗...","没有 bug 吧... 应该没有吧","♩ 夢ならば覚めないで ♩","♩ Memories are here ~ fragile souvenir ~ ♩","「三年风雨初心未泯 歧路争锋浪子无悔」","「友情是珍珠，回忆是钻石」","「纵然已经踏上不归之路，也绝对不要回头呢」"];
 document.getElementsByClassName("tips")[0].innerHTML=tiplist[Math.floor(Math.random()*tiplist.length)];
 </script>
 <body class="loading">
@@ -77,7 +78,8 @@ document.getElementsByClassName("tips")[0].innerHTML=tiplist[Math.floor(Math.ran
 
       </div>
       <div class="content markdown">
-        <p>定义一个排列 $P$ 上的操作 $(t,S)$ 为：</p>
+        <blockquote>
+<p>定义一个排列 $P$ 上的操作 $(t,S)$ 为：</p>
 <ol>
 <li>有两个空序列 $A$ 和 $B$</li>
 <li>枚举 $i$ 从 $1$ 到 $n$<ul>
@@ -94,6 +96,7 @@ document.getElementsByClassName("tips")[0].innerHTML=tiplist[Math.floor(Math.ran
 </ol>
 <p>现给出一个排列 $P$，你需要使用至多 $30$ 次如上操作，使 $P$ 从小到大排序，注意你并不需要最小化操作次数。</p>
 <p>$1\le n\le 15000$。</p>
+</blockquote>
 <a id="more"></a>
 <h2 id="题意补充"><a href="#题意补充" class="headerlink" title="题意补充"></a>题意补充</h2><p>对于 $P=\{0,4,2,3,6,5,1\}$ 上的操作 $(1,\texttt{1101101})$，有示意图如下</p>
 <p><img src="https://i.loli.net/2021/01/21/wtvp71AuR4xklOq.png" alt="zoom:40%|center"></p>
