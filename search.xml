@@ -312,6 +312,33 @@
     
     
     <entry>
+      <title>「CometOJ Contest #2 F」真实无妄她们的人生之路</title>
+      <link href="cometoj-round2-f/"/>
+      <url>cometoj-round2-f/</url>
+      
+        <content type="html"><![CDATA[<p>有 $n$ 种操作，第 $i$ 种操作使用后有 $p_i$ 的概率升级，$(1-p_i)$ 的概率不升级。</p><p>进行若干次操作后，如果主人公的等级为 $i$，就能产生 $a_i$ 的贡献。</p><p>对于每个 $i \in [1;n]$ 求出，使用 $j \neq i$ 的所有操作 $j$，主人公产生等级贡献的期望。</p><p>$n \leq 10^5$。</p><a id="more"></a><h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>设 $C_i(x) = (1 - p_i + p_i x)$，$C(x) = \prod_{i=0}^{n-1} C_i(x)$</p><script type="math/tex; mode=display">ans_m = \sum_{i=0}^{n-1} a_i [x^i] \prod_{j \neq m} C_j(x)</script><p>这是一个线性算法，其转移矩阵为 $D_{m,i} = [x^i] \prod_{j \neq m} C_j(x)$</p><p>考虑其转置 $D^T_{m,i} = [x^m] \prod_{j \neq i} C_j(x)$</p><p>我们有做法</p><script type="math/tex; mode=display">ans_m = \prod_{i=0}^{n-1} a_i [x^m] \prod_{j \neq i} C_j(x)</script><script type="math/tex; mode=display">ANS(x) = \prod_{i=0}^n a_i \prod_{j \neq i} C_j(x)</script><p>有类似 $k$ 次幂和的 $O(n \log^2 n)$ 做法，可以改写成其转置。</p><p>具体的，我们令 $A(x) = \sum_{i \ge 0} a_i x^i$，为线段树根节点，$\operatorname{mul}^T$ 到叶子节点即可。</p><p>一般做法可以参见 zsy 博客：<a href="https://www.cnblogs.com/zhoushuyu/p/10777808.html">https://www.cnblogs.com/zhoushuyu/p/10777808.html</a></p><p>大概是利用多项式点乘的性质把贡献拆开然后多点求值（</p><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><p>&lt;%- includeCode(“./sol.cpp”) %&gt;</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> OI题解 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 转置原理 </tag>
+            
+            <tag> 多项式多点求值 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>「UR #17」滑稽树前做游戏</title>
       <link href="uoj372/"/>
       <url>uoj372/</url>
