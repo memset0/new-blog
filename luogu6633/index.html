@@ -1,0 +1,238 @@
+
+<!DOCTYPE html>
+<html lang="zh-cn" class="loading">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>「ZJOI2020」抽卡 - memset0&#39;s Blog</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate" />
+  <meta name="keywords" content="Fechin,"> 
+  <meta name="description" content="有 $m$ 张带编号卡牌，每次你可以随机抽取一张。抽中每张的概率均为 $\frac 1 m$。当编号连续的 $k$ 张牌都被抽取过时，游戏结束。
+问游戏结束的期望步数。
+$1 \leq k \leq,"> 
+  <meta name="author" content="memset0"> 
+  <link rel="alternative" href="atom.xml" title="memset0&#39;s Blog" type="application/atom+xml"> 
+  <link rel="icon" href="/img/favicon.png"> 
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+  
+<link rel="stylesheet" href="/css/diaspora.css?ver=20210416.css">
+
+  <style>@font-face{font-family:'FZSHJW';src:url('/font/FZSHJW.ttf?size=343532');font-weight:normal;font-style:normal;}</style>
+<meta name="generator" content="Hexo 5.2.0"></head>
+<div class="tips-box" style="display:table;position:fixed;height:100%;width:100%;top:0;left:0;z-index:114514;">
+  <div style="display:table-cell;color:rgb(0,0,0,0.37);width:100%;text-align:center;vertical-align:middle;">
+    <br><br><br>
+    <span class="tips"></span>
+  </div>
+</div>
+<style>
+.tips-box{display:none!important;}
+body.loading .tips-box{display:table!important;}
+</style>
+<script>
+var tiplist=["为什么一个博客会和游戏一样有 tips 功能呢...","真的有人认为这是一个技术向博客吗，不会吧不会吧？","如果觉得博客的内容对你有帮助的话，欢迎给博主留言哦~","为什么网页打开慢啊，还不都是因为博主往里面塞老多字体和图片！","尝试猜猜 covers 的出处？","话说，这主题好看吗？","你觉得会有多少条 tips 啊...","我永远喜欢神户小鸟（大声）！","有人会看这博客里的内容吗（提出疑问）...","不知道加载速度够不够你读完这条 tips...","会不会有人专门为了看 tips 点开 Devtools 啊...","所有 tips 都是乱写的，包括这一条...","所有 tips 都是认真的，不包括这一条...","少女祈祷中...","嘟嘟噜~","咕咕咕？咕咕，咕咕咕！咕咕咕咕咕咕咕...","你知道吗，这个功能在某些游戏里叫 tips...","其实文章左上角还可以听音乐哦...","哎，自己已经是个老年退役选手了呐...","tips 的出现概率...真的是随机的！","如果人生可以重来，你还愿意成为竞赛生吗...","没有 bug 吧... 应该没有吧","♩ 夢ならば覚めないで ♩","♩ Memories are here ~ fragile souvenir ~ ♩","「三年风雨初心未泯 歧路争锋浪子无悔」","「友情是珍珠，回忆是钻石」","「纵然已经踏上不归之路，也绝对不要回头呢」"];
+document.getElementsByClassName("tips")[0].innerHTML=tiplist[Math.floor(Math.random()*tiplist.length)];
+</script>
+<body class="loading">
+  <span id="config-title" style="display:none">memset0&#39;s Blog</span>
+  <div id="loader"></div>
+  <div id="single">
+  <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="/"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">「ZJOI2020」抽卡</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+  <div class="section">
+    <div class="article">
+  <div class="main">
+    <div class="cover">
+      <img src="/cover/29.webp" id="post-cover" crossorigin="anonymous" width="1920" height="1080">
+    </div>
+    <div class="container">
+      <h1 class="title">「ZJOI2020」抽卡</h1>
+      <div class="stuff">
+        <span>六月 28, 2020</span>
+        
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/%E5%A4%9A%E9%A1%B9%E5%BC%8F%E7%89%9B%E9%A1%BF%E8%BF%AD%E4%BB%A3/" rel="tag">多项式牛顿迭代</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/%E6%8B%89%E6%A0%BC%E6%9C%97%E6%97%A5%E5%8F%8D%E6%BC%94/" rel="tag">拉格朗日反演</a></li></ul>
+
+
+      </div>
+      <div class="content markdown">
+        <p>有 $m$ 张带编号卡牌，每次你可以随机抽取一张。抽中每张的概率均为 $\frac 1 m$。当编号连续的 $k$ 张牌都被抽取过时，游戏结束。</p>
+<p>问游戏结束的期望步数。</p>
+<p>$1 \leq k \leq m \leq 2 \times 10^5$。</p>
+<a id="more"></a>
+<h3 id="题解-Part1"><a href="#题解-Part1" class="headerlink" title="题解 Part1"></a>题解 Part1</h3><p>我们可以直接对每张牌第一次被抽中的操作序列计数。</p>
+<p>把牌的每一段编号连续区间分开考虑，每一段处理出选中连续区间长度不超过 $k$ 的方案数（同时容易得到超过的方案数），然后分治 + NTT 合并，这是平凡的。</p>
+<p>这个做法的时间复杂度是 $O(n^2＋n \log^2 n)$ 的，瓶颈在于前半部分即处理出分成把 $n$ 个 $m=1…n$ 段满足每一段长度都不超过 $k$ 的方案数，更进一步的可以表示为：</p>
+<script type="math/tex; mode=display">
+B(u) = [x^{n+1}] \frac 1 {1 - u \frac {x - x^{k+1}} {1 - x}}</script><p>我们需要求出多项式 $B$。</p>
+<h3 id="题解-Part2"><a href="#题解-Part2" class="headerlink" title="题解 Part2"></a>题解 Part2</h3><p>注意到这是一个拓展拉格朗日反演的形式，我们需要求出 $F(x) = \frac{x - x^{k+1}} {1 - x}$ 的复合逆。<br>相当于我们要求 $G(x)$ 满足 $F(G(x)) = x$，根据多项式牛顿迭代，有</p>
+<script type="math/tex; mode=display">
+T(G(x))
+= F(G(x)) - x
+= \frac {G(x) - G^{k+1}(x)}{1 - G(x)} - x \\
+\begin{aligned}
+T'(G(x))
+&= \frac {(1 - (k+1)G^k(x))(1 - G(x)) + (G(x) - G^{k+1}(x))}{(1 - G(x))^2} \\
+&= \frac {1 - (k+1)G^k(x) + kG^{k+1}(x)} {1 - 2G(x) + G^2(x)} \\
+\end{aligned}</script><p>由多项式牛顿迭代，我们可以倍增得到 $G(x)$。</p>
+<h3 id="题解-Part3"><a href="#题解-Part3" class="headerlink" title="题解 Part3"></a>题解 Part3</h3><p>代入拓展拉格朗日反演的式子，令 $H(x) = \frac 1 {1 - ux}$ 我们可以得到</p>
+<script type="math/tex; mode=display">
+S
+= [x^{n+1}] H(F(x))
+= \frac 1 {n+1} [x^n] H'(x) \left(\frac x {G(x)}\right)^{n+1}</script><p>设 $T(x) = \frac 1{n+1} \left(\frac x {G(x)}\right)^{n+1}$，则有</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+S
+&= [x^n] H'(x) T(x) = [x^n] T(x) \frac {u} {(1-ux)^2} \\
+&= [x^n] T(x) u \sum_{i=0}^\infty (i+1) (ux)^i
+\end{aligned}</script><p>即可直接得到 $S(u)$。</p>
+<p>问题解决，总时间复杂度 $O(n\log^2 n)$。</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> log(...) fprintf(stderr,__VA_ARGS__)</span></span><br><span class="line"><span class="function"><span class="keyword">template</span>&lt;class T&gt; <span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">read</span><span class="params">(T &amp;x)</span></span>&#123;</span><br><span class="line">	x=<span class="number">0</span>; <span class="keyword">register</span> <span class="keyword">char</span> c=getchar(); <span class="keyword">register</span> <span class="keyword">bool</span> f=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(!<span class="built_in">isdigit</span>(c))f^=c==<span class="string">&#x27;-&#x27;</span>,c=getchar();</span><br><span class="line">	<span class="keyword">while</span>(<span class="built_in">isdigit</span>(c))x=x*<span class="number">10</span>+c-<span class="string">&#x27;0&#x27;</span>,c=getchar(); <span class="keyword">if</span>(f)x=-x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">template</span>&lt;class T&gt; <span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">(T x)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(x&lt;<span class="number">0</span>)<span class="built_in">putchar</span>(<span class="string">&#x27;-&#x27;</span>),x=-x;</span><br><span class="line">	<span class="keyword">if</span>(x&gt;<span class="number">9</span>)print(x/<span class="number">10</span>); <span class="built_in">putchar</span>(x%<span class="number">10</span>+<span class="string">&#x27;0&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">template</span>&lt;class T&gt; <span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">(T x,<span class="keyword">char</span> c)</span></span>&#123;print(x),<span class="built_in">putchar</span>(c);&#125;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">2e5</span>+<span class="number">10</span>,mod=<span class="number">998244353</span>;</span><br><span class="line"><span class="keyword">int</span> n,m,k,a[N],b[N],rev[N&lt;&lt;<span class="number">2</span>];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">z</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> x;</span><br><span class="line">	<span class="function"><span class="keyword">inline</span> <span class="title">z</span><span class="params">()</span>:<span class="title">x</span><span class="params">(<span class="number">0</span>)</span></span>&#123;&#125;</span><br><span class="line">	<span class="function"><span class="keyword">inline</span> <span class="title">z</span><span class="params">(<span class="keyword">int</span> x)</span>:<span class="title">x</span><span class="params">(x)</span></span>&#123;&#125;</span><br><span class="line">	<span class="keyword">friend</span> <span class="keyword">inline</span> z <span class="keyword">operator</span>*(z a,z b)&#123;<span class="keyword">return</span> (<span class="keyword">long</span> <span class="keyword">long</span>)a.x*b.x%mod;&#125;</span><br><span class="line">	<span class="keyword">friend</span> <span class="keyword">inline</span> z <span class="keyword">operator</span>-(z a,z b)&#123;<span class="keyword">return</span> (a.x-=b.x)&lt;<span class="number">0</span>?a.x+mod:a.x;&#125;</span><br><span class="line">	<span class="keyword">friend</span> <span class="keyword">inline</span> z <span class="keyword">operator</span>+(z a,z b)&#123;<span class="keyword">return</span> (a.x+=b.x)&gt;=mod?a.x-mod:a.x;&#125;</span><br><span class="line">&#125;ans,len[N],fac[N],ifac[N],w[N&lt;&lt;<span class="number">2</span>],S[N];</span><br><span class="line"><span class="function"><span class="keyword">inline</span> z <span class="title">C</span><span class="params">(<span class="keyword">int</span> n,<span class="keyword">int</span> m)</span></span>&#123;<span class="keyword">return</span> n&lt;m?<span class="number">0</span>:fac[n]*ifac[m]*ifac[n-m];&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> z <span class="title">fpow</span><span class="params">(z a,<span class="keyword">int</span> b)</span></span>&#123;z s=<span class="number">1</span>;<span class="keyword">for</span>(;b;b&gt;&gt;=<span class="number">1</span>,a=a*a)<span class="keyword">if</span>(b&amp;<span class="number">1</span>)s=s*a;<span class="keyword">return</span> s;&#125;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">vec</span>:</span><span class="built_in">std</span>::<span class="built_in">vector</span>&lt;z&gt;&#123;</span><br><span class="line">	<span class="keyword">using</span> <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;z&gt;::<span class="built_in">vector</span>;</span><br><span class="line">	<span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">()</span></span>&#123;<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;size();i++)::print(at(i).x,<span class="string">&#x27; &#x27;</span>);<span class="built_in">putchar</span>(<span class="string">&#x27;\n&#x27;</span>);&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> vec <span class="title">resize</span><span class="params">(vec a,<span class="keyword">int</span> n)</span></span>&#123;a.resize(n); <span class="keyword">return</span> a;&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">initfac</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">	fac[<span class="number">0</span>]=fac[<span class="number">1</span>]=ifac[<span class="number">0</span>]=ifac[<span class="number">1</span>]=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=n;i++)fac[i]=fac[i<span class="number">-1</span>]*i;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=n;i++)ifac[i]=(mod-mod/i)*ifac[mod%i];</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=n;i++)ifac[i]=ifac[i<span class="number">-1</span>]*ifac[i];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">init</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> lim=<span class="number">1</span>,k=<span class="number">0</span>; <span class="keyword">while</span>(lim&lt;n)lim&lt;&lt;=<span class="number">1</span>,++k;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;lim;i++)rev[i]=(rev[i&gt;&gt;<span class="number">1</span>]&gt;&gt;<span class="number">1</span>)|((i&amp;<span class="number">1</span>)&lt;&lt;(k<span class="number">-1</span>));</span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">int</span> len=<span class="number">1</span>;<span class="keyword">for</span>(;len&lt;lim;len&lt;&lt;=<span class="number">1</span>)&#123;</span><br><span class="line">		z wn=fpow(<span class="number">3</span>,(mod<span class="number">-1</span>)/(len&lt;&lt;<span class="number">1</span>)); w[len]=<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;len;i++)w[i+len]=w[i+len<span class="number">-1</span>]*wn;</span><br><span class="line">	&#125;<span class="keyword">return</span> lim;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dft</span><span class="params">(vec &amp;a,<span class="keyword">int</span> lim)</span></span>&#123;</span><br><span class="line">	a.resize(lim);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;lim;i++)<span class="keyword">if</span>(i&lt;rev[i])<span class="built_in">std</span>::swap(a[i],a[rev[i]]);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> len=<span class="number">1</span>;len&lt;lim;len&lt;&lt;=<span class="number">1</span>)</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;lim;i+=(len&lt;&lt;<span class="number">1</span>))</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;len;j++)&#123;</span><br><span class="line">				z x=a[i+j],y=a[i+j+len]*w[j+len];</span><br><span class="line">				a[i+j]=x+y,a[i+j+len]=x-y;</span><br><span class="line">			&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">idft</span><span class="params">(vec &amp;a,<span class="keyword">int</span> lim)</span></span>&#123;</span><br><span class="line">	dft(a,lim),<span class="built_in">std</span>::reverse(&amp;a[<span class="number">1</span>],&amp;a[lim]); z inv=fpow(lim,mod<span class="number">-2</span>);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;lim;i++)a[i]=a[i]*inv;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> vec <span class="title">mul</span><span class="params">(vec a,vec b,<span class="keyword">int</span> l)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(a.size()&lt;<span class="number">10</span>||b.size()&lt;<span class="number">10</span>)&#123;</span><br><span class="line">		<span class="function">vec <span class="title">c</span><span class="params">(a.size()+b.size()<span class="number">-1</span>)</span></span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;a.size();i++)</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;b.size();j++)</span><br><span class="line">				c[i+j]=c[i+j]+a[i]*b[j];</span><br><span class="line">		<span class="keyword">return</span> c.resize(l),c;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> len=a.size()+b.size()<span class="number">-1</span>,lim=init(len);</span><br><span class="line">	dft(a,lim),dft(b,lim);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;lim;i++)a[i]=a[i]*b[i];</span><br><span class="line">	<span class="keyword">return</span> idft(a,lim),a.resize(l),a;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">inline</span> vec <span class="keyword">operator</span>*(<span class="keyword">const</span> vec &amp;a,<span class="keyword">const</span> vec &amp;b)&#123;<span class="keyword">return</span> mul(a,b,a.size()+b.size()<span class="number">-1</span>);&#125;</span><br><span class="line"><span class="keyword">inline</span> vec <span class="keyword">operator</span>+(vec a,<span class="keyword">const</span> vec &amp;b)&#123;</span><br><span class="line">	a.resize(<span class="built_in">std</span>::max(a.size(),b.size()));</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;b.size();i++)a[i]=a[i]+b[i]; <span class="keyword">return</span> a;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">inline</span> vec <span class="keyword">operator</span>-(vec a,<span class="keyword">const</span> vec &amp;b)&#123;</span><br><span class="line">	a.resize(<span class="built_in">std</span>::max(a.size(),b.size()));</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;b.size();i++)a[i]=a[i]-b[i]; <span class="keyword">return</span> a;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">vec <span class="title">inv</span><span class="params">(<span class="keyword">const</span> vec &amp;f,<span class="keyword">int</span> len=<span class="number">-1</span>)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>((len=~len?len:f.size())==<span class="number">1</span>)<span class="keyword">return</span> &#123;fpow(f[<span class="number">0</span>],mod<span class="number">-2</span>)&#125;;</span><br><span class="line">	vec a(&amp;f[0],&amp;f[len]),b=inv(f,(len+1)&gt;&gt;1);</span><br><span class="line">	<span class="keyword">int</span> lim=init((len&lt;&lt;<span class="number">1</span>)<span class="number">-1</span>);</span><br><span class="line">	dft(a,lim),dft(b,lim);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;lim;i++)a[i]=b[i]*(<span class="number">2</span>-a[i]*b[i]);</span><br><span class="line">	<span class="keyword">return</span> idft(a,lim),a.resize(len),a;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">vec <span class="title">deri</span><span class="params">(vec f)</span></span>&#123;<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=(<span class="keyword">int</span>)f.size()<span class="number">-2</span>;i++)f[i]=f[i+<span class="number">1</span>]*(i+<span class="number">1</span>); <span class="keyword">return</span> f.back()=<span class="number">0</span>,f;&#125;</span><br><span class="line"><span class="function">vec <span class="title">inte</span><span class="params">(vec f)</span></span>&#123;<span class="keyword">for</span>(<span class="keyword">int</span> i=(<span class="keyword">int</span>)f.size()<span class="number">-1</span>;i&gt;=<span class="number">1</span>;i--)f[i]=f[i<span class="number">-1</span>]*fpow(i,mod<span class="number">-2</span>); <span class="keyword">return</span> f.front()=<span class="number">0</span>,f;&#125;</span><br><span class="line"><span class="function">vec <span class="title">ln</span><span class="params">(<span class="keyword">const</span> vec &amp;f)</span></span>&#123;<span class="keyword">return</span> inte(mul(inv(f),deri(f),f.size()));&#125;</span><br><span class="line"><span class="function">vec <span class="title">exp</span><span class="params">(<span class="keyword">const</span> vec &amp;f,<span class="keyword">int</span> len=<span class="number">-1</span>)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>((len=~len?len:f.size())==<span class="number">1</span>)<span class="keyword">return</span> &#123;<span class="number">1</span>&#125;;</span><br><span class="line">	vec a(&amp;f[0],&amp;f[len]),b=exp(f,(len+1)&gt;&gt;1);</span><br><span class="line">	<span class="keyword">return</span> b.resize(len),mul(b,a+vec&#123;<span class="number">1</span>&#125;-ln(b),len);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">vec <span class="title">fpow</span><span class="params">(vec a,<span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n=a.size(); vec s;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> c=<span class="number">0</span>;c&lt;n;c++)<span class="keyword">if</span>(a[c].x)&#123;</span><br><span class="line">		<span class="keyword">int</span> l=n-c*b;</span><br><span class="line">		<span class="keyword">if</span>(l&lt;=<span class="number">0</span>)<span class="keyword">return</span> s.resize(n),s;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;l;i++)a[i]=a[i+c];</span><br><span class="line">		a.resize(l);</span><br><span class="line">		a=ln(a);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;l;i++)a[i]=a[i]*b;</span><br><span class="line">		a=<span class="built_in">exp</span>(a),s.resize(c*b);</span><br><span class="line">		s.insert(s.end(),a.begin(),a.end());</span><br><span class="line">		<span class="keyword">return</span> s;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> a;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">vec <span class="title">complex</span><span class="params">(<span class="keyword">const</span> vec &amp;g)</span></span>&#123; <span class="comment">//F(G(x))</span></span><br><span class="line">	vec s,c=&#123;<span class="number">1</span>&#125;;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=k;i++)c=mul(c,g,g.size()),s=s+c;</span><br><span class="line">	<span class="keyword">return</span> s;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">vec <span class="title">complex_inv</span><span class="params">(<span class="keyword">int</span> len)</span></span>&#123; <span class="comment">//G^&#123;-1&#125;(F(x))</span></span><br><span class="line">	<span class="keyword">if</span>(len==<span class="number">1</span>)<span class="keyword">return</span> &#123;<span class="number">0</span>&#125;;</span><br><span class="line">	vec g=resize(complex_inv((len+<span class="number">1</span>)&gt;&gt;<span class="number">1</span>),len),gk=fpow(g,k),gk1=mul(gk,g,len);</span><br><span class="line">	vec res=g-mul(mul(g-gk1-vec&#123;<span class="number">0</span>,<span class="number">1</span>&#125;*(vec&#123;<span class="number">1</span>&#125;-g),vec&#123;<span class="number">1</span>&#125;-g,len),inv(vec&#123;<span class="number">1</span>&#125;-vec&#123;k+<span class="number">1</span>&#125;*gk+vec&#123;k&#125;*gk1),len);</span><br><span class="line">	<span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> vec <span class="title">sol</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123; <span class="comment">//	n+1个球，分m组，每组1~k个。</span></span><br><span class="line">	vec g=complex_inv(n+<span class="number">1</span>),res(n+<span class="number">1</span>);</span><br><span class="line">	g.erase(g.begin());</span><br><span class="line">	g=fpow(inv(g),n+<span class="number">1</span>)*vec&#123;fpow(n+<span class="number">1</span>,mod<span class="number">-2</span>)&#125;;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)res[i<span class="number">-1</span>]=(i+<span class="number">1</span>)*g[n-i];</span><br><span class="line">	<span class="built_in">std</span>::reverse(&amp;res[<span class="number">0</span>],&amp;res[n]),res[n]=n+<span class="number">1</span>&lt;=k;</span><br><span class="line">	<span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line">std::pair&lt;vec,vec&gt; solve(int l,int r)&#123;</span><br><span class="line">	<span class="keyword">if</span>(l==r)&#123;</span><br><span class="line">		<span class="keyword">int</span> n=b[l];</span><br><span class="line">		vec F(n+1),G=sol(n);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=n;i++)&#123;</span><br><span class="line">			F[i]=fac[n]*ifac[n-i]-G[i]*fac[i]-(i?S[i<span class="number">-1</span>]:<span class="number">0</span>)*ifac[n-i];</span><br><span class="line">			S[i]=(i?S[i<span class="number">-1</span>]:<span class="number">0</span>)+F[i]*fac[n-i];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)F[i]=F[i+<span class="number">1</span>]*ifac[i];</span><br><span class="line">		<span class="keyword">return</span> F.pop_back(),<span class="built_in">std</span>::<span class="built_in">pair</span>&lt;vec,vec&gt;&#123;F,G&#125;;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> mid=(l+r)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">auto</span> L=solve(l,(l+r)&gt;&gt;<span class="number">1</span>),R=solve(((l+r)&gt;&gt;<span class="number">1</span>)+<span class="number">1</span>,r);</span><br><span class="line">	<span class="keyword">return</span> &#123;L.first*R.second+L.second*R.first,L.second*R.second&#125;;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> memset0</span></span><br><span class="line">	freopen(<span class="string">&quot;1.in&quot;</span>,<span class="string">&quot;r&quot;</span>,<span class="built_in">stdin</span>);</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">	read(n),read(k),initfac(n+<span class="number">5</span>);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)read(a[i]);</span><br><span class="line">	<span class="built_in">std</span>::sort(a+<span class="number">1</span>,a+n+<span class="number">1</span>);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>,j;i&lt;=n;i=j+<span class="number">1</span>)&#123;</span><br><span class="line">		<span class="keyword">for</span>(j=i;j&lt;n&amp;&amp;a[j+<span class="number">1</span>]==a[i]+j-i+<span class="number">1</span>;j++);</span><br><span class="line">		b[++m]=j-i+<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">auto</span> res=solve(<span class="number">1</span>,m);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">		len[i]=len[i<span class="number">-1</span>]+n*fpow(n-i+<span class="number">1</span>,mod<span class="number">-2</span>);</span><br><span class="line">		ans=ans+res.first[i<span class="number">-1</span>]*fac[i<span class="number">-1</span>]*fac[n-i]*len[i];</span><br><span class="line">	&#125;</span><br><span class="line">	print((ans*ifac[n]).x,<span class="string">&#x27;\n&#x27;</span>);</span><br><span class="line">	<span class="built_in">fprintf</span>(<span class="built_in">stderr</span>,<span class="string">&quot;clock = %.2lf\n&quot;</span>,clock()/<span class="keyword">double</span>(CLOCKS_PER_SEC));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+        <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+          <source type="audio/mpeg" src="">
+        </audio>
+        
+          <ul id="audio-list" style="display:none">
+            
+              
+                <li title='0' data-url='/music/観月あんみ - Memories are here (クロハネエンディング).mp3'></li>
+              
+            
+              
+                <li title='1' data-url='/music/やなぎなぎ - 恋文.mp3'></li>
+              
+            
+              
+                <li title='2' data-url='/music/DEPAPEPE - きっとまたいつか.mp3'></li>
+              
+            
+              
+                <li title='3' data-url='/music/Falcom Sound Team jdk - 星の在り処　 Instrumental Ver.mp3'></li>
+              
+            
+          </ul>
+        
+      </div>
+      
+    <div id='gitalk-container' class="comment link"
+		data-enable='true'
+        data-ae='true'
+        data-ci='9a58625d1ff4c0e473ac'
+        data-cs='6a26bac24632719df98b6c266dbb57931253ebf1'
+        data-r='new-blog'
+        data-o='memset0'
+        data-a='memset0'
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+  </div>
+  
+</div>
+  </div>
+</div>
+</body>
+<script>
+  window.ajaxLoadList = [];
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/jquery.md5.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+
+
+<script src="/js/diaspora.js?ver=20201103.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="pswp__bg"></div>
+  <div class="pswp__scroll-wrap">
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    <div class="pswp__ui pswp__ui--hidden">
+      <div class="pswp__top-bar">
+        <div class="pswp__counter"></div>
+        <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+        <button class="pswp__button pswp__button--share" title="Share"></button>
+        <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+        <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+        <div class="pswp__preloader">
+          <div class="pswp__preloader__icn">
+            <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+        <div class="pswp__share-tooltip"></div> 
+      </div>
+      <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+      </button>
+      <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+      </button>
+      <div class="pswp__caption">
+        <div class="pswp__caption__center"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
+<script>
+function renderLatex() {
+  renderMathInElement(document.body, {
+    delimiters: [
+      {left: "$", right: "$", display: false},
+      {left: "$$", right: "$$", display: true},
+    ]
+  });
+  $("script[type='math/tex; mode=display']").replaceWith(function () {
+    var rendered = katex.renderToString(this.innerText, {
+      displayMode: true
+    });
+    return '<div class="equation">' + rendered + '</div>';
+  });
+}
+ajaxLoadList.push(renderLatex);
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous" onload="renderLatex()"></script>
+
+
+
+</html>
