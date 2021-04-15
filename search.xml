@@ -301,13 +301,13 @@
       
         <tags>
             
-            <tag> 构造 </tag>
-            
             <tag> 二分图 </tag>
             
             <tag> 状压 </tag>
             
             <tag> 偏序集 </tag>
+            
+            <tag> 构造 </tag>
             
         </tags>
       
@@ -419,9 +419,9 @@
       
         <tags>
             
-            <tag> 树分治 </tag>
-            
             <tag> 多项式 </tag>
+            
+            <tag> 树分治 </tag>
             
         </tags>
       
@@ -610,9 +610,9 @@
             
             <tag> 计数 </tag>
             
-            <tag> 多项式 </tag>
-            
             <tag> 杨表 </tag>
+            
+            <tag> 多项式 </tag>
             
         </tags>
       
