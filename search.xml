@@ -359,9 +359,9 @@
       
         <tags>
             
-            <tag> 树分治 </tag>
-            
             <tag> 多项式 </tag>
+            
+            <tag> 树分治 </tag>
             
         </tags>
       
@@ -474,6 +474,37 @@
     
     
     <entry>
+      <title>「UOJ Goodbye Jihai」新年的追逐战</title>
+      <link href="uoj498/"/>
+      <url>uoj498/</url>
+      
+        <content type="html"><![CDATA[<p>定义两个简单无向图 $G_{1} =( V_{1} , E_{1}) , G_{2} =( V_{2} , E_{2})$ 的乘积为一个新的图 $G_{1} \times G_{2} =\left( V^{\star} , E^{\star} \right)$。</p><p>其中新的点集 $V^{\star}$ 为:</p><script type="math/tex; mode=display">V^{\star} = \left\{ {(a, b)| a \in V_{1}, b \in V_{2} }\right\}</script><p>其中新的边集 $E^{\star}$ 为：</p><script type="math/tex; mode=display">E^{\star} =\left\{\left(( u_{1} , v_{1}) , ( u_{2} , v_{2})\right) \mid ( u_{1} , u_{2}) \in E_{1}, ( v_{1} , v_{2}) \in E_{2}\right\}</script><p>对于正整数 $n$ ，以及给定的图 $G_{1} , G_{2} , \dotsc , G_{n}$ ，两只鞋太太的家可以表示成</p><script type="math/tex; mode=display">H = (((G_1 \times G_2) \times G_3) \times \cdots) \times G_n</script><p>每个 $G_k$ 中任意两点间都有 $\frac12$ 的概率连边，求 $H$ 的连通块的期望。显然 $G_k$ 的全体取法共有 ${\large {2^{\binom{m_1}2 + \binom{m_2}2 + \cdots + \binom{m_n}2}}}$ 种。</p><p>方便起见，你只需要输出答案乘以 ${\large {2^{\binom{m_1}2 + \binom{m_2}2 + \cdots + \binom{m_n}2}}}$ ，对 $998244353$ 取模即可。</p><p>$1\le n, m_k\le 10^5$ 。</p><a id="more"></a><h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>大概是一个二合一状物，我们搞出生成函数以后逐个合并。</p><p>考虑 $k=1$ 怎么做，假设 $G$ 为无标号无向图生成函数：</p><script type="math/tex; mode=display">G = \sum_{i\ge 0} \frac {2^{\binom i 2} x^i} {i!}</script><p>则 $\ln G$ 为无标号联通无向图生成函数， $n! [x^n] G \ln G$ 即为答案。</p><p>考虑 $k=2$ 怎么做，我们需要特判下孤立点的情况。合并的结果和两边的图是否为二分图（即题解所谓没有奇环）是有关的，当且仅当两侧都是二分图时会使得生成的图对应两个联通块。</p><p>考虑无标号二分图生成函数 $B$ （可以卷积解决）：</p><script type="math/tex; mode=display">B = \sum_{i \ge 0} \sum_{j \ge 0} \frac {2^{ij} x^{i+j}} {i! j!} = \sum_{i \ge 0} \sum_{j \ge 0} \frac {2^{\binom {i+j} 2 - \binom  i 2 - \binom j 2} x^{i+j}} {i! j!}</script><p>故非平凡二分图联通块生成函数为 $G (\frac {\ln B} 2 - 1)$ ，非平凡非二分图联通块生成函数为 $G (\ln G - \frac {\ln B} 2)$ ，非平凡联通块生成函数为 $G (\ln G - 1)$ 。孤立点联通块生成函数为 $x G$ （这几个均为无标号</p><p>考虑记录下期望点数，期望非平凡二分图联通块，期望非平凡非二分图联通块，期望孤立点个数，即可合并两个图的信息，做下去即可（</p><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><p>&lt;%- includeCode(“sol.cpp”) %&gt;</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> OI题解 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 生成函数 </tag>
+            
+            <tag> 图计数 </tag>
+            
+            <tag> 期望 </tag>
+            
+            <tag> bluestain </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>「洛谷5655」基础数论函数练习题</title>
       <link href="luogu5655/"/>
       <url>luogu5655/</url>
@@ -519,9 +550,9 @@
             
             <tag> 计数 </tag>
             
-            <tag> 多项式 </tag>
-            
             <tag> 杨表 </tag>
+            
+            <tag> 多项式 </tag>
             
         </tags>
       
