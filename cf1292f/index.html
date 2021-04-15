@@ -1,0 +1,216 @@
+
+<!DOCTYPE html>
+<html lang="zh-cn" class="loading">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>「CF1292F」Nora&#39;s Toy Boxes - memset0&#39;s Blog</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate" />
+  <meta name="keywords" content="Fechin,"> 
+  <meta name="description" content="一个大小为 $n$ 的集合 $\{a_i\}_{i=1}^n$，每次可以选择 $(i,j,k)$，若 $a_i \mid a_j$ 且 $a_i \mid a_k$，可以将 $a_k$ 删去。
+求能,"> 
+  <meta name="author" content="memset0"> 
+  <link rel="alternative" href="atom.xml" title="memset0&#39;s Blog" type="application/atom+xml"> 
+  <link rel="icon" href="/img/favicon.png"> 
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+  
+<link rel="stylesheet" href="/css/diaspora.css?ver=20210416.css">
+
+  <style>@font-face{font-family:'FZSHJW';src:url('/font/FZSHJW.ttf?size=346064');font-weight:normal;font-style:normal;}</style>
+<meta name="generator" content="Hexo 5.2.0"></head>
+<div class="tips-box" style="display:table;position:fixed;height:100%;width:100%;top:0;left:0;z-index:114514;">
+  <div style="display:table-cell;color:rgb(0,0,0,0.37);width:100%;text-align:center;vertical-align:middle;">
+    <br><br><br>
+    <span class="tips"></span>
+  </div>
+</div>
+<style>
+.tips-box{display:none!important;}
+body.loading .tips-box{display:table!important;}
+</style>
+<script>
+var tiplist=["为什么一个博客会和游戏一样有 tips 功能呢...","真的有人认为这是一个技术向博客吗，不会吧不会吧？","如果觉得博客的内容对你有帮助的话，欢迎给博主留言哦~","为什么网页打开慢啊，还不都是因为博主往里面塞老多字体和图片！","尝试猜猜 covers 的出处？","话说，这主题好看吗？","你觉得会有多少条 tips 啊...","我永远喜欢神户小鸟（大声）！","有人会看这博客里的内容吗（提出疑问）...","不知道加载速度够不够你读完这条 tips...","会不会有人专门为了看 tips 点开 Devtools 啊...","所有 tips 都是乱写的，包括这一条...","所有 tips 都是认真的，不包括这一条...","少女祈祷中...","嘟嘟噜~","咕咕咕？咕咕，咕咕咕！咕咕咕咕咕咕咕...","你知道吗，这个功能在某些游戏里叫 tips...","其实文章左上角还可以听音乐哦...","哎，自己已经是个老年退役选手了呐...","tips 的出现概率...真的是随机的！","如果人生可以重来，你还愿意成为竞赛生吗...","没有 bug 吧... 应该没有吧","♩ 夢ならば覚めないで ♩","♩ Memories are here ~ fragile souvenir ~ ♩","「三年风雨初心未泯 歧路争锋浪子无悔」","「友情是珍珠，回忆是钻石」","「纵然已经踏上不归之路，也绝对不要回头呢」"];
+document.getElementsByClassName("tips")[0].innerHTML=tiplist[Math.floor(Math.random()*tiplist.length)];
+</script>
+<body class="loading">
+  <span id="config-title" style="display:none">memset0&#39;s Blog</span>
+  <div id="loader"></div>
+  <div id="single">
+  <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="/"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">「CF1292F」Nora's Toy Boxes</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+  <div class="section">
+    <div class="article">
+  <div class="main">
+    <div class="cover">
+      <img src="/cover/27.webp" id="post-cover" crossorigin="anonymous" width="1920" height="1080">
+    </div>
+    <div class="container">
+      <h1 class="title">「CF1292F」Nora's Toy Boxes</h1>
+      <div class="stuff">
+        <span>九月 15, 2020</span>
+        
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/%E4%BA%8C%E5%88%86%E5%9B%BE/" rel="tag">二分图</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/%E5%81%8F%E5%BA%8F%E9%9B%86/" rel="tag">偏序集</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/%E6%9E%84%E9%80%A0/" rel="tag">构造</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/%E7%8A%B6%E5%8E%8B/" rel="tag">状压</a></li></ul>
+
+
+      </div>
+      <div class="content markdown">
+        <p>一个大小为 $n$ 的集合 $\{a_i\}_{i=1}^n$，每次可以选择 $(i,j,k)$，若 $a_i \mid a_j$ 且 $a_i \mid a_k$，可以将 $a_k$ 删去。</p>
+<p>求能删除最多数的删除序列数，删除序列定义为对于一个三元组 $(i,j,k)$，每次删数把 $a_k$ 加入到删除序列中。</p>
+<p>$1 \leq a_i, n \leq 60$，保证 $a_i$ 两两不同。</p>
+<a id="more"></a>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>考虑如果 $a_i \mid a_j$，就从 $i$ 到 $j$ 连一条边，这样形成的图是一个偏序集。不妨只考虑第一层的点，称为 $A$ 类点，其余的点称为 $B$ 类点。每次删除操作可以转化为，找到一个 $A$ 类点，存在 $\geq 2$ 的出度，就可以删掉其中任意一条出边指向的点。</p>
+<p>对于任意一个由 $A$、$B$ 类点组成的非平凡弱联通块，一定存在一种删除方式使得是剩下其中的 $A$ 类点和某一个 $B$ 类点。这就是删除最多数的方案。</p>
+<p>那么怎么统计方案数呢，我们枚举最后剩下的点，然后把删除操作倒过来做，变成加入操作。那么我们可以状压一个状态，是一个 $A$ 类点的集合，此时这些 $A$ 类点有至少 $1$ 的出度。那么每次被反向「删除」回来的点一定和状态中的某一个 $A$ 类点有边，且会产生两种影响，即：要么增加后状态不变，要么增加后使得更多的 $A$ 类点变成「可用」。</p>
+<p>我们不妨在每次导致第二种影响的时候统计方案，就不会统计重复，这样的话可以得到一个 $O(2^{r} n^2)$ 的暴力 DP，其中 $r$ 是 $A$ 类点的个数。</p>
+<p>如果我们删除没有出度的点，容易证明 $r \leq 15$（$[16,30] \cup [46,60]$），可以通过本题。实际上如果特判出度为 $1$，能让 $r$ 做到更小。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><!--more-->
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">65</span>,mod=<span class="number">1e9</span>+<span class="number">7</span>;</span><br><span class="line"><span class="keyword">int</span> n,m,tot,sum,ans,in[N],out[N],anc[N],val[N],tag[N],fac[N],ifac[N],S[<span class="number">1</span>&lt;&lt;<span class="number">15</span>],dp[N][<span class="number">1</span>&lt;&lt;<span class="number">15</span>];</span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> T[<span class="number">1</span>&lt;&lt;<span class="number">15</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;<span class="keyword">return</span> anc[x]==x?x:anc[x]=find(anc[x]);&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">C</span><span class="params">(<span class="keyword">int</span> n,<span class="keyword">int</span> m)</span></span>&#123;<span class="keyword">return</span> n&lt;m?<span class="number">0</span>:(<span class="keyword">long</span> <span class="keyword">long</span>)fac[n]*ifac[m]%mod*ifac[n-m]%mod;&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> memset0</span></span><br><span class="line">  freopen(<span class="string">&quot;1.in&quot;</span>,<span class="string">&quot;r&quot;</span>,<span class="built_in">stdin</span>);</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">  fac[<span class="number">0</span>]=ifac[<span class="number">0</span>]=ifac[<span class="number">1</span>]=<span class="number">1</span>;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;N;i++)ifac[i]=(<span class="keyword">long</span> <span class="keyword">long</span>)(mod-mod/i)*ifac[mod%i]%mod;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;N;i++)fac[i]=(<span class="keyword">long</span> <span class="keyword">long</span>)fac[i<span class="number">-1</span>]*i%mod,ifac[i]=(<span class="keyword">long</span> <span class="keyword">long</span>)ifac[i<span class="number">-1</span>]*ifac[i]%mod;</span><br><span class="line">  <span class="built_in">cin</span>&gt;&gt;n;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)<span class="built_in">cin</span>&gt;&gt;val[i],tag[val[i]]=<span class="literal">true</span>;</span><br><span class="line">  m=*<span class="built_in">std</span>::max_element(val+<span class="number">1</span>,val+n+<span class="number">1</span>);</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)<span class="keyword">if</span>(tag[i])anc[i]=i;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)<span class="keyword">if</span>(tag[i])</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j=(i&lt;&lt;<span class="number">1</span>);j&lt;=m;j+=i)<span class="keyword">if</span>(tag[j])&#123;</span><br><span class="line">      out[i]++,in[j]++;</span><br><span class="line">      anc[find(i)]=find(j);</span><br><span class="line">    &#125;</span><br><span class="line">  ans=<span class="number">1</span>;</span><br><span class="line">  <span class="comment">// for(int i=1;i&lt;=m;i++)printf(&quot;%d%c&quot;,tag[i]?find(i):-1,&quot; \n&quot;[i==m]);</span></span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> c=<span class="number">1</span>;c&lt;=m;c++)<span class="keyword">if</span>(tag[c]&amp;&amp;find(c)==c)&#123;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; a,b;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">long</span> <span class="keyword">long</span>&gt; A,B;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)<span class="keyword">if</span>(tag[i]&amp;&amp;find(i)==c)&#123;</span><br><span class="line">      <span class="keyword">if</span>(!in[i])&#123;</span><br><span class="line">        <span class="keyword">if</span>(!out[i])<span class="keyword">continue</span>;</span><br><span class="line">        a.push_back(i);</span><br><span class="line">      &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        b.push_back(i);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(!b.size())<span class="keyword">continue</span>;</span><br><span class="line">    A.resize(a.size());</span><br><span class="line">    B.resize(b.size());</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;a.size();i++)</span><br><span class="line">      <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;b.size();j++)</span><br><span class="line">        <span class="keyword">if</span>(b[j]%a[i]==<span class="number">0</span>)&#123;</span><br><span class="line">          A[i]|=<span class="number">1l</span>l&lt;&lt;j;</span><br><span class="line">          B[j]|=<span class="number">1l</span>l&lt;&lt;i;</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> x=<span class="number">0</span>;x&lt;(<span class="number">1</span>&lt;&lt;a.size());x++)&#123;</span><br><span class="line">      <span class="keyword">long</span> <span class="keyword">long</span> s=<span class="number">0</span>,t=<span class="number">0</span>;</span><br><span class="line">      <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;a.size();i++)<span class="keyword">if</span>((x&gt;&gt;i)&amp;<span class="number">1</span>)t|=A[i];</span><br><span class="line">      <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;b.size();j++)<span class="keyword">if</span>(((t&gt;&gt;j)&amp;<span class="number">1</span>)&amp;&amp;(x&amp;B[j])==B[j])s|=<span class="number">1l</span>l&lt;&lt;j;</span><br><span class="line">      S[x]=__builtin_popcountll(s),T[x]=t;</span><br><span class="line">    &#125;</span><br><span class="line">    sum=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;b.size();i++)&#123;</span><br><span class="line">      <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=b.size();i++)<span class="built_in">memset</span>(dp[i],<span class="number">0</span>,(<span class="number">1</span>&lt;&lt;a.size())&lt;&lt;<span class="number">2</span>);</span><br><span class="line">      dp[<span class="number">1</span>][B[i]]=fac[S[B[i]]<span class="number">-1</span>];</span><br><span class="line">      <span class="keyword">for</span>(<span class="keyword">int</span> x=B[i],y;x&lt;(<span class="number">1</span>&lt;&lt;a.size());x++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> t=<span class="number">0</span>;t&lt;b.size();t++)<span class="keyword">if</span>(((T[x]&gt;&gt;t)&amp;<span class="number">1</span>)&amp;&amp;(y=x|B[t])!=x)</span><br><span class="line">          <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;b.size();i++)<span class="keyword">if</span>(dp[i][x])</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=i+<span class="number">1</span>;j&lt;=b.size();j++)&#123;</span><br><span class="line">              <span class="comment">// printf(&quot;%d %d %d[%d] : %d(%d) -&gt; %d(%d)\n&quot;,i,j,t,b[t],x,S[x],y,S[y]);</span></span><br><span class="line">              dp[j][y]=(dp[j][y]+(<span class="keyword">long</span> <span class="keyword">long</span>)dp[i][x]*C(S[y]-j,S[y]-S[x]<span class="number">-1</span>)%mod*fac[S[y]-S[x]<span class="number">-1</span>])%mod;</span><br><span class="line">            &#125;</span><br><span class="line">      <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=b.size();i++)sum=(sum+dp[i][(<span class="number">1</span>&lt;&lt;a.size())<span class="number">-1</span>])%mod;</span><br><span class="line">      <span class="comment">// printf(&quot;%d[%d] %d\n&quot;,i,b[i],sum);</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// for(int i=0;i&lt;a.size();i++)printf(&quot;%d,%lld%c&quot;,a[i],A[i],&quot; \n&quot;[i+1==a.size()]);</span></span><br><span class="line">    <span class="comment">// for(int i=0;i&lt;b.size();i++)printf(&quot;%d,%lld%c&quot;,b[i],B[i],&quot; \n&quot;[i+1==b.size()]);</span></span><br><span class="line">    tot+=b.size()<span class="number">-1</span>;</span><br><span class="line">    ans=(<span class="keyword">long</span> <span class="keyword">long</span>)ans*sum%mod*C(tot,b.size()<span class="number">-1</span>)%mod;</span><br><span class="line">    <span class="comment">// printf(&quot;&gt;&gt; %d %d\n&quot;,(int)b.size(),sum);</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">cout</span>&lt;&lt;ans&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+        <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+          <source type="audio/mpeg" src="">
+        </audio>
+        
+          <ul id="audio-list" style="display:none">
+            
+              
+                <li title='0' data-url='/music/観月あんみ - Memories are here (クロハネエンディング).mp3'></li>
+              
+            
+              
+                <li title='1' data-url='/music/やなぎなぎ - 恋文.mp3'></li>
+              
+            
+              
+                <li title='2' data-url='/music/DEPAPEPE - きっとまたいつか.mp3'></li>
+              
+            
+              
+                <li title='3' data-url='/music/Falcom Sound Team jdk - 星の在り処　 Instrumental Ver.mp3'></li>
+              
+            
+          </ul>
+        
+      </div>
+      
+    <div id='gitalk-container' class="comment link"
+		data-enable='true'
+        data-ae='true'
+        data-ci='9a58625d1ff4c0e473ac'
+        data-cs='6a26bac24632719df98b6c266dbb57931253ebf1'
+        data-r='new-blog'
+        data-o='memset0'
+        data-a='memset0'
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+  </div>
+  
+</div>
+  </div>
+</div>
+</body>
+<script>
+  window.ajaxLoadList = [];
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/jquery.md5.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+
+
+<script src="/js/diaspora.js?ver=20201103.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="pswp__bg"></div>
+  <div class="pswp__scroll-wrap">
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    <div class="pswp__ui pswp__ui--hidden">
+      <div class="pswp__top-bar">
+        <div class="pswp__counter"></div>
+        <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+        <button class="pswp__button pswp__button--share" title="Share"></button>
+        <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+        <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+        <div class="pswp__preloader">
+          <div class="pswp__preloader__icn">
+            <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+        <div class="pswp__share-tooltip"></div> 
+      </div>
+      <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+      </button>
+      <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+      </button>
+      <div class="pswp__caption">
+        <div class="pswp__caption__center"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
+<script>
+function renderLatex() {
+  renderMathInElement(document.body, {
+    delimiters: [
+      {left: "$", right: "$", display: false},
+      {left: "$$", right: "$$", display: true},
+    ]
+  });
+  $("script[type='math/tex; mode=display']").replaceWith(function () {
+    var rendered = katex.renderToString(this.innerText, {
+      displayMode: true
+    });
+    return '<div class="equation">' + rendered + '</div>';
+  });
+}
+ajaxLoadList.push(renderLatex);
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous" onload="renderLatex()"></script>
+
+
+
+</html>
