@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Tag: 范德蒙德矩阵 - memset0&#39;s Blog</title>
+  <title>Tag: Favorite,LGV 引理,范德蒙德矩阵 - memset0&#39;s Blog</title>
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="google" content="notranslate" />
@@ -20,7 +20,7 @@
   
 <link rel="stylesheet" href="/css/diaspora.css?ver=20210416.css">
 
-  <style>@font-face{font-family:'FZSHJW';src:url('/font/FZSHJW.ttf?size=332568');font-weight:normal;font-style:normal;}</style>
+  <style>@font-face{font-family:'FZSHJW';src:url('/font/FZSHJW.ttf?size=326912');font-weight:normal;font-style:normal;}</style>
 <meta name="generator" content="Hexo 5.2.0"></head>
 <div class="tips-box" style="display:table;position:fixed;height:100%;width:100%;top:0;left:0;z-index:114514;">
   <div style="display:table-cell;color:rgb(0,0,0,0.37);width:100%;text-align:center;vertical-align:middle;">
@@ -39,102 +39,49 @@ document.getElementsByClassName("tips")[0].innerHTML=tiplist[Math.floor(Math.ran
 <body class="loading">
   <span id="config-title" style="display:none">memset0&#39;s Blog</span>
   <div id="loader"></div>
-  <div class="nav">
-  <ul id="menu-menu" class="menu">
-    
-    <li class="pview menu-item menu-item-type-post_type menu-item-object-page">
-      <a href="//" title="首页" target="_blank" rel="noopener">首页</a>
-    </li>
-    
-    <li class="pview menu-item menu-item-type-post_type menu-item-object-page">
-      <a href="/categories/" title="分类" target="_blank" rel="noopener">分类</a>
-    </li>
-    
-    <li class="pview menu-item menu-item-type-post_type menu-item-object-page">
-      <a href="/tags/" title="标签" target="_blank" rel="noopener">标签</a>
-    </li>
-    
-    <li class="pview menu-item menu-item-type-post_type menu-item-object-page">
-      <a href="/archives/" title="归档" target="_blank" rel="noopener">归档</a>
-    </li>
-    
-    <li class="pview menu-item menu-item-type-post_type menu-item-object-page">
-      <a href="/about/" title="关于" target="_blank" rel="noopener">关于</a>
-    </li>
-    
-  </ul>
-  <span class="target"></span>
-  <center>
-  <div class="hitokoto">
-    <span class="typed" id="hitokoto" data-st="false"></span>
+  <div id="single" class="page">
+  <div id="top">
+    <a class="iconfont icon-left image-icon" href="javascript:history.back()"></a>
   </div>
-  </center>
-  
-  <p class="footerlinks">
-    <a href="#" class="iconfont icon-null"></a>
-    
-      <a href="/" title="facebook" class="iconfont icon-facebook" target="_blank" rel="noopener"> </a>
-    
-      <a href="/" title="twitter" class="iconfont icon-twitter" target="_blank" rel="noopener"> </a>
-    
-      <a href="/" title="github" class="iconfont icon-github" target="_blank" rel="noopener"> </a>
-    
-      <a href="/img/logo.png" title="wechat" class="iconfont icon-wechat" target="_blank" rel="noopener"> </a>
-    
-      <a href="mailto:xxxx@gmail.com" title="email" class="iconfont icon-email" target="_blank" rel="noopener"> </a>
-    
-    <a href="#" class="iconfont icon-null"></a>
-  </p>
-  
-  <p id="copyright">
-    &copy; 2021 memset0.
-    <span> | </span>Powered by <a href="https://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
-    <span> | </span>Theme <a href="https://github.com/Fechin/hexo-theme-diaspora" title="Diaspora" target="_blank" rel="noopener">Diaspora</a> by Fechin
-    
-  </p>
-</div>
+  <div class="section">
+    <div class="article">
+      <div class="main">
+        <div class="content">
+        
+            <p>有 $n$ 个人要从 $(0,a_i)$ 走到 $(i,0)$，你需要规划他们的路径使得两两不交。问方案数。</p>
+<p>$a_i &lt; a_{i+1},\ n \leq 5 \times 10^5,\ a_i \leq 10^6$。</p>
+<a id="more"></a>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>需要统计 DAG 上的不交路径问题，我们考虑 LGV 引理。由于这是网格图，所有路径起点和终点的位置关系是确定的，即我们可以直接确定右式的    系数。</p>
+<blockquote>
+<p>LGV 引理：</p>
+<script type="math/tex; mode=display">
+M = \begin{bmatrix}e(A_1,B_1)&e(A_1,B_2)&\cdots&e(A_1,B_n)\\
+e(A_2,B_1)&e(A_2,B_2)&\cdots&e(A_2,B_n)\\
+\vdots&\vdots&\ddots&\vdots\\
+e(A_n,B_1)&e(A_n,B_2)&\cdots&e(A_n,B_n)\end{bmatrix}</script><script type="math/tex; mode=display">
+\det(M)=\sum\limits_{S:A\rightarrow B}(-1)^{N(\sigma(S))}\prod\limits_{i=1}^n \omega(S_i)</script></blockquote>
+<p>对于这个问题 $M_{i,j}$ 可以表示为</p>
+<script type="math/tex; mode=display">
+M_{i,j}=\binom{a_i+j}{j}=\frac{(a_i+1)^{\overline{j}}}{j!}</script><p>现在的问题在于求 $M$ 的行列式，把每一列里的 $\dfrac{1}{j!}$ 提出来。</p>
+<p>考虑每一行都是同一个多项式（$(x+1)^{\overline{j}}$），不妨消成 $(x+1)^j$。</p>
+<p>这样问题就变为了对于矩阵：</p>
+<script type="math/tex; mode=display">
+M' = \begin{bmatrix}
+(a_1+1)&(a_1+1)^2&\cdots&(a_1+1)^n\\
+(a_2+1)&(a_2+1)^2&\cdots&(a_2+1)^n\\
+\vdots&\vdots&\ddots&\vdots\\
+(a_n+1)&(a_n+1)^n&\cdots&(a_n+1)^n
+\end{bmatrix}</script><p>这是范德蒙德矩阵，行列式为：</p>
+<script type="math/tex; mode=display">
+\det(M') = \prod_{1\leq i< j\leq n}((a_j+1)-(a_i+1))
+         = \prod_{1\leq i< j\leq n}(a_j-a_i)</script><p>做一次 $2^{21}$ 长度的卷积即可计算。</p>
 
-<div id="container">
-  
-<div id="screen">
-  <div id="mark">
-    <div class="layer" data-depth="0.4">
-      <img src="/cover/15.png" id="cover" crossorigin="anonymous" width="1920" height="1080">
+        
+        </div>
+      </div>
     </div>
   </div>
-  <div id="vibrant">
-    <svg viewBox="0 0 2880 1620" height="100%" preserveAspectRatio="xMaxYMax slice">
-      <polygon opacity="0.7" points="2000,1620 0,1620 0,0 600,0 "/>
-    </svg>
-    <div></div>
-  </div>
-  <div id="header">
-    <div>
-      <a class="image-logo" href="/"></a>
-      
-      <div class="iconfont icon-search switchsearch" href="/search/" title="搜索"></div>
-      
-      <div class="iconfont icon-menu switchmenu"></div>
-    </div>
-  </div>
-  
-  <div id="post0">
-    <p>十一月 24, 2020</p>
-    <h2><a href="/contest20200810b/" title="「校内模拟20200810B」分身" class="posttitle">「校内模拟20200810B」分身</a></h2>
-    <p class="summary">有 $n$ 个人要从 $(0,a_i)$ 走到 $(i,0)$，你需要规划他们的路径使得两两不交。问方案数。
-$a_i &lt; a_{i+1},\ n \leq 5 \times 10^5,\ a_i \leq 10^6$。
-
-题解...</p>
-  </div>
-  
 </div>
-
-  <div id="primary">
-    
-  </div>
-  
-</div>
-<div id="preview"></div>
 
 </body>
 <script>
