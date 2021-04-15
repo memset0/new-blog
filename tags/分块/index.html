@@ -1,0 +1,225 @@
+
+<!DOCTYPE html>
+<html lang="zh-cn" class="loading">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Tag: 分块 - memset0&#39;s Blog</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate" />
+  <meta name="keywords" content="Fechin,"> 
+  
+  <meta name="author" content="memset0"> 
+  <link rel="alternative" href="atom.xml" title="memset0&#39;s Blog" type="application/atom+xml"> 
+  <link rel="icon" href="/img/favicon.png"> 
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+  
+<link rel="stylesheet" href="/css/diaspora.css?ver=20210416.css">
+
+  <style>@font-face{font-family:'FZSHJW';src:url('/font/FZSHJW.ttf?size=340636');font-weight:normal;font-style:normal;}</style>
+<meta name="generator" content="Hexo 5.2.0"></head>
+<div class="tips-box" style="display:table;position:fixed;height:100%;width:100%;top:0;left:0;z-index:114514;">
+  <div style="display:table-cell;color:rgb(0,0,0,0.37);width:100%;text-align:center;vertical-align:middle;">
+    <br><br><br>
+    <span class="tips"></span>
+  </div>
+</div>
+<style>
+.tips-box{display:none!important;}
+body.loading .tips-box{display:table!important;}
+</style>
+<script>
+var tiplist=["为什么一个博客会和游戏一样有 tips 功能呢...","真的有人认为这是一个技术向博客吗，不会吧不会吧？","如果觉得博客的内容对你有帮助的话，欢迎给博主留言哦~","为什么网页打开慢啊，还不都是因为博主往里面塞老多字体和图片！","尝试猜猜 covers 的出处？","话说，这主题好看吗？","你觉得会有多少条 tips 啊...","我永远喜欢神户小鸟（大声）！","有人会看这博客里的内容吗（提出疑问）...","不知道加载速度够不够你读完这条 tips...","会不会有人专门为了看 tips 点开 Devtools 啊...","所有 tips 都是乱写的，包括这一条...","所有 tips 都是认真的，不包括这一条...","少女祈祷中...","嘟嘟噜~","咕咕咕？咕咕，咕咕咕！咕咕咕咕咕咕咕...","你知道吗，这个功能在某些游戏里叫 tips...","其实文章左上角还可以听音乐哦...","哎，自己已经是个老年退役选手了呐...","tips 的出现概率...真的是随机的！","如果人生可以重来，你还愿意成为竞赛生吗...","没有 bug 吧... 应该没有吧","♩ 夢ならば覚めないで ♩","♩ Memories are here ~ fragile souvenir ~ ♩","「三年风雨初心未泯 歧路争锋浪子无悔」","「友情是珍珠，回忆是钻石」","「纵然已经踏上不归之路，也绝对不要回头呢」"];
+document.getElementsByClassName("tips")[0].innerHTML=tiplist[Math.floor(Math.random()*tiplist.length)];
+</script>
+<body class="loading">
+  <span id="config-title" style="display:none">memset0&#39;s Blog</span>
+  <div id="loader"></div>
+  <div class="nav">
+  <ul id="menu-menu" class="menu">
+    
+    <li class="pview menu-item menu-item-type-post_type menu-item-object-page">
+      <a href="//" title="首页" target="_blank" rel="noopener">首页</a>
+    </li>
+    
+    <li class="pview menu-item menu-item-type-post_type menu-item-object-page">
+      <a href="/categories/" title="分类" target="_blank" rel="noopener">分类</a>
+    </li>
+    
+    <li class="pview menu-item menu-item-type-post_type menu-item-object-page">
+      <a href="/tags/" title="标签" target="_blank" rel="noopener">标签</a>
+    </li>
+    
+    <li class="pview menu-item menu-item-type-post_type menu-item-object-page">
+      <a href="/archives/" title="归档" target="_blank" rel="noopener">归档</a>
+    </li>
+    
+    <li class="pview menu-item menu-item-type-post_type menu-item-object-page">
+      <a href="/about/" title="关于" target="_blank" rel="noopener">关于</a>
+    </li>
+    
+  </ul>
+  <span class="target"></span>
+  <center>
+  <div class="hitokoto">
+    <span class="typed" id="hitokoto" data-st="false"></span>
+  </div>
+  </center>
+  
+  <p class="footerlinks">
+    <a href="#" class="iconfont icon-null"></a>
+    
+      <a href="/" title="facebook" class="iconfont icon-facebook" target="_blank" rel="noopener"> </a>
+    
+      <a href="/" title="twitter" class="iconfont icon-twitter" target="_blank" rel="noopener"> </a>
+    
+      <a href="/" title="github" class="iconfont icon-github" target="_blank" rel="noopener"> </a>
+    
+      <a href="/img/logo.png" title="wechat" class="iconfont icon-wechat" target="_blank" rel="noopener"> </a>
+    
+      <a href="mailto:xxxx@gmail.com" title="email" class="iconfont icon-email" target="_blank" rel="noopener"> </a>
+    
+    <a href="#" class="iconfont icon-null"></a>
+  </p>
+  
+  <p id="copyright">
+    &copy; 2021 memset0.
+    <span> | </span>Powered by <a href="https://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
+    <span> | </span>Theme <a href="https://github.com/Fechin/hexo-theme-diaspora" title="Diaspora" target="_blank" rel="noopener">Diaspora</a> by Fechin
+    
+  </p>
+</div>
+
+<div id="container">
+  
+<div id="screen">
+  <div id="mark">
+    <div class="layer" data-depth="0.4">
+      <img src="/cover/25.webp" id="cover" crossorigin="anonymous" width="1920" height="1080">
+    </div>
+  </div>
+  <div id="vibrant">
+    <svg viewBox="0 0 2880 1620" height="100%" preserveAspectRatio="xMaxYMax slice">
+      <polygon opacity="0.7" points="2000,1620 0,1620 0,0 600,0 "/>
+    </svg>
+    <div></div>
+  </div>
+  <div id="header">
+    <div>
+      <a class="image-logo" href="/"></a>
+      
+      <div class="iconfont icon-search switchsearch" href="/search/" title="搜索"></div>
+      
+      <div class="iconfont icon-menu switchmenu"></div>
+    </div>
+  </div>
+  
+  <div id="post0">
+    <p>十月 10, 2020</p>
+    <h2><a href="/cometoj-round7-f/" title="「CometOJ Round #7 F」最简单的题" class="posttitle">「CometOJ Round #7 F」最简单的题</a></h2>
+    <p class="summary">维护序列 $a_{1\ldots n}$，支持以下操作 $m$ 次：
+
+给 $x,y$，将 $x$ 位置的值修改为 $y$；
+给 $l,r,x$，查询区间$[l,r]$中有多少子区间的最大值小于或等于 $x$。
+
+$n,m \leq ...</p>
+  </div>
+  
+</div>
+
+  <div id="primary">
+    
+  </div>
+  
+</div>
+<div id="preview"></div>
+
+</body>
+<script>
+  window.ajaxLoadList = [];
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/jquery.md5.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+
+
+<script src="/js/diaspora.js?ver=20201103.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="pswp__bg"></div>
+  <div class="pswp__scroll-wrap">
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    <div class="pswp__ui pswp__ui--hidden">
+      <div class="pswp__top-bar">
+        <div class="pswp__counter"></div>
+        <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+        <button class="pswp__button pswp__button--share" title="Share"></button>
+        <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+        <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+        <div class="pswp__preloader">
+          <div class="pswp__preloader__icn">
+            <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+        <div class="pswp__share-tooltip"></div> 
+      </div>
+      <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+      </button>
+      <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+      </button>
+      <div class="pswp__caption">
+        <div class="pswp__caption__center"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
+<script>
+function renderLatex() {
+  renderMathInElement(document.body, {
+    delimiters: [
+      {left: "$", right: "$", display: false},
+      {left: "$$", right: "$$", display: true},
+    ]
+  });
+  $("script[type='math/tex; mode=display']").replaceWith(function () {
+    var rendered = katex.renderToString(this.innerText, {
+      displayMode: true
+    });
+    return '<div class="equation">' + rendered + '</div>';
+  });
+}
+ajaxLoadList.push(renderLatex);
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous" onload="renderLatex()"></script>
+
+
+
+</html>
