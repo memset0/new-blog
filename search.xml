@@ -102,6 +102,33 @@
     
     
     <entry>
+      <title>「校内模拟20200810B」分身</title>
+      <link href="contest-20200810-b/"/>
+      <url>contest-20200810-b/</url>
+      
+        <content type="html"><![CDATA[<p>有 $n$ 个人要从 $(0,a_i)$ 走到 $(i,0)$，你需要规划他们的路径使得两两不交。问方案数。</p><p>$a_i &lt; a_{i+1},\ n \leq 5 \times 10^5,\ a_i \leq 10^6$。</p><a id="more"></a><h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>需要统计 DAG 上的不交路径问题，我们考虑 LGV 引理。由于这是网格图，所有路径起点和终点的位置关系是确定的，即我们可以直接确定右式的    系数。</p><blockquote><p>LGV 引理：</p><script type="math/tex; mode=display">M = \begin{bmatrix}e(A_1,B_1)&e(A_1,B_2)&\cdots&e(A_1,B_n)\\e(A_2,B_1)&e(A_2,B_2)&\cdots&e(A_2,B_n)\\\vdots&\vdots&\ddots&\vdots\\e(A_n,B_1)&e(A_n,B_2)&\cdots&e(A_n,B_n)\end{bmatrix}</script><script type="math/tex; mode=display">\det(M)=\sum\limits_{S:A\rightarrow B}(-1)^{N(\sigma(S))}\prod\limits_{i=1}^n \omega(S_i)</script></blockquote><p>对于这个问题 $M_{i,j}$ 可以表示为</p><script type="math/tex; mode=display">M_{i,j}=\binom{a_i+j}{j}=\frac{(a_i+1)^{\overline{j}}}{j!}</script><p>现在的问题在于求 $M$ 的行列式，把每一列里的 $\dfrac{1}{j!}$ 提出来。</p><p>考虑每一行都是同一个多项式（$(x+1)^{\overline{j}}$），不妨消成 $(x+1)^j$。</p><p>这样问题就变为了对于矩阵：</p><script type="math/tex; mode=display">M' = \begin{bmatrix}(a_1+1)&(a_1+1)^2&\cdots&(a_1+1)^n\\(a_2+1)&(a_2+1)^2&\cdots&(a_2+1)^n\\\vdots&\vdots&\ddots&\vdots\\(a_n+1)&(a_n+1)^n&\cdots&(a_n+1)^n\end{bmatrix}</script><p>这是范德蒙德矩阵，行列式为：</p><script type="math/tex; mode=display">\det(M') = \prod_{1\leq i< j\leq n}((a_j+1)-(a_i+1))         = \prod_{1\leq i< j\leq n}(a_j-a_i)</script><p>做一次 $2^{21}$ 长度的卷积即可计算。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> OI题解 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> LGV 引理 </tag>
+            
+            <tag> 范德蒙德矩阵 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>博客更新志</title>
       <link href="about-new-blog/"/>
       <url>about-new-blog/</url>
@@ -131,9 +158,9 @@
       
         <tags>
             
-            <tag> 树分治 </tag>
-            
             <tag> 多项式 </tag>
+            
+            <tag> 树分治 </tag>
             
         </tags>
       
@@ -264,9 +291,9 @@
             
             <tag> 计数 </tag>
             
-            <tag> 多项式 </tag>
-            
             <tag> 杨表 </tag>
+            
+            <tag> 多项式 </tag>
             
         </tags>
       
