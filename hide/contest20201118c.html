@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Tag: 前缀和 - memset0&#39;s Blog</title>
+  <title>Tag: DP,计数,生成函数 - memset0&#39;s Blog</title>
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="google" content="notranslate" />
@@ -39,100 +39,40 @@ document.getElementsByClassName("tips")[0].innerHTML=tiplist[Math.floor(Math.ran
 <body class="loading">
   <span id="config-title" style="display:none">memset0&#39;s Blog</span>
   <div id="loader"></div>
-  <div class="nav">
-  <ul id="menu-menu" class="menu">
-    
-    <li class="pview menu-item menu-item-type-post_type menu-item-object-page">
-      <a href="//" title="首页" target="_blank" rel="noopener">首页</a>
-    </li>
-    
-    <li class="pview menu-item menu-item-type-post_type menu-item-object-page">
-      <a href="/categories/" title="分类" target="_blank" rel="noopener">分类</a>
-    </li>
-    
-    <li class="pview menu-item menu-item-type-post_type menu-item-object-page">
-      <a href="/tags/" title="标签" target="_blank" rel="noopener">标签</a>
-    </li>
-    
-    <li class="pview menu-item menu-item-type-post_type menu-item-object-page">
-      <a href="/archives/" title="归档" target="_blank" rel="noopener">归档</a>
-    </li>
-    
-    <li class="pview menu-item menu-item-type-post_type menu-item-object-page">
-      <a href="/about/" title="关于" target="_blank" rel="noopener">关于</a>
-    </li>
-    
-  </ul>
-  <span class="target"></span>
-  <center>
-  <div class="hitokoto">
-    <span class="typed" id="hitokoto" data-st="false"></span>
+  <div id="single" class="page">
+  <div id="top">
+    <a class="iconfont icon-left image-icon" href="javascript:history.back()"></a>
   </div>
-  </center>
-  
-  <p class="footerlinks">
-    <a href="#" class="iconfont icon-null"></a>
-    
-      <a href="/" title="facebook" class="iconfont icon-facebook" target="_blank" rel="noopener"> </a>
-    
-      <a href="/" title="twitter" class="iconfont icon-twitter" target="_blank" rel="noopener"> </a>
-    
-      <a href="/" title="github" class="iconfont icon-github" target="_blank" rel="noopener"> </a>
-    
-      <a href="/img/logo.png" title="wechat" class="iconfont icon-wechat" target="_blank" rel="noopener"> </a>
-    
-      <a href="mailto:xxxx@gmail.com" title="email" class="iconfont icon-email" target="_blank" rel="noopener"> </a>
-    
-    <a href="#" class="iconfont icon-null"></a>
-  </p>
-  
-  <p id="copyright">
-    &copy; 2021 memset0.
-    <span> | </span>Powered by <a href="https://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
-    <span> | </span>Theme <a href="https://github.com/Fechin/hexo-theme-diaspora" title="Diaspora" target="_blank" rel="noopener">Diaspora</a> by Fechin
-    
-  </p>
-</div>
+  <div class="section">
+    <div class="article">
+      <div class="main">
+        <div class="content">
+        
+            <p>有 $m$ 个随机数生成器，每一个生成器会在 $[0,a_i] \cap \mathbb N^*$ 中均匀随机得到 $x_i$，再会有 $p_i$ 的概率令 $y_i=1$，否则 $y_i=0$ 。另外会有一个常数 $d$，保证 $d|(a_i+1)$。</p>
+<p>考虑 $s_0=\sum_{i=1}^n x_iy_i,\ s_1 = \sum_{i=1}^n x_i$，对于一种局面，若 $s_1 =n$，则称其是合法的；对于一种合法的局面，若 $s_0 \geq l$，则称其是好的。求得到好的情况的概率。</p>
+<p>对 $998244353$ 取模，且你只需要输出答案乘合法方案数的结果。</p>
+<p>$1 \leq m \leq 100,\ 1 \leq l \leq n \leq \sum a_i,\ 1 \leq n ,a_i \leq 10^9,\ 1 \leq d \leq 10^7$，保证 $n \leq 100d$。</p>
+<a id="more"></a>
+<h2 id="题解（个人做法）"><a href="#题解（个人做法）" class="headerlink" title="题解（个人做法）"></a>题解（个人做法）</h2><p>考虑 $x_i = b_id + c_i$，我们通过 DP 统计 $db_i$ 的贡献，这样就把问题转换为了所有 $a_i = d-1$ 的情况，且我们已经知道其中 $k$ 个位置 $y_i=1$，其余 $m-k$ 个位置 $y_i=0$，且可以得到新的限制下的 $l$ 和 $n$。</p>
+<p>考虑生成函数来统计合法但不好的方案数：</p>
+<script type="math/tex; mode=display">
+\sum_{i=0}^{t} [x^iy^n] \left(\sum_{i=0}^\infty (xy)^i \right)^k \left( \sum_{i=0}^\infty y^i \right)^{m-k}</script><p>推导一下生成函数</p>
+<script type="math/tex; mode=display">
+[x^ty^n] \frac {(1-y^d)^{m-k} (1-(xy)^d)^{k}} {(1-x) (1-y)^{m-k} (1-xy)^k}</script><p>将上半部分用二项式定理展开，并 $O(m^2)$ 的复杂度暴力枚举：</p>
+<script type="math/tex; mode=display">
+\sum_{i=0}^{m-k}\binom{m-k}{i}(-1)^i\sum_{j=0}^k\binom{k}{j}(-1)^j[x^{t-dj}y^{n-di-dj}] \left({(1-x) (1-y)^{m-k} (1-xy)^k}\right)^{-1}</script><p>即我们需要快速计算形如</p>
+<script type="math/tex; mode=display">
+[x^ay^b] \left({(1-x) (1-y)^{m-k} (1-xy)^k}\right)^{-1}</script><p>的表达式的值。</p>
+<p>转换为格路问题，枚举 $(1-x)$ 的贡献，可以得到</p>
+<script type="math/tex; mode=display">
+\sum_{i=0}^a \binom{a\!-\!i+k\!-\!1}{k\!-\!1} \binom{b\!-\!a\!+\!i+m\!-\!k\!-\!1}{m\!-\!k\!-\!1}</script><p>注意到这是一个关于 $a$ 的多项式，我们可以暴力插值解决。</p>
 
-<div id="container">
-  
-<div id="screen">
-  <div id="mark">
-    <div class="layer" data-depth="0.4">
-      <img src="/cover/13.png" id="cover" crossorigin="anonymous" width="1920" height="1080">
+        
+        </div>
+      </div>
     </div>
   </div>
-  <div id="vibrant">
-    <svg viewBox="0 0 2880 1620" height="100%" preserveAspectRatio="xMaxYMax slice">
-      <polygon opacity="0.7" points="2000,1620 0,1620 0,0 600,0 "/>
-    </svg>
-    <div></div>
-  </div>
-  <div id="header">
-    <div>
-      <a class="image-logo" href="/"></a>
-      
-      <div class="iconfont icon-search switchsearch" href="/search/" title="搜索"></div>
-      
-      <div class="iconfont icon-menu switchmenu"></div>
-    </div>
-  </div>
-  
-  <div id="post0">
-    <p>十二月 17, 2020</p>
-    <h2><a href="/loj3401/" title="「集训队作业 2020」Old Problem" class="posttitle">「集训队作业 2020」Old Problem</a></h2>
-    <p class="summary">
-给一个长度为 $n$ 的序列 $a_i$，和 $q$ 组询问 $(l,r,x)$，表示求 $\displaystyle\prod_{i=l}^r\left(1-\frac{a_i}{x}\right)$ 的值。实数输出，精度要求 $...</p>
-  </div>
-  
 </div>
-
-  <div id="primary">
-    
-  </div>
-  
-</div>
-<div id="preview"></div>
 
 </body>
 <script>
