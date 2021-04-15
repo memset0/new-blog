@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Tag: Favorite,LGV 引理,范德蒙德矩阵 - memset0&#39;s Blog</title>
+  <title>Tag: DP,计数,生成函数 - memset0&#39;s Blog</title>
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="google" content="notranslate" />
@@ -20,7 +20,7 @@
   
 <link rel="stylesheet" href="/css/diaspora.css?ver=20210416.css">
 
-  <style>@font-face{font-family:'FZSHJW';src:url('/font/FZSHJW.ttf?size=335608');font-weight:normal;font-style:normal;}</style>
+  <style>@font-face{font-family:'FZSHJW';src:url('/font/FZSHJW.ttf?size=337904');font-weight:normal;font-style:normal;}</style>
 <meta name="generator" content="Hexo 5.2.0"></head>
 <div class="tips-box" style="display:table;position:fixed;height:100%;width:100%;top:0;left:0;z-index:114514;">
   <div style="display:table-cell;color:rgb(0,0,0,0.37);width:100%;text-align:center;vertical-align:middle;">
@@ -48,33 +48,24 @@ document.getElementsByClassName("tips")[0].innerHTML=tiplist[Math.floor(Math.ran
       <div class="main">
         <div class="content">
         
-            <p>有 $n$ 个人要从 $(0,a_i)$ 走到 $(i,0)$，你需要规划他们的路径使得两两不交。问方案数。</p>
-<p>$a_i &lt; a_{i+1},\ n \leq 5 \times 10^5,\ a_i \leq 10^6$。</p>
+            <p>有 $m$ 个随机数生成器，每一个生成器会在 $[0,a_i] \cap \mathbb N^*$ 中均匀随机得到 $x_i$，再会有 $p_i$ 的概率令 $y_i=1$，否则 $y_i=0$ 。另外会有一个常数 $d$，保证 $d|(a_i+1)$。</p>
+<p>考虑 $s_0=\sum_{i=1}^n x_iy_i,\ s_1 = \sum_{i=1}^n x_i$，对于一种局面，若 $s_1 =n$，则称其是合法的；对于一种合法的局面，若 $s_0 \geq l$，则称其是好的。求得到好的情况的概率。</p>
+<p>对 $998244353$ 取模，且你只需要输出答案乘合法方案数的结果。</p>
+<p>$1 \leq m \leq 100,\ 1 \leq l \leq n \leq \sum a_i,\ 1 \leq n ,a_i \leq 10^9,\ 1 \leq d \leq 10^7$，保证 $n \leq 100d$。</p>
 <a id="more"></a>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>需要统计 DAG 上的不交路径问题，我们考虑 LGV 引理。由于这是网格图，所有路径起点和终点的位置关系是确定的，即我们可以直接确定右式的    系数。</p>
-<blockquote>
-<p>LGV 引理：</p>
+<h2 id="题解（个人做法）"><a href="#题解（个人做法）" class="headerlink" title="题解（个人做法）"></a>题解（个人做法）</h2><p>考虑 $x_i = b_id + c_i$，我们通过 DP 统计 $db_i$ 的贡献，这样就把问题转换为了所有 $a_i = d-1$ 的情况，且我们已经知道其中 $k$ 个位置 $y_i=1$，其余 $m-k$ 个位置 $y_i=0$，且可以得到新的限制下的 $l$ 和 $n$。</p>
+<p>考虑生成函数来统计合法但不好的方案数：</p>
 <script type="math/tex; mode=display">
-M = \begin{bmatrix}e(A_1,B_1)&e(A_1,B_2)&\cdots&e(A_1,B_n)\\
-e(A_2,B_1)&e(A_2,B_2)&\cdots&e(A_2,B_n)\\
-\vdots&\vdots&\ddots&\vdots\\
-e(A_n,B_1)&e(A_n,B_2)&\cdots&e(A_n,B_n)\end{bmatrix}</script><script type="math/tex; mode=display">
-\det(M)=\sum\limits_{S:A\rightarrow B}(-1)^{N(\sigma(S))}\prod\limits_{i=1}^n \omega(S_i)</script></blockquote>
-<p>对于这个问题 $M_{i,j}$ 可以表示为</p>
+\sum_{i=0}^{t} [x^iy^n] \left(\sum_{i=0}^\infty (xy)^i \right)^k \left( \sum_{i=0}^\infty y^i \right)^{m-k}</script><p>推导一下生成函数</p>
 <script type="math/tex; mode=display">
-M_{i,j}=\binom{a_i+j}{j}=\frac{(a_i+1)^{\overline{j}}}{j!}</script><p>现在的问题在于求 $M$ 的行列式，把每一列里的 $\dfrac{1}{j!}$ 提出来。</p>
-<p>考虑每一行都是同一个多项式（$(x+1)^{\overline{j}}$），不妨消成 $(x+1)^j$。</p>
-<p>这样问题就变为了对于矩阵：</p>
+[x^ty^n] \frac {(1-y^d)^{m-k} (1-(xy)^d)^{k}} {(1-x) (1-y)^{m-k} (1-xy)^k}</script><p>将上半部分用二项式定理展开，并 $O(m^2)$ 的复杂度暴力枚举：</p>
 <script type="math/tex; mode=display">
-M' = \begin{bmatrix}
-(a_1+1)&(a_1+1)^2&\cdots&(a_1+1)^n\\
-(a_2+1)&(a_2+1)^2&\cdots&(a_2+1)^n\\
-\vdots&\vdots&\ddots&\vdots\\
-(a_n+1)&(a_n+1)^n&\cdots&(a_n+1)^n
-\end{bmatrix}</script><p>这是范德蒙德矩阵，行列式为：</p>
+\sum_{i=0}^{m-k}\binom{m-k}{i}(-1)^i\sum_{j=0}^k\binom{k}{j}(-1)^j[x^{t-dj}y^{n-di-dj}] \left({(1-x) (1-y)^{m-k} (1-xy)^k}\right)^{-1}</script><p>即我们需要快速计算形如</p>
 <script type="math/tex; mode=display">
-\det(M') = \prod_{1\leq i< j\leq n}((a_j+1)-(a_i+1))
-         = \prod_{1\leq i< j\leq n}(a_j-a_i)</script><p>做一次 $2^{21}$ 长度的卷积即可计算。</p>
+[x^ay^b] \left({(1-x) (1-y)^{m-k} (1-xy)^k}\right)^{-1}</script><p>的表达式的值。</p>
+<p>转换为格路问题，枚举 $(1-x)$ 的贡献，可以得到</p>
+<script type="math/tex; mode=display">
+\sum_{i=0}^a \binom{a\!-\!i+k\!-\!1}{k\!-\!1} \binom{b\!-\!a\!+\!i+m\!-\!k\!-\!1}{m\!-\!k\!-\!1}</script><p>注意到这是一个关于 $a$ 的多项式，我们可以暴力插值解决。</p>
 
         
         </div>
