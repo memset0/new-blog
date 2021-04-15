@@ -10,7 +10,7 @@ http://localhost:3000/%E6%AF%94%E8%B5%9B/opencup2020/Korea/D/
 http://localhost:3000/%E6%AF%94%E8%B5%9B/opencup2020/Gomel/H/
 http://localhost:3000/%E6%AF%94%E8%B5%9B/hdu%E5%A4%9A%E6%A0%A12020/04/I/
 http://localhost:3000/%E6%AF%94%E8%B5%9B/%E7%89%9B%E5%AE%A2%E5%A4%9A%E6%A0%A12020/04/E/
-http://localhost:3000/%E9%A2%98%E8%A7%A3/luogu6579/
+
 http://localhost:3000/%E9%A2%98%E8%A7%A3/luogu5827/
 http://localhost:3000/%E9%A2%98%E8%A7%A3/cf1349f2/
 

@@ -301,13 +301,13 @@
       
         <tags>
             
-            <tag> 构造 </tag>
-            
             <tag> 二分图 </tag>
             
             <tag> 状压 </tag>
             
             <tag> 偏序集 </tag>
+            
+            <tag> 构造 </tag>
             
         </tags>
       
@@ -335,6 +335,37 @@
             <tag> 拉格朗日反演 </tag>
             
             <tag> 多项式牛顿迭代 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>「Ynoi2019」美好的每一天~ 不连续的存在</title>
+      <link href="luogu6579/"/>
+      <url>luogu6579/</url>
+      
+        <content type="html"><![CDATA[<p>给数组 $A$ 和 $n$ 个节点的树，每个点有一个 $1$ 到 $x$ 颜色。</p><p>$m$ 次查询，每次查询树上只保留 $[l,r]$ 内的所有节点，设一个极大连通块中出现奇数次数的颜色个数为 $t$，则其对答案的贡献为 $A_t$ ，即答案是所有连通块贡献的和，询问相互独立。</p><p>$1\leq n,m\leq 10^5$，$1\leq x,A_i \leq 10^4$。</p><a id="more"></a><h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p><del>退役选手被lxl抓过来写题解</del></p><p>考虑用单增莫队维护，想了想容易发现复杂度不对。</p><p>莫队的端点移动需要启发式合并维护信息，而启发式合并的复杂度基于我们可以把势能均摊，如果我们在分块时基于势能呢？</p><p>单增莫队的复杂度主要产生于以下两个部分（假设把询问分为 $S$ 块）：</p><ul><li>左端点左移：对于每个端点都会贡献 $O(S)$，故这一部分的总势能是 $O(S n \sqrt n)$ 的</li><li>右端点右移：每个块内的询问会对每个块内的端点贡献 $O(1)$ 次，可以通过构造询问分布，卡满这部分的势能和。</li><li>回滚后缀的右端点右移操作：回滚操作于增加操作复杂度相同。</li></ul><p><del>有没有救呢？当然是有的。</del>注意左端点的移动势能是只和块数相关的。瓶颈在于右端点的移动：对于一个区间 $[l,r]$，端点 $i$ 在右端点移动时贡献的势能为 $A_i$，则一次经过该区间的询问产生的势能至多为 $\sum_{i=l+1}^r A_i$。</p><p>理清思路后题解就很显然了，我们先处理出每个端点的势能 $B_i$（在 $1 \ldots (i-1)$ 后插入 $i$ 贡献的势能，上文提到的势能 $A_i$ 是一定有 $A_i \leq B_i$ 的）。然后从右到左对势能分块。</p><p>如果加入当前端点后当前栈内端点的势能和大于 $\sqrt {n} \log n$ 就将栈内元素分为一块。由于所有被分配到这个块的询问都是经过块的不会贡献势能的左端点，而其余端点贡献的势能和是一定小于 $\sqrt n \log n$ 的。</p><p>总时间复杂度 $O((n+Q)\sqrt n \log n)$。</p><h2 id="卡常技巧"><a href="#卡常技巧" class="headerlink" title="卡常技巧"></a>卡常技巧</h2><p>本题卡常的一比，毒瘤 lxl（（</p><ol><li>手动调整块大小</li><li>作栈/队列功能的 <code>std::vector&lt;T&gt;</code> 换成手写（不知道为什么我做到这这步就过了）</li><li>手写 bitset（我鸽了）</li><li>手写可合并的 vector（然而我手写了一个还打不过 <code>std::vector&lt;T&gt;</code>，我已经报警了）</li></ol><h2 id="AC-代码"><a href="#AC-代码" class="headerlink" title="AC 代码"></a>AC 代码</h2><p>&lt;%- includeCode(‘./sol.cpp’) %&gt;</p><h2 id="手写-vector-且没通过的代码"><a href="#手写-vector-且没通过的代码" class="headerlink" title="手写 vector 且没通过的代码"></a>手写 vector 且没通过的代码</h2><p>&lt;%- includeCode(‘./sol2.cpp’) %&gt;</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> OI题解 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 莫队 </tag>
+            
+            <tag> 可回退数据结构 </tag>
+            
+            <tag> 势能莫队 </tag>
+            
+            <tag> 手写STL </tag>
             
         </tags>
       
