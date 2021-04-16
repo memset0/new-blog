@@ -145,9 +145,9 @@
       
         <tags>
             
-            <tag> 生成函数 </tag>
-            
             <tag> 计数 </tag>
+            
+            <tag> 生成函数 </tag>
             
             <tag> DP </tag>
             
@@ -556,9 +556,9 @@
       
         <tags>
             
-            <tag> 多项式 </tag>
-            
             <tag> 树分治 </tag>
+            
+            <tag> 多项式 </tag>
             
         </tags>
       
@@ -832,9 +832,9 @@
             
             <tag> 计数 </tag>
             
-            <tag> 杨表 </tag>
-            
             <tag> 多项式 </tag>
+            
+            <tag> 杨表 </tag>
             
         </tags>
       
