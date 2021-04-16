@@ -10,9 +10,10 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="google" content="notranslate" />
   <meta name="keywords" content="Fechin,"> 
-  <meta name="description" content="有 $m$ 张带编号卡牌，每次你可以随机抽取一张。抽中每张的概率均为 $\frac 1 m$。当编号连续的 $k$ 张牌都被抽取过时，游戏结束。
+  <meta name="description" content="
+有 $m$ 张带编号卡牌，每次你可以随机抽取一张。抽中每张的概率均为 $\frac 1 m$。当编号连续的 $k$ 张牌都被抽取过时，游戏结束。
 问游戏结束的期望步数。
-$1 \leq k \leq,"> 
+$1 \leq k \le,"> 
   <meta name="author" content="memset0"> 
   <link rel="alternative" href="atom.xml" title="memset0&#39;s Blog" type="application/atom+xml"> 
   <link rel="icon" href="/img/favicon.png"> 
@@ -74,9 +75,11 @@ document.getElementsByClassName("tips")[0].innerHTML=tiplist[Math.floor(Math.ran
 
       </div>
       <div class="content markdown">
-        <p>有 $m$ 张带编号卡牌，每次你可以随机抽取一张。抽中每张的概率均为 $\frac 1 m$。当编号连续的 $k$ 张牌都被抽取过时，游戏结束。</p>
+        <blockquote>
+<p>有 $m$ 张带编号卡牌，每次你可以随机抽取一张。抽中每张的概率均为 $\frac 1 m$。当编号连续的 $k$ 张牌都被抽取过时，游戏结束。</p>
 <p>问游戏结束的期望步数。</p>
 <p>$1 \leq k \leq m \leq 2 \times 10^5$。</p>
+</blockquote>
 <a id="more"></a>
 <h3 id="题解-Part1"><a href="#题解-Part1" class="headerlink" title="题解 Part1"></a>题解 Part1</h3><p>我们可以直接对每张牌第一次被抽中的操作序列计数。</p>
 <p>把牌的每一段编号连续区间分开考虑，每一段处理出选中连续区间长度不超过 $k$ 的方案数（同时容易得到超过的方案数），然后分治 + NTT 合并，这是平凡的。</p>

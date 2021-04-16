@@ -10,10 +10,11 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="google" content="notranslate" />
   <meta name="keywords" content="Fechin,"> 
-  <meta name="description" content="维护序列 $a_{1\ldots n}$，支持以下操作 $m$ 次：
+  <meta name="description" content="
+维护序列 $a_{1\ldots n}$，支持以下操作 $m$ 次：
 
 给 $x,y$，将 $x$ 位置的值修改为 $y$；
-给 $l,r,x$，查询区间$[l,r]$中有多少子区间的最大值小于或等,"> 
+给 $l,r,x$，查询区间$[l,r]$中有多少子区间的最大值小于或,"> 
   <meta name="author" content="memset0"> 
   <link rel="alternative" href="atom.xml" title="memset0&#39;s Blog" type="application/atom+xml"> 
   <link rel="icon" href="/img/favicon.png"> 
@@ -75,12 +76,14 @@ document.getElementsByClassName("tips")[0].innerHTML=tiplist[Math.floor(Math.ran
 
       </div>
       <div class="content markdown">
-        <p>维护序列 $a_{1\ldots n}$，支持以下操作 $m$ 次：</p>
+        <blockquote>
+<p>维护序列 $a_{1\ldots n}$，支持以下操作 $m$ 次：</p>
 <ol>
 <li>给 $x,y$，将 $x$ 位置的值修改为 $y$；</li>
 <li>给 $l,r,x$，查询区间$[l,r]$中有多少子区间的最大值小于或等于 $x$。</li>
 </ol>
 <p>$n,m \leq 3 \times 10^5$。</p>
+</blockquote>
 <a id="more"></a>
 <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>对于询问 $\{l,r,x\}$，相当于转化为这样一个问题：</p>
 <p>序列 $b$ 满足 $b_i = [a_i \leq x]$，然后询问 $b$ 的区间 $[l,r]$ 内，有多少子区间的均为 $1$。</p>

@@ -10,9 +10,10 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="google" content="notranslate" />
   <meta name="keywords" content="Fechin,"> 
-  <meta name="description" content="有 $n$ 种操作，第 $i$ 种操作使用后有 $p_i$ 的概率升级，$(1-p_i)$ 的概率不升级。
+  <meta name="description" content="
+有 $n$ 种操作，第 $i$ 种操作使用后有 $p_i$ 的概率升级，$(1-p_i)$ 的概率不升级。
 进行若干次操作后，如果主人公的等级为 $i$，就能产生 $a_i$ 的贡献。
-对于每个 $,"> 
+对于每个 ,"> 
   <meta name="author" content="memset0"> 
   <link rel="alternative" href="atom.xml" title="memset0&#39;s Blog" type="application/atom+xml"> 
   <link rel="icon" href="/img/favicon.png"> 
@@ -74,10 +75,12 @@ document.getElementsByClassName("tips")[0].innerHTML=tiplist[Math.floor(Math.ran
 
       </div>
       <div class="content markdown">
-        <p>有 $n$ 种操作，第 $i$ 种操作使用后有 $p_i$ 的概率升级，$(1-p_i)$ 的概率不升级。</p>
+        <blockquote>
+<p>有 $n$ 种操作，第 $i$ 种操作使用后有 $p_i$ 的概率升级，$(1-p_i)$ 的概率不升级。</p>
 <p>进行若干次操作后，如果主人公的等级为 $i$，就能产生 $a_i$ 的贡献。</p>
 <p>对于每个 $i \in [1;n]$ 求出，使用 $j \neq i$ 的所有操作 $j$，主人公产生等级贡献的期望。</p>
 <p>$n \leq 10^5$。</p>
+</blockquote>
 <a id="more"></a>
 <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>设 $C_i(x) = (1 - p_i + p_i x)$，$C(x) = \prod_{i=0}^{n-1} C_i(x)$</p>
 <script type="math/tex; mode=display">

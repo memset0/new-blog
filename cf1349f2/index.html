@@ -10,8 +10,9 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="google" content="notranslate" />
   <meta name="keywords" content="Fechin,"> 
-  <meta name="description" content="定义一个排列 $p$ 是好的当且仅当对于每个 $k &amp;lt; \max\{p\}$，存在 $1 \leq i &amp;lt; j \leq n$ 使得 $a_i = k-1$ 且 $a_j = k$。
-定,"> 
+  <meta name="description" content="
+定义一个排列 $p$ 是好的当且仅当对于每个 $k &amp;lt; \max\{p\}$，存在 $1 \leq i &amp;lt; j \leq n$ 使得 $a_i = k-1$ 且 $a_j = k$。
+,"> 
   <meta name="author" content="memset0"> 
   <link rel="alternative" href="atom.xml" title="memset0&#39;s Blog" type="application/atom+xml"> 
   <link rel="icon" href="/img/favicon.png"> 
@@ -73,10 +74,12 @@ document.getElementsByClassName("tips")[0].innerHTML=tiplist[Math.floor(Math.ran
 
       </div>
       <div class="content markdown">
-        <p>定义一个排列 $p$ 是好的当且仅当对于每个 $k &lt; \max\{p\}$，存在 $1 \leq i &lt; j \leq n$ 使得 $a_i = k-1$ 且 $a_j = k$。</p>
+        <blockquote>
+<p>定义一个排列 $p$ 是好的当且仅当对于每个 $k &lt; \max\{p\}$，存在 $1 \leq i &lt; j \leq n$ 使得 $a_i = k-1$ 且 $a_j = k$。</p>
 <p>定义 $f_a(k)$ 为序列 $a$ 中数值 $k$ 的出现次数，假设所有合法序列集合为 $S$，对于每个 $k \in [1;n]$，求</p>
 <script type="math/tex; mode=display">
 \left( \sum_{a \in S} f_a(k) \right) \bmod 998244353</script><p>$n \leq 10^5$。</p>
+</blockquote>
 <a id="more"></a>
 <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>考虑由排列 $p$ 生成序列，在 $p_i$ 和 $p_{i+1}$ 之间填入大于或小于号，则 $a_{p_i}$ 的值为 $p_{1…i}$ 中的小于号个数 $+1$，不难验证合法序列集合和排列集合构成双射。</p>
 <p>注意到这是个欧拉数的形式，考虑容斥维护：</p>

@@ -10,7 +10,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="google" content="notranslate" />
   <meta name="keywords" content="Fechin,"> 
-  <meta name="description" content="定义两个简单无向图 $G_{1} =( V_{1} , E_{1}) , G_{2} =( V_{2} , E_{2})$ 的乘积为一个新的图 $G_{1} \times G_{2} =\left(,"> 
+  <meta name="description" content="
+定义两个简单无向图 $G_{1} =( V_{1} , E_{1}) , G_{2} =( V_{2} , E_{2})$ 的乘积为一个新的图 $G_{1} \times G_{2} =\left,"> 
   <meta name="author" content="memset0"> 
   <link rel="alternative" href="atom.xml" title="memset0&#39;s Blog" type="application/atom+xml"> 
   <link rel="icon" href="/img/favicon.png"> 
@@ -72,7 +73,8 @@ document.getElementsByClassName("tips")[0].innerHTML=tiplist[Math.floor(Math.ran
 
       </div>
       <div class="content markdown">
-        <p>定义两个简单无向图 $G_{1} =( V_{1} , E_{1}) , G_{2} =( V_{2} , E_{2})$ 的乘积为一个新的图 $G_{1} \times G_{2} =\left( V^{\star} , E^{\star} \right)$。</p>
+        <blockquote>
+<p>定义两个简单无向图 $G_{1} =( V_{1} , E_{1}) , G_{2} =( V_{2} , E_{2})$ 的乘积为一个新的图 $G_{1} \times G_{2} =\left( V^{\star} , E^{\star} \right)$。</p>
 <p>其中新的点集 $V^{\star}$ 为:</p>
 <script type="math/tex; mode=display">
 V^{\star} = \left\{ {(a, b)| a \in V_{1}, b \in V_{2} }\right\}</script><p>其中新的边集 $E^{\star}$ 为：</p>
@@ -82,6 +84,7 @@ E^{\star} =\left\{\left(( u_{1} , v_{1}) , ( u_{2} , v_{2})\right) \mid ( u_{1} 
 H = (((G_1 \times G_2) \times G_3) \times \cdots) \times G_n</script><p>每个 $G_k$ 中任意两点间都有 $\frac12$ 的概率连边，求 $H$ 的连通块的期望。显然 $G_k$ 的全体取法共有 ${\large {2^{\binom{m_1}2 + \binom{m_2}2 + \cdots + \binom{m_n}2}}}$ 种。</p>
 <p>方便起见，你只需要输出答案乘以 ${\large {2^{\binom{m_1}2 + \binom{m_2}2 + \cdots + \binom{m_n}2}}}$ ，对 $998244353$ 取模即可。</p>
 <p>$1\le n, m_k\le 10^5$ 。</p>
+</blockquote>
 <a id="more"></a>
 <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>大概是一个二合一状物，我们搞出生成函数以后逐个合并。</p>
 <p>考虑 $k=1$ 怎么做，假设 $G$ 为无标号无向图生成函数：</p>

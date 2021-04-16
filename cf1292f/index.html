@@ -10,8 +10,9 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="google" content="notranslate" />
   <meta name="keywords" content="Fechin,"> 
-  <meta name="description" content="一个大小为 $n$ 的集合 $\{a_i\}_{i=1}^n$，每次可以选择 $(i,j,k)$，若 $a_i \mid a_j$ 且 $a_i \mid a_k$，可以将 $a_k$ 删去。
-求能,"> 
+  <meta name="description" content="
+一个大小为 $n$ 的集合 $\{a_i\}_{i=1}^n$，每次可以选择 $(i,j,k)$，若 $a_i \mid a_j$ 且 $a_i \mid a_k$，可以将 $a_k$ 删去。
+求,"> 
   <meta name="author" content="memset0"> 
   <link rel="alternative" href="atom.xml" title="memset0&#39;s Blog" type="application/atom+xml"> 
   <link rel="icon" href="/img/favicon.png"> 
@@ -73,9 +74,11 @@ document.getElementsByClassName("tips")[0].innerHTML=tiplist[Math.floor(Math.ran
 
       </div>
       <div class="content markdown">
-        <p>一个大小为 $n$ 的集合 $\{a_i\}_{i=1}^n$，每次可以选择 $(i,j,k)$，若 $a_i \mid a_j$ 且 $a_i \mid a_k$，可以将 $a_k$ 删去。</p>
+        <blockquote>
+<p>一个大小为 $n$ 的集合 $\{a_i\}_{i=1}^n$，每次可以选择 $(i,j,k)$，若 $a_i \mid a_j$ 且 $a_i \mid a_k$，可以将 $a_k$ 删去。</p>
 <p>求能删除最多数的删除序列数，删除序列定义为对于一个三元组 $(i,j,k)$，每次删数把 $a_k$ 加入到删除序列中。</p>
 <p>$1 \leq a_i, n \leq 60$，保证 $a_i$ 两两不同。</p>
+</blockquote>
 <a id="more"></a>
 <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>考虑如果 $a_i \mid a_j$，就从 $i$ 到 $j$ 连一条边，这样形成的图是一个偏序集。不妨只考虑第一层的点，称为 $A$ 类点，其余的点称为 $B$ 类点。每次删除操作可以转化为，找到一个 $A$ 类点，存在 $\geq 2$ 的出度，就可以删掉其中任意一条出边指向的点。</p>
 <p>对于任意一个由 $A$、$B$ 类点组成的非平凡弱联通块，一定存在一种删除方式使得是剩下其中的 $A$ 类点和某一个 $B$ 类点。这就是删除最多数的方案。</p>

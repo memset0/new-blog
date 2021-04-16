@@ -10,8 +10,9 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="google" content="notranslate" />
   <meta name="keywords" content="Fechin,"> 
-  <meta name="description" content="给定 $n$ 个点的树，定义 $m$ 个人的约会点 $x$ 为使得 $m$ 个人所在的点到 $x$ 的距离之和最小的点。
-$m$ 个人所在位置在 $n$ 个点中随机选择（即总方案数 $\binom ,"> 
+  <meta name="description" content="
+给定 $n$ 个点的树，定义 $m$ 个人的约会点 $x$ 为使得 $m$ 个人所在的点到 $x$ 的距离之和最小的点。
+$m$ 个人所在位置在 $n$ 个点中随机选择（即总方案数 $\binom,"> 
   <meta name="author" content="memset0"> 
   <link rel="alternative" href="atom.xml" title="memset0&#39;s Blog" type="application/atom+xml"> 
   <link rel="icon" href="/img/favicon.png"> 
@@ -73,9 +74,11 @@ document.getElementsByClassName("tips")[0].innerHTML=tiplist[Math.floor(Math.ran
 
       </div>
       <div class="content markdown">
-        <p>给定 $n$ 个点的树，定义 $m$ 个人的约会点 $x$ 为使得 $m$ 个人所在的点到 $x$ 的距离之和最小的点。</p>
+        <blockquote>
+<p>给定 $n$ 个点的树，定义 $m$ 个人的约会点 $x$ 为使得 $m$ 个人所在的点到 $x$ 的距离之和最小的点。</p>
 <p>$m$ 个人所在位置在 $n$ 个点中随机选择（即总方案数 $\binom nm$），问所有方案到约会点距离之和的和。</p>
 <p>$n \leq 10^6$，答案对 $10^9 + 7$ 取模。</p>
+</blockquote>
 <a id="more"></a>
 <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>考虑确定 $m$ 个点后，所有人到某个点的距离和是单调的，也就是说可能称为约会点的点一定是一个联通块。</p>
 <p>我们预处理出所有点到某个点的距离和，因为稍后我们选点时，（某一选点范围内）每个点被选中的概率是均等的。</p>

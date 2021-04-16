@@ -10,8 +10,9 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="google" content="notranslate" />
   <meta name="keywords" content="Fechin,"> 
-  <meta name="description" content="给定一张 $n$ 个点的树或基环树，树上的每条边 $(u_i, v_i, w_i)$ 代表 $(u_i, v_i)$ 间有 $w_i$ 道路相连。
-你需要统计有多少种从任意点出发的本质不同路径，使得,"> 
+  <meta name="description" content="
+给定一张 $n$ 个点的树或基环树，树上的每条边 $(u_i, v_i, w_i)$ 代表 $(u_i, v_i)$ 间有 $w_i$ 道路相连。
+你需要统计有多少种从任意点出发的本质不同路径，使,"> 
   <meta name="author" content="memset0"> 
   <link rel="alternative" href="atom.xml" title="memset0&#39;s Blog" type="application/atom+xml"> 
   <link rel="icon" href="/img/favicon.png"> 
@@ -73,10 +74,12 @@ document.getElementsByClassName("tips")[0].innerHTML=tiplist[Math.floor(Math.ran
 
       </div>
       <div class="content markdown">
-        <p>给定一张 $n$ 个点的树或基环树，树上的每条边 $(u_i, v_i, w_i)$ 代表 $(u_i, v_i)$ 间有 $w_i$ 道路相连。</p>
+        <blockquote>
+<p>给定一张 $n$ 个点的树或基环树，树上的每条边 $(u_i, v_i, w_i)$ 代表 $(u_i, v_i)$ 间有 $w_i$ 道路相连。</p>
 <p>你需要统计有多少种从任意点出发的本质不同路径，使得经过所有道路恰好一次。</p>
 <p>路径可以认为是一个从某个点出发，由经过道路编号和方向组成的序列。两条路线被认为是相同的当且仅当两序列相同，或更换起始边后两序列相同。</p>
 <p>$n, w_i \leq 1000$。</p>
+</blockquote>
 <a id="more"></a>
 <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>BEST 定理的简单应用。</p>
 <p>我们可以把这个问题转化为两部分：</p>

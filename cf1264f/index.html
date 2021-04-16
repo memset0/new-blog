@@ -10,8 +10,9 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="google" content="notranslate" />
   <meta name="keywords" content="Fechin,"> 
-  <meta name="description" content="对于长度为 $n$ 的递增等差正整数序列 $\{a, a+d, a+2d \ldots a+(n-1)d\}$，我们用三元组 $(a,d,n)$ 表示。
-给定递增等差正整数序列 $(a,d,n)$，,"> 
+  <meta name="description" content="
+对于长度为 $n$ 的递增等差正整数序列 $\{a, a+d, a+2d \ldots a+(n-1)d\}$，我们用三元组 $(a,d,n)$ 表示。
+给定递增等差正整数序列 $(a,d,n)$,"> 
   <meta name="author" content="memset0"> 
   <link rel="alternative" href="atom.xml" title="memset0&#39;s Blog" type="application/atom+xml"> 
   <link rel="icon" href="/img/favicon.png"> 
@@ -73,13 +74,15 @@ document.getElementsByClassName("tips")[0].innerHTML=tiplist[Math.floor(Math.ran
 
       </div>
       <div class="content markdown">
-        <p>对于长度为 $n$ 的递增等差正整数序列 $\{a, a+d, a+2d \ldots a+(n-1)d\}$，我们用三元组 $(a,d,n)$ 表示。</p>
+        <blockquote>
+<p>对于长度为 $n$ 的递增等差正整数序列 $\{a, a+d, a+2d \ldots a+(n-1)d\}$，我们用三元组 $(a,d,n)$ 表示。</p>
 <p>给定递增等差正整数序列 $(a,d,n)$，你需要构造递增等差正整数序列 $(b,e,n)$，满足：</p>
 <ul>
 <li>$b,e &lt; 2^{64}$，且是正整数</li>
 <li>对于所有 $0 \leq i &lt; n$，$a+id$ 的十进制表示是 $F_{b+ie}$ 的十进制表示的后 $18$ 位的子串（如果没有 $18$ 位自动补前导零）。其中 $F_i$ 是指斐波那契数列的第 $i$ 项。</li>
 </ul>
 <p>$1 \leq a+(n-1)d \leq 10^6$。</p>
+</blockquote>
 <a id="more"></a>
 <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>设 $P = 10^6$，则有 $\pi(P) \mid 6P$，尝试得取 $n = 3P$ 是 $\bmod P$ 意义下的周期。</p>
 <p>则有 $F_{n} \equiv 0 \pmod P$，$F_{n+1} \equiv 1 \pmod P$。考虑：</p>

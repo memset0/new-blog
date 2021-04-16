@@ -10,8 +10,9 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="google" content="notranslate" />
   <meta name="keywords" content="Fechin,"> 
-  <meta name="description" content="有 $n$ 个人要从 $(0,a_i)$ 走到 $(i,0)$，你需要规划他们的路径使得两两不交。问方案数。
-$a_i &amp;lt; a_{i+1},\ n \leq 5 \times 10^5,\ a,"> 
+  <meta name="description" content="
+有 $n$ 个人要从 $(0,a_i)$ 走到 $(i,0)$，你需要规划他们的路径使得两两不交。问方案数。
+$a_i &amp;lt; a_{i+1},\ n \leq 5 \times 10^5,\ ,"> 
   <meta name="author" content="memset0"> 
   <link rel="alternative" href="atom.xml" title="memset0&#39;s Blog" type="application/atom+xml"> 
   <link rel="icon" href="/img/favicon.png"> 
@@ -73,8 +74,10 @@ document.getElementsByClassName("tips")[0].innerHTML=tiplist[Math.floor(Math.ran
 
       </div>
       <div class="content markdown">
-        <p>有 $n$ 个人要从 $(0,a_i)$ 走到 $(i,0)$，你需要规划他们的路径使得两两不交。问方案数。</p>
+        <blockquote>
+<p>有 $n$ 个人要从 $(0,a_i)$ 走到 $(i,0)$，你需要规划他们的路径使得两两不交。问方案数。</p>
 <p>$a_i &lt; a_{i+1},\ n \leq 5 \times 10^5,\ a_i \leq 10^6$。</p>
+</blockquote>
 <a id="more"></a>
 <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>需要统计 DAG 上的不交路径问题，我们考虑 LGV 引理。由于这是网格图，所有路径起点和终点的位置关系是确定的，即我们可以直接确定右式的    系数。</p>
 <blockquote>

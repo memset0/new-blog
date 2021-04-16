@@ -10,8 +10,9 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="google" content="notranslate" />
   <meta name="keywords" content="Fechin,"> 
-  <meta name="description" content="你有 $n$ 个队列，每个队列有 $a_i$ 的容量。
-$Q$ 次操作，每次给定队列的区间 $[l,r]$，push 一个 $x$。如果第 $i$ 个队列的元素个数 $&amp;gt;a_i$，会自动 po,"> 
+  <meta name="description" content="
+你有 $n$ 个队列，每个队列有 $a_i$ 的容量。
+$Q$ 次操作，每次给定队列的区间 $[l,r]$，push 一个 $x$。如果第 $i$ 个队列的元素个数 $&amp;gt;a_i$，会自动 p,"> 
   <meta name="author" content="memset0"> 
   <link rel="alternative" href="atom.xml" title="memset0&#39;s Blog" type="application/atom+xml"> 
   <link rel="icon" href="/img/favicon.png"> 
@@ -73,10 +74,12 @@ document.getElementsByClassName("tips")[0].innerHTML=tiplist[Math.floor(Math.ran
 
       </div>
       <div class="content markdown">
-        <p>你有 $n$ 个队列，每个队列有 $a_i$ 的容量。</p>
+        <blockquote>
+<p>你有 $n$ 个队列，每个队列有 $a_i$ 的容量。</p>
 <p>$Q$ 次操作，每次给定队列的区间 $[l,r]$，push 一个 $x$。如果第 $i$ 个队列的元素个数 $&gt;a_i$，会自动 pop。</p>
 <p>要求每次操作后求出所有序列中本质不同的元素个数。</p>
 <p>$n,m,a_i,x \leq 10^5$。</p>
+</blockquote>
 <a id="more"></a>
 <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>建出线段树，那么一个区间操作 $[l,r]$ 能恰好覆盖 $O(\log n)$ 条线段。对于每条线段，考虑统计操作加入的点何时被完全移出该区间。</p>
 <p>由于我们只把完全覆盖该线段的操作丢入改线段处理，那么操作的进入和弹出符合单调队列的性质，我们通过一条线段维护。每次对线段进行修改后，我们不断判断并弹出队列头即可保证复杂度。</p>

@@ -10,10 +10,11 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="google" content="notranslate" />
   <meta name="keywords" content="Fechin,"> 
-  <meta name="description" content="给定 $n$ 次多项式
+  <meta name="description" content="
+给定 $n$ 次多项式
 
 f(x) = \sum_{i=0}^n a_i x^i$Q$ 次询问，第 $i$ 次询问 $f(q_i)$ 对 $998244353$ 取模的值。
-其中 $q_i$ 是一个,"> 
+其中 $q_i$ 是一,"> 
   <meta name="author" content="memset0"> 
   <link rel="alternative" href="atom.xml" title="memset0&#39;s Blog" type="application/atom+xml"> 
   <link rel="icon" href="/img/favicon.png"> 
@@ -75,12 +76,14 @@ document.getElementsByClassName("tips")[0].innerHTML=tiplist[Math.floor(Math.ran
 
       </div>
       <div class="content markdown">
-        <p>给定 $n$ 次多项式</p>
+        <blockquote>
+<p>给定 $n$ 次多项式</p>
 <script type="math/tex; mode=display">
 f(x) = \sum_{i=0}^n a_i x^i</script><p>$Q$ 次询问，第 $i$ 次询问 $f(q_i)$ 对 $998244353$ 取模的值。</p>
 <p>其中 $q_i$ 是一个一阶线性递推，给定 $q_0, x, y$ ，满足</p>
 <script type="math/tex; mode=display">
 q_n = x q_{n-1} + y</script><p>$1 \leq n \leq 2.5 \times 10^5, \ 1 \leq Q \leq 10^6, \ 2 \leq x &lt; 998244353, \ 0 \leq q_0, y &lt; 998244353$ 。</p>
+</blockquote>
 <a id="more"></a>
 <h2 id="Solution-Part1"><a href="#Solution-Part1" class="headerlink" title="Solution Part1"></a>Solution Part1</h2><p>首先这玩意儿肯定没法两个 $\log$ 多点求值。</p>
 <p><img src="https://static.memset0.cn/img/v1/20200801203057.png" alt=""></p>

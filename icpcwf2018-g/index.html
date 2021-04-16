@@ -10,9 +10,10 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="google" content="notranslate" />
   <meta name="keywords" content="Fechin,"> 
-  <meta name="description" content="给定一个 $n$ 个点的简单多边形（不保证是凸的），你需要确定一个半径 $r$，然后在每个端点画一个半径为 $r$ 的圆，要求能覆盖简单多边形的全部面积。
+  <meta name="description" content="
+给定一个 $n$ 个点的简单多边形（不保证是凸的），你需要确定一个半径 $r$，然后在每个端点画一个半径为 $r$ 的圆，要求能覆盖简单多边形的全部面积。
 
-你需要确定这个 $r$ 最小是多少，精度,"> 
+你需要确定这个 $r$ 最小是多少，精,"> 
   <meta name="author" content="memset0"> 
   <link rel="alternative" href="atom.xml" title="memset0&#39;s Blog" type="application/atom+xml"> 
   <link rel="icon" href="/img/favicon.png"> 
@@ -74,10 +75,12 @@ document.getElementsByClassName("tips")[0].innerHTML=tiplist[Math.floor(Math.ran
 
       </div>
       <div class="content markdown">
-        <p>给定一个 $n$ 个点的简单多边形（不保证是凸的），你需要确定一个半径 $r$，然后在每个端点画一个半径为 $r$ 的圆，要求能覆盖简单多边形的全部面积。</p>
+        <blockquote>
+<p>给定一个 $n$ 个点的简单多边形（不保证是凸的），你需要确定一个半径 $r$，然后在每个端点画一个半径为 $r$ 的圆，要求能覆盖简单多边形的全部面积。</p>
 <p><img src="https://static.memset0.cn/img/v2/20201018160521.png" alt="center"></p>
 <p>你需要确定这个 $r$ 最小是多少，精度要求 $10^{-6}$。</p>
 <p>$3 \leq n \leq 2000,\ -10^4 \leq x_i,y_i \leq 10^4$。</p>
+</blockquote>
 <a id="more"></a>
 <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>考虑求出端点的 Voronoi 图，答案一定是 Voronoi 图的端点，或者是 Voronoi 图和多边形的交点贡献的。</p>
 <p>由于这题数据范围较小，我们可以跑暴力半平面交。</p>

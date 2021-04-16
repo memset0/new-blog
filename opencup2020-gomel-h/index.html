@@ -10,8 +10,9 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="google" content="notranslate" />
   <meta name="keywords" content="Fechin,"> 
-  <meta name="description" content="给出 $n$ 个区间 $[l_i, r_i]$ ，你需要放下至多 $n$ 个点，使得每个区间里至少包含一个点。并且区间里点个数的最大值要尽可能小。
-$1 \le n \le 10^5, 10^9 \,"> 
+  <meta name="description" content="
+给出 $n$ 个区间 $[l_i, r_i]$ ，你需要放下至多 $n$ 个点，使得每个区间里至少包含一个点。并且区间里点个数的最大值要尽可能小。
+$1 \le n \le 10^5, 10^9 ,"> 
   <meta name="author" content="memset0"> 
   <link rel="alternative" href="atom.xml" title="memset0&#39;s Blog" type="application/atom+xml"> 
   <link rel="icon" href="/img/favicon.png"> 
@@ -73,8 +74,10 @@ document.getElementsByClassName("tips")[0].innerHTML=tiplist[Math.floor(Math.ran
 
       </div>
       <div class="content markdown">
-        <p>给出 $n$ 个区间 $[l_i, r_i]$ ，你需要放下<strong>至多</strong> $n$ 个点，使得每个区间里至少包含一个点。并且区间里点个数的最大值要尽可能小。</p>
+        <blockquote>
+<p>给出 $n$ 个区间 $[l_i, r_i]$ ，你需要放下<strong>至多</strong> $n$ 个点，使得每个区间里至少包含一个点。并且区间里点个数的最大值要尽可能小。</p>
 <p>$1 \le n \le 10^5, 10^9 \le l_i &lt; r_i \le 10^9$ 。</p>
+</blockquote>
 <a id="more"></a>
 <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>先按照如下方法贪心：维护一个集合表示当前没有放点的区间，每次选出一个右端点最小的区间，在这个右端点放下一个区间。</p>
 <p>若此时的最大值为 $t$ ，则答案要么为 $t$ 要么为 $t-1$ 。</p>

@@ -10,8 +10,9 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="google" content="notranslate" />
   <meta name="keywords" content="Fechin,"> 
-  <meta name="description" content="给定 $p,A,B,C,D$，求 $x,y$ 满足 $C^x \equiv D^y \pmod x$，并最小化 $Ax + By$。
-$6000$ 组询问，$0 \leq A,B,C,D,p \le,"> 
+  <meta name="description" content="
+给定 $p,A,B,C,D$，求 $x,y$ 满足 $C^x \equiv D^y \pmod x$，并最小化 $Ax + By$。
+$6000$ 组询问，$0 \leq A,B,C,D,p \l,"> 
   <meta name="author" content="memset0"> 
   <link rel="alternative" href="atom.xml" title="memset0&#39;s Blog" type="application/atom+xml"> 
   <link rel="icon" href="/img/favicon.png"> 
@@ -73,8 +74,10 @@ document.getElementsByClassName("tips")[0].innerHTML=tiplist[Math.floor(Math.ran
 
       </div>
       <div class="content markdown">
-        <p>给定 $p,A,B,C,D$，求 $x,y$ 满足 $C^x \equiv D^y \pmod x$，并最小化 $Ax + By$。</p>
+        <blockquote>
+<p>给定 $p,A,B,C,D$，求 $x,y$ 满足 $C^x \equiv D^y \pmod x$，并最小化 $Ax + By$。</p>
 <p>$6000$ 组询问，$0 \leq A,B,C,D,p \leq 10^9$，保证 $p$ 是质数。</p>
+</blockquote>
 <a id="more"></a>
 <h2 id="题解（个人做法）"><a href="#题解（个人做法）" class="headerlink" title="题解（个人做法）"></a>题解（个人做法）</h2><p>因为 $p$ 是质数，我们求出其原根 $g$，故</p>
 <script type="math/tex; mode=display">

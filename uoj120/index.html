@@ -10,8 +10,9 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="google" content="notranslate" />
   <meta name="keywords" content="Fechin,"> 
-  <meta name="description" content="给定 $n$ 和 $c_{0\ldots n}$，表示限制形如对于 $0 \leq i \leq n$ 都满足 $1 \leq f(i) \leq c_i$。
-其中 $f(x) = \sum_{i=,"> 
+  <meta name="description" content="
+给定 $n$ 和 $c_{0\ldots n}$，表示限制形如对于 $0 \leq i \leq n$ 都满足 $1 \leq f(i) \leq c_i$。
+其中 $f(x) = \sum_{i,"> 
   <meta name="author" content="memset0"> 
   <link rel="alternative" href="atom.xml" title="memset0&#39;s Blog" type="application/atom+xml"> 
   <link rel="icon" href="/img/favicon.png"> 
@@ -73,9 +74,11 @@ document.getElementsByClassName("tips")[0].innerHTML=tiplist[Math.floor(Math.ran
 
       </div>
       <div class="content markdown">
-        <p>给定 $n$ 和 $c_{0\ldots n}$，表示限制形如对于 $0 \leq i \leq n$ 都满足 $1 \leq f(i) \leq c_i$。</p>
+        <blockquote>
+<p>给定 $n$ 和 $c_{0\ldots n}$，表示限制形如对于 $0 \leq i \leq n$ 都满足 $1 \leq f(i) \leq c_i$。</p>
 <p>其中 $f(x) = \sum_{i=0}^{n} a_i x^i$，其中 $a_{0 \ldots n}$ 都是整数，即 $f(x)$ 是一个不超过 $n$ 次的整系数多项式。</p>
 <p>问满足限制的 $f(x)$ 有多少个，答案对 $998244353$ 取模。</p>
+</blockquote>
 <a id="more"></a>
 <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>考虑把 $1 \leq f(i) \leq c_i$ 的限制转换为 $0 \leq f(i) &lt; c_i$，且将 $f(x)$ 转化为下降幂多项式。注意到这些转化不会影响到答案。</p>
 <p>我们令 $a_i = x_i (n-i)! + y_i$，考虑枚举 $y_i$ 后怎么计算答案。</p>

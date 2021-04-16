@@ -10,7 +10,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="google" content="notranslate" />
   <meta name="keywords" content="Fechin,"> 
-  <meta name="description" content="有 $m$ 个随机数生成器，每一个生成器会在 $[0,a_i] \cap \mathbb N^*$ 中均匀随机得到 $x_i$，再会有 $p_i$ 的概率令 $y_i=1$，否则 $y_i=0$ 。,"> 
+  <meta name="description" content="
+有 $m$ 个随机数生成器，每一个生成器会在 $[0,a_i] \cap \mathbb N^*$ 中均匀随机得到 $x_i$，再会有 $p_i$ 的概率令 $y_i=1$，否则 $y_i=0$ ,"> 
   <meta name="author" content="memset0"> 
   <link rel="alternative" href="atom.xml" title="memset0&#39;s Blog" type="application/atom+xml"> 
   <link rel="icon" href="/img/favicon.png"> 
@@ -72,10 +73,12 @@ document.getElementsByClassName("tips")[0].innerHTML=tiplist[Math.floor(Math.ran
 
       </div>
       <div class="content markdown">
-        <p>有 $m$ 个随机数生成器，每一个生成器会在 $[0,a_i] \cap \mathbb N^*$ 中均匀随机得到 $x_i$，再会有 $p_i$ 的概率令 $y_i=1$，否则 $y_i=0$ 。另外会有一个常数 $d$，保证 $d|(a_i+1)$。</p>
+        <blockquote>
+<p>有 $m$ 个随机数生成器，每一个生成器会在 $[0,a_i] \cap \mathbb N^*$ 中均匀随机得到 $x_i$，再会有 $p_i$ 的概率令 $y_i=1$，否则 $y_i=0$ 。另外会有一个常数 $d$，保证 $d|(a_i+1)$。</p>
 <p>考虑 $s_0=\sum_{i=1}^n x_iy_i,\ s_1 = \sum_{i=1}^n x_i$，对于一种局面，若 $s_1 =n$，则称其是合法的；对于一种合法的局面，若 $s_0 \geq l$，则称其是好的。求得到好的情况的概率。</p>
 <p>对 $998244353$ 取模，且你只需要输出答案乘合法方案数的结果。</p>
 <p>$1 \leq m \leq 100,\ 1 \leq l \leq n \leq \sum a_i,\ 1 \leq n ,a_i \leq 10^9,\ 1 \leq d \leq 10^7$，保证 $n \leq 100d$。</p>
+</blockquote>
 <a id="more"></a>
 <h2 id="题解（个人做法）"><a href="#题解（个人做法）" class="headerlink" title="题解（个人做法）"></a>题解（个人做法）</h2><p>考虑 $x_i = b_id + c_i$，我们通过 DP 统计 $db_i$ 的贡献，这样就把问题转换为了所有 $a_i = d-1$ 的情况，且我们已经知道其中 $k$ 个位置 $y_i=1$，其余 $m-k$ 个位置 $y_i=0$，且可以得到新的限制下的 $l$ 和 $n$。</p>
 <p>考虑生成函数来统计合法但不好的方案数：</p>
