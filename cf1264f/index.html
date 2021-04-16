@@ -1,0 +1,226 @@
+
+<!DOCTYPE html>
+<html lang="zh-cn" class="loading">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>「CF1264F」Beautiful Fibonacci Problem - memset0&#39;s Blog</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate" />
+  <meta name="keywords" content="Fechin,"> 
+  <meta name="description" content="对于长度为 $n$ 的递增等差正整数序列 $\{a, a+d, a+2d \ldots a+(n-1)d\}$，我们用三元组 $(a,d,n)$ 表示。
+给定递增等差正整数序列 $(a,d,n)$，,"> 
+  <meta name="author" content="memset0"> 
+  <link rel="alternative" href="atom.xml" title="memset0&#39;s Blog" type="application/atom+xml"> 
+  <link rel="icon" href="/img/favicon.png"> 
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+  
+<link rel="stylesheet" href="/css/diaspora.css?ver=20210416.css">
+
+  <style>@font-face{font-family:'FZSHJW';src:url('/font/FZSHJW.ttf?size=379508');font-weight:normal;font-style:normal;}</style>
+<meta name="generator" content="Hexo 5.2.0"></head>
+<div class="tips-box" style="display:table;position:fixed;height:100%;width:100%;top:0;left:0;z-index:114514;">
+  <div style="display:table-cell;color:rgb(0,0,0,0.37);width:100%;text-align:center;vertical-align:middle;">
+    <br><br><br>
+    <span class="tips"></span>
+  </div>
+</div>
+<style>
+.tips-box{display:none!important;}
+body.loading .tips-box{display:table!important;}
+</style>
+<script>
+var tiplist=["为什么一个博客会和游戏一样有 tips 功能呢...","真的有人认为这是一个技术向博客吗，不会吧不会吧？","如果觉得博客的内容对你有帮助的话，欢迎给博主留言哦~","为什么网页打开慢啊，还不都是因为博主往里面塞老多字体和图片！","尝试猜猜 covers 的出处？","话说，这主题好看吗？","你觉得会有多少条 tips 啊...","我永远喜欢神户小鸟（大声）！","有人会看这博客里的内容吗（提出疑问）...","不知道加载速度够不够你读完这条 tips...","会不会有人专门为了看 tips 点开 Devtools 啊...","所有 tips 都是乱写的，包括这一条...","所有 tips 都是认真的，不包括这一条...","少女祈祷中...","嘟嘟噜~","咕咕咕？咕咕，咕咕咕！咕咕咕咕咕咕咕...","你知道吗，这个功能在某些游戏里叫 tips...","其实文章左上角还可以听音乐哦...","哎，自己已经是个老年退役选手了呐...","tips 的出现概率...真的是随机的！","如果人生可以重来，你还愿意成为竞赛生吗...","没有 bug 吧... 应该没有吧","♩ 夢ならば覚めないで ♩","♩ Memories are here ~ fragile souvenir ~ ♩","「三年风雨初心未泯 歧路争锋浪子无悔」","「友情是珍珠，回忆是钻石」","「纵然已经踏上不归之路，也绝对不要回头呢」"];
+document.getElementsByClassName("tips")[0].innerHTML=tiplist[Math.floor(Math.random()*tiplist.length)];
+</script>
+<body class="loading">
+  <span id="config-title" style="display:none">memset0&#39;s Blog</span>
+  <div id="loader"></div>
+  <div id="single">
+  <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="/"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">「CF1264F」Beautiful Fibonacci Problem</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+  <div class="section">
+    <div class="article">
+  <div class="main">
+    <div class="cover">
+      <img src="/cover/35.webp" id="post-cover" crossorigin="anonymous" width="1920" height="1080">
+    </div>
+    <div class="container">
+      <h1 class="title">「CF1264F」Beautiful Fibonacci Problem</h1>
+      <div class="stuff">
+        <span>九月 17, 2020</span>
+        
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97/" rel="tag">斐波那契数列</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/%E6%9E%84%E9%80%A0/" rel="tag">构造</a></li></ul>
+
+
+      </div>
+      <div class="content markdown">
+        <p>对于长度为 $n$ 的递增等差正整数序列 $\{a, a+d, a+2d \ldots a+(n-1)d\}$，我们用三元组 $(a,d,n)$ 表示。</p>
+<p>给定递增等差正整数序列 $(a,d,n)$，你需要构造递增等差正整数序列 $(b,e,n)$，满足：</p>
+<ul>
+<li>$b,e &lt; 2^{64}$，且是正整数</li>
+<li>对于所有 $0 \leq i &lt; n$，$a+id$ 的十进制表示是 $F_{b+ie}$ 的十进制表示的后 $18$ 位的子串（如果没有 $18$ 位自动补前导零）。其中 $F_i$ 是指斐波那契数列的第 $i$ 项。</li>
+</ul>
+<p>$1 \leq a+(n-1)d \leq 10^6$。</p>
+<a id="more"></a>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>设 $P = 10^6$，则有 $\pi(P) \mid 6P$，尝试得取 $n = 3P$ 是 $\bmod P$ 意义下的周期。</p>
+<p>则有 $F_{n} \equiv 0 \pmod P$，$F_{n+1} \equiv 1 \pmod P$。考虑：</p>
+<ul>
+<li>$F_{2n+1} \equiv F_n^2 + F_{n+1}^2 \equiv F_{n+1}^2 \pmod {P^2}$</li>
+<li>$F_{3n+1} \equiv F_n F_{2n} + F_{n+1} F_{2n+1} \equiv F_{n+1}^3 \pmod {P^2}$</li>
+<li>$\ldots$</li>
+<li>$F_{kn+1} \equiv F_{n+1}^k \pmod {P^2}$</li>
+</ul>
+<p>此例中，我们有 $F_{n+1} \equiv 2 t P + 1 \pmod P^2$，其中 $t$ 是与 $P$ 互质的整数。</p>
+<p>则 $F_{kn+1} \equiv F_{n+1}^k \equiv 2kt P + 1$，取 $k = 5 k’ t^{-1}$，则枚举 $1 \leq k’ &lt; 10^6$ 即可解决本题。</p>
+<h2 id="代码（Python）"><a href="#代码（Python）" class="headerlink" title="代码（Python）"></a>代码（Python）</h2><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">exgcd</span>(<span class="params">a,b</span>):</span></span><br><span class="line">    <span class="keyword">if</span> b==<span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>,<span class="number">0</span></span><br><span class="line">    x,y=exgcd(b,a%b)</span><br><span class="line">    <span class="keyword">return</span> y,x-y*(a//b)</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">inv</span>(<span class="params">a,p</span>):</span></span><br><span class="line">    x,y=exgcd(a,p)</span><br><span class="line">    <span class="keyword">return</span> (x%p+p)%p</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">xmul</span>(<span class="params">a,b</span>):</span></span><br><span class="line">    c=[[<span class="number">0</span>,<span class="number">0</span>],[<span class="number">0</span>,<span class="number">0</span>]]</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>,<span class="number">2</span>):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>,<span class="number">2</span>):</span><br><span class="line">            <span class="keyword">for</span> k <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>,<span class="number">2</span>):</span><br><span class="line">                c[i][j]=(c[i][j]+a[i][k]*b[k][j])%(<span class="number">10</span>**<span class="number">12</span>)</span><br><span class="line">    <span class="keyword">return</span> c</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">xpow</span>(<span class="params">a,b</span>):</span></span><br><span class="line">    s=[[<span class="number">1</span>,<span class="number">0</span>],[<span class="number">0</span>,<span class="number">1</span>]]</span><br><span class="line">    <span class="keyword">while</span> b:</span><br><span class="line">        <span class="keyword">if</span> b%<span class="number">2</span>:</span><br><span class="line">            s=xmul(s,a)</span><br><span class="line">        a=xmul(a,a)</span><br><span class="line">        b//=<span class="number">2</span></span><br><span class="line">    <span class="keyword">return</span> s</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fib</span>(<span class="params">n</span>):</span></span><br><span class="line">    <span class="keyword">if</span> n&lt;=<span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> n</span><br><span class="line">    <span class="keyword">return</span> xmul([[<span class="number">1</span>,<span class="number">0</span>],[<span class="number">0</span>,<span class="number">0</span>]],xpow([[<span class="number">1</span>,<span class="number">1</span>],[<span class="number">1</span>,<span class="number">0</span>]],n<span class="number">-1</span>))[<span class="number">0</span>][<span class="number">0</span>]</span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    t=fib(<span class="number">3</span>*(<span class="number">10</span>**<span class="number">6</span>)+<span class="number">1</span>)//(<span class="number">10</span>**<span class="number">6</span>)</span><br><span class="line">    u=<span class="number">15</span>*inv(t//<span class="number">2</span>,<span class="number">10</span>**<span class="number">6</span>)</span><br><span class="line">    n,a,d=<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split())</span><br><span class="line">    b=a*u*(<span class="number">10</span>**<span class="number">6</span>)+<span class="number">1</span></span><br><span class="line">    e=d*u*(<span class="number">10</span>**<span class="number">6</span>)</span><br><span class="line">    print(b,e)</span><br></pre></td></tr></table></figure>
+        <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+        <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+          <source type="audio/mpeg" src="">
+        </audio>
+        
+          <ul id="audio-list" style="display:none">
+            
+              
+                <li title='0' data-url='/music/観月あんみ - Memories are here (クロハネエンディング).mp3'></li>
+              
+            
+              
+                <li title='1' data-url='/music/やなぎなぎ - 恋文.mp3'></li>
+              
+            
+              
+                <li title='2' data-url='/music/DEPAPEPE - きっとまたいつか.mp3'></li>
+              
+            
+              
+                <li title='3' data-url='/music/Falcom Sound Team jdk - 星の在り処　 Instrumental Ver.mp3'></li>
+              
+            
+          </ul>
+        
+      </div>
+      
+    <div id='gitalk-container' class="comment link"
+		data-enable='true'
+        data-ae='true'
+        data-ci='9a58625d1ff4c0e473ac'
+        data-cs='6a26bac24632719df98b6c266dbb57931253ebf1'
+        data-r='new-blog'
+        data-o='memset0'
+        data-a='memset0'
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+  </div>
+  
+</div>
+  </div>
+</div>
+</body>
+<script>
+  window.ajaxLoadList = [];
+</script>
+
+	
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/jquery.md5.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+
+
+<script src="/js/diaspora.js?ver=20210417.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="pswp__bg"></div>
+  <div class="pswp__scroll-wrap">
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    <div class="pswp__ui pswp__ui--hidden">
+      <div class="pswp__top-bar">
+        <div class="pswp__counter"></div>
+        <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+        <button class="pswp__button pswp__button--share" title="Share"></button>
+        <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+        <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+        <div class="pswp__preloader">
+          <div class="pswp__preloader__icn">
+            <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+        <div class="pswp__share-tooltip"></div> 
+      </div>
+      <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+      </button>
+      <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+      </button>
+      <div class="pswp__caption">
+        <div class="pswp__caption__center"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
+<script>
+function renderLatex() {
+  renderMathInElement(document.body, {
+    delimiters: [
+      {left: "$", right: "$", display: false},
+      {left: "$$", right: "$$", display: true},
+    ]
+  });
+  $("script[type='math/tex; mode=display']").replaceWith(function () {
+    var rendered = katex.renderToString(this.innerText, {
+      displayMode: true
+    });
+    return '<div class="equation">' + rendered + '</div>';
+  });
+}
+ajaxLoadList.push(renderLatex);
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous" onload="renderLatex()"></script>
+
+
+
+</html>

@@ -1,0 +1,279 @@
+
+<!DOCTYPE html>
+<html lang="zh-cn" class="loading">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>「校内模拟20200429C」游戏达人 - memset0&#39;s Blog</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate" />
+  <meta name="keywords" content="Fechin,"> 
+  <meta name="description" content="给定 $p,A,B,C,D$，求 $x,y$ 满足 $C^x \equiv D^y \pmod x$，并最小化 $Ax + By$。
+$6000$ 组询问，$0 \leq A,B,C,D,p \le,"> 
+  <meta name="author" content="memset0"> 
+  <link rel="alternative" href="atom.xml" title="memset0&#39;s Blog" type="application/atom+xml"> 
+  <link rel="icon" href="/img/favicon.png"> 
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+  
+<link rel="stylesheet" href="/css/diaspora.css?ver=20210416.css">
+
+  <style>@font-face{font-family:'FZSHJW';src:url('/font/FZSHJW.ttf?size=379508');font-weight:normal;font-style:normal;}</style>
+<meta name="generator" content="Hexo 5.2.0"></head>
+<div class="tips-box" style="display:table;position:fixed;height:100%;width:100%;top:0;left:0;z-index:114514;">
+  <div style="display:table-cell;color:rgb(0,0,0,0.37);width:100%;text-align:center;vertical-align:middle;">
+    <br><br><br>
+    <span class="tips"></span>
+  </div>
+</div>
+<style>
+.tips-box{display:none!important;}
+body.loading .tips-box{display:table!important;}
+</style>
+<script>
+var tiplist=["为什么一个博客会和游戏一样有 tips 功能呢...","真的有人认为这是一个技术向博客吗，不会吧不会吧？","如果觉得博客的内容对你有帮助的话，欢迎给博主留言哦~","为什么网页打开慢啊，还不都是因为博主往里面塞老多字体和图片！","尝试猜猜 covers 的出处？","话说，这主题好看吗？","你觉得会有多少条 tips 啊...","我永远喜欢神户小鸟（大声）！","有人会看这博客里的内容吗（提出疑问）...","不知道加载速度够不够你读完这条 tips...","会不会有人专门为了看 tips 点开 Devtools 啊...","所有 tips 都是乱写的，包括这一条...","所有 tips 都是认真的，不包括这一条...","少女祈祷中...","嘟嘟噜~","咕咕咕？咕咕，咕咕咕！咕咕咕咕咕咕咕...","你知道吗，这个功能在某些游戏里叫 tips...","其实文章左上角还可以听音乐哦...","哎，自己已经是个老年退役选手了呐...","tips 的出现概率...真的是随机的！","如果人生可以重来，你还愿意成为竞赛生吗...","没有 bug 吧... 应该没有吧","♩ 夢ならば覚めないで ♩","♩ Memories are here ~ fragile souvenir ~ ♩","「三年风雨初心未泯 歧路争锋浪子无悔」","「友情是珍珠，回忆是钻石」","「纵然已经踏上不归之路，也绝对不要回头呢」"];
+document.getElementsByClassName("tips")[0].innerHTML=tiplist[Math.floor(Math.random()*tiplist.length)];
+</script>
+<body class="loading">
+  <span id="config-title" style="display:none">memset0&#39;s Blog</span>
+  <div id="loader"></div>
+  <div id="single">
+  <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="/"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">「校内模拟20200429C」游戏达人</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+  <div class="section">
+    <div class="article">
+  <div class="main">
+    <div class="cover">
+      <img src="/cover/26.webp" id="post-cover" crossorigin="anonymous" width="1920" height="1080">
+    </div>
+    <div class="container">
+      <h1 class="title">「校内模拟20200429C」游戏达人</h1>
+      <div class="stuff">
+        <span>四月 29, 2020</span>
+        
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/%E5%90%8C%E4%BD%99%E7%B3%BB/" rel="tag">同余系</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/%E6%AC%A7%E5%87%A0%E9%87%8C%E5%BE%97/" rel="tag">欧几里得</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/%E7%B1%BB%E6%AC%A7%E5%87%A0%E9%87%8C%E5%BE%97/" rel="tag">类欧几里得</a></li></ul>
+
+
+      </div>
+      <div class="content markdown">
+        <p>给定 $p,A,B,C,D$，求 $x,y$ 满足 $C^x \equiv D^y \pmod x$，并最小化 $Ax + By$。</p>
+<p>$6000$ 组询问，$0 \leq A,B,C,D,p \leq 10^9$，保证 $p$ 是质数。</p>
+<a id="more"></a>
+<h2 id="题解（个人做法）"><a href="#题解（个人做法）" class="headerlink" title="题解（个人做法）"></a>题解（个人做法）</h2><p>因为 $p$ 是质数，我们求出其原根 $g$，故</p>
+<script type="math/tex; mode=display">
+C^x \equiv D^y (\bmod\ p) \Leftrightarrow{} g^{cx} \equiv g^{dy} (\bmod\ p) \Leftrightarrow{} cx \equiv dy (\bmod\ \varphi(p))</script><p>假设</p>
+<script type="math/tex; mode=display">
+f(x,p,A,B) = \min \{ A(ix \bmod p) + Bi \mid i \}</script><p>我们转化为了一个稍微好计算一点的问题：$f(d \cdot c^{-1}, p-1, A, B)$。</p>
+<p>当然，可能存在 $c$ 模 $\varphi(p) = p-1$ 没有逆元的情况，我们需要做一点处理：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># c x \equiv d y \pmod p</span></span><br><span class="line">g = gcd(c, d, p)</span><br><span class="line">c /= g; d /= g; p /= g</span><br><span class="line">cg = gcd(c, p); c /= cg; b *= cg</span><br><span class="line">dg = gcd(d, p); d /= dg; a *= dg</span><br><span class="line">p /= cg * dg</span><br></pre></td></tr></table></figure>
+<p>考虑如何计算 $f$，采用类似欧几里得的思想。</p>
+<script type="math/tex; mode=display">
+f(x,p,A,B) = \begin{cases}
+    \small\text{直接 }O(1)\small\text{ 计算} & (x = 0) \\
+    f(x / \gcd(x,p), p / \gcd(x,p), A \gcd(x,p), B) & (x \not\perp p) \\
+    f(x \bmod p, p, A, B) & (x \geq p) \\
+    f(q, x, \frac {Ap} x, \frac {Ax + B} x) & \text{otherwise} \\
+\end{cases}</script><p>假设 $i = \tfrac {kp + b} x$，其中 $x \mid kp + b$。由于 $x \perp p$，故确定 $b$ 后就能唯一确定 $k$。</p>
+<p>实际上 $k$ 满足：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+kp + b &\equiv 0 & \pmod x \\
+k &\equiv b \cdot (-p^{-1}) & \pmod x \\
+\end{aligned}</script><p>令 $q \equiv -p^{-1} \pmod x$，那么原式可以化为：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+f(x,p,A,B)
+&= \min\{ A(ix \bmod p) + Bi \mid i \} \\
+&= \min\{ A((kp + b) \bmod p) + B \cdot \tfrac {kp + b} x \mid i \} \\
+&= \min\{ Ab + B \cdot \tfrac {(pq \bmod p) \cdot p + b} {x} \mid i \} \\
+&= f(q, x, \tfrac {Bp} {x}, \tfrac {Ax + B} {x}) \\
+\end{aligned}</script><p>感性理解了一下逆元的分布应该是比较随机的，感觉复杂度应该是 $O(\log n)$。</p>
+<h2 id="题解（标答做法）"><a href="#题解（标答做法）" class="headerlink" title="题解（标答做法）"></a>题解（标答做法）</h2><p>类欧几里得推导，设：</p>
+<script type="math/tex; mode=display">
+g(a,b,c,d,e,f) = \min_i \left( a + b i + c \left\lfloor \frac {di + e} {f} \right\rfloor \right)</script><p>若 $d \geq f$，假设 $d = gf + h$，则</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+g(a,b,c,d,e,f)
+&= \min_i \left( a + bi + c \left\lfloor \frac {(gf + h) i + e} {f} \right\rfloor \right) \\
+&= \min_i \left( a + (b+cg) i + c \left\lfloor \frac {hi + e} {f} \right\rfloor \right) \\
+&= g(a, b + cg, c, h, e, f) \\
+&= g(a, b + c \lfloor d/f \rfloor, c, d \bmod f, e, f) \\
+\end{aligned}</script><p>若 $d &lt; f$，则</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+g(a,b,c,d,e,f)
+&= \min_j \min_i \left( a + bi + c j \left[ \left\lfloor \frac {di + e} {f} \right\rfloor  \geq j\right] \right) \\
+\end{aligned}</script><p>其中</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\left[ \left\lfloor \frac {di + e} {f} \right\rfloor \geq j\right]
+&= \left[ \frac {di + e} {f} \geq j \right] \\
+&= \left[ i \geq \frac {jf - e} {d} \right] \\
+&= \left[ i > \frac {jf - e - 1} {d} \right] \\
+&= \left[ i > \left\lfloor \frac {jf - e - 1} {d} \right\rfloor \right] \\
+\end{aligned}</script><p>因为我们要求最小化，不妨直接令 $\displaystyle i = \left\lfloor \frac {jf - e - 1} {d} \right\rfloor +1$</p>
+<p>故</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+g(a,b,c,d,e,f)
+&= \min_j \left( a + b \left( \left\lfloor \frac {jf - e - 1} {d} \right\rfloor +1 \right) + cj \right) \\
+&= g(a+b,c,b,f,-e-1,d) \\
+\end{aligned}</script><p>其实 $c$ 是不需要存的，但是式子都推好了就懒得改了。</p>
+<p>另外还要存一下枚举的上下界，一层递归是 $7$ 个参数。</p>
+<h2 id="细节"><a href="#细节" class="headerlink" title="细节"></a>细节</h2><h4 id="0x01"><a href="#0x01" class="headerlink" title="0x01"></a>0x01</h4><p>特判 $p = 2$ 的情况。</p>
+<h4 id="0x02"><a href="#0x02" class="headerlink" title="0x02"></a>0x02</h4><script type="math/tex; mode=display">
+ka \equiv kb \pmod p</script><p>两边能同时除以 $k$ 当且仅当</p>
+<ol>
+<li>$k \perp p$，转化为 $a \equiv b \pmod p$</li>
+<li>$k \mid p$，转化为 $a \equiv b \pmod {(p/k)}$</li>
+</ol>
+
+        <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+        <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+          <source type="audio/mpeg" src="">
+        </audio>
+        
+          <ul id="audio-list" style="display:none">
+            
+              
+                <li title='0' data-url='/music/観月あんみ - Memories are here (クロハネエンディング).mp3'></li>
+              
+            
+              
+                <li title='1' data-url='/music/やなぎなぎ - 恋文.mp3'></li>
+              
+            
+              
+                <li title='2' data-url='/music/DEPAPEPE - きっとまたいつか.mp3'></li>
+              
+            
+              
+                <li title='3' data-url='/music/Falcom Sound Team jdk - 星の在り処　 Instrumental Ver.mp3'></li>
+              
+            
+          </ul>
+        
+      </div>
+      
+    <div id='gitalk-container' class="comment link"
+		data-enable='true'
+        data-ae='true'
+        data-ci='9a58625d1ff4c0e473ac'
+        data-cs='6a26bac24632719df98b6c266dbb57931253ebf1'
+        data-r='new-blog'
+        data-o='memset0'
+        data-a='memset0'
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+  </div>
+  
+</div>
+  </div>
+</div>
+</body>
+<script>
+  window.ajaxLoadList = [];
+</script>
+
+	
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/jquery.md5.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+
+
+<script src="/js/diaspora.js?ver=20210417.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="pswp__bg"></div>
+  <div class="pswp__scroll-wrap">
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    <div class="pswp__ui pswp__ui--hidden">
+      <div class="pswp__top-bar">
+        <div class="pswp__counter"></div>
+        <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+        <button class="pswp__button pswp__button--share" title="Share"></button>
+        <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+        <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+        <div class="pswp__preloader">
+          <div class="pswp__preloader__icn">
+            <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+        <div class="pswp__share-tooltip"></div> 
+      </div>
+      <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+      </button>
+      <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+      </button>
+      <div class="pswp__caption">
+        <div class="pswp__caption__center"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
+<script>
+function renderLatex() {
+  renderMathInElement(document.body, {
+    delimiters: [
+      {left: "$", right: "$", display: false},
+      {left: "$$", right: "$$", display: true},
+    ]
+  });
+  $("script[type='math/tex; mode=display']").replaceWith(function () {
+    var rendered = katex.renderToString(this.innerText, {
+      displayMode: true
+    });
+    return '<div class="equation">' + rendered + '</div>';
+  });
+}
+ajaxLoadList.push(renderLatex);
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous" onload="renderLatex()"></script>
+
+
+
+</html>

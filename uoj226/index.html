@@ -1,0 +1,225 @@
+
+<!DOCTYPE html>
+<html lang="zh-cn" class="loading">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>「UR #15」奥林匹克环城马拉松 - memset0&#39;s Blog</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate" />
+  <meta name="keywords" content="Fechin,"> 
+  <meta name="description" content="给定一张 $n$ 个点的树或基环树，树上的每条边 $(u_i, v_i, w_i)$ 代表 $(u_i, v_i)$ 间有 $w_i$ 道路相连。
+你需要统计有多少种从任意点出发的本质不同路径，使得,"> 
+  <meta name="author" content="memset0"> 
+  <link rel="alternative" href="atom.xml" title="memset0&#39;s Blog" type="application/atom+xml"> 
+  <link rel="icon" href="/img/favicon.png"> 
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+  
+<link rel="stylesheet" href="/css/diaspora.css?ver=20210416.css">
+
+  <style>@font-face{font-family:'FZSHJW';src:url('/font/FZSHJW.ttf?size=379508');font-weight:normal;font-style:normal;}</style>
+<meta name="generator" content="Hexo 5.2.0"></head>
+<div class="tips-box" style="display:table;position:fixed;height:100%;width:100%;top:0;left:0;z-index:114514;">
+  <div style="display:table-cell;color:rgb(0,0,0,0.37);width:100%;text-align:center;vertical-align:middle;">
+    <br><br><br>
+    <span class="tips"></span>
+  </div>
+</div>
+<style>
+.tips-box{display:none!important;}
+body.loading .tips-box{display:table!important;}
+</style>
+<script>
+var tiplist=["为什么一个博客会和游戏一样有 tips 功能呢...","真的有人认为这是一个技术向博客吗，不会吧不会吧？","如果觉得博客的内容对你有帮助的话，欢迎给博主留言哦~","为什么网页打开慢啊，还不都是因为博主往里面塞老多字体和图片！","尝试猜猜 covers 的出处？","话说，这主题好看吗？","你觉得会有多少条 tips 啊...","我永远喜欢神户小鸟（大声）！","有人会看这博客里的内容吗（提出疑问）...","不知道加载速度够不够你读完这条 tips...","会不会有人专门为了看 tips 点开 Devtools 啊...","所有 tips 都是乱写的，包括这一条...","所有 tips 都是认真的，不包括这一条...","少女祈祷中...","嘟嘟噜~","咕咕咕？咕咕，咕咕咕！咕咕咕咕咕咕咕...","你知道吗，这个功能在某些游戏里叫 tips...","其实文章左上角还可以听音乐哦...","哎，自己已经是个老年退役选手了呐...","tips 的出现概率...真的是随机的！","如果人生可以重来，你还愿意成为竞赛生吗...","没有 bug 吧... 应该没有吧","♩ 夢ならば覚めないで ♩","♩ Memories are here ~ fragile souvenir ~ ♩","「三年风雨初心未泯 歧路争锋浪子无悔」","「友情是珍珠，回忆是钻石」","「纵然已经踏上不归之路，也绝对不要回头呢」"];
+document.getElementsByClassName("tips")[0].innerHTML=tiplist[Math.floor(Math.random()*tiplist.length)];
+</script>
+<body class="loading">
+  <span id="config-title" style="display:none">memset0&#39;s Blog</span>
+  <div id="loader"></div>
+  <div id="single">
+  <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="/"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">「UR #15」奥林匹克环城马拉松</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+  <div class="section">
+    <div class="article">
+  <div class="main">
+    <div class="cover">
+      <img src="/cover/28.webp" id="post-cover" crossorigin="anonymous" width="1920" height="1080">
+    </div>
+    <div class="container">
+      <h1 class="title">「UR #15」奥林匹克环城马拉松</h1>
+      <div class="stuff">
+        <span>八月 31, 2020</span>
+        
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/BEST%E5%AE%9A%E7%90%86/" rel="tag">BEST定理</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/%E5%9F%BA%E7%8E%AF%E6%A0%91/" rel="tag">基环树</a></li></ul>
+
+
+      </div>
+      <div class="content markdown">
+        <p>给定一张 $n$ 个点的树或基环树，树上的每条边 $(u_i, v_i, w_i)$ 代表 $(u_i, v_i)$ 间有 $w_i$ 道路相连。</p>
+<p>你需要统计有多少种从任意点出发的本质不同路径，使得经过所有道路恰好一次。</p>
+<p>路径可以认为是一个从某个点出发，由经过道路编号和方向组成的序列。两条路线被认为是相同的当且仅当两序列相同，或更换起始边后两序列相同。</p>
+<p>$n, w_i \leq 1000$。</p>
+<a id="more"></a>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>BEST 定理的简单应用。</p>
+<p>我们可以把这个问题转化为两部分：</p>
+<ol>
+<li>为无向边定向</li>
+<li>套用 BEST 定理计算（生成树形图计数）</li>
+</ol>
+<p>前一部分我们可以从树的情况推广。如果 $m=n-1$，那么显然两点之间的无向边，转化成有向边刚好一半一半。对于基环树的情况，我们枚举走整个环的次数，那么也可以计算出有向边。</p>
+<p>后一部分，我们考虑基环树可以枚举一条断边，然后就是把所有指向根的重边条数一次乘起来（选任意一条作为外向树的一部分）。实现中需要处理前缀和保证复杂度。</p>
+<h2 id="坑"><a href="#坑" class="headerlink" title="坑"></a>坑</h2><ol>
+<li>对于我的实现，需要保证环一路过去的端点依次按照经过顺序排序。也就是存无向边的数组可能需要把 $(u,v,w)$ swap 成 $(v,u,w)$。不过我倒是写的时候就注意到了。</li>
+<li>这题预处理阶乘的范围有坑啊有坑（x</li>
+</ol>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">1e3</span>+<span class="number">10</span>,mod=<span class="number">998244353</span>,L=<span class="number">1e4</span>+<span class="number">10</span>;</span><br><span class="line"><span class="keyword">int</span> n,m,ans,tot,top,min=INT_MAX,cir[N],w0[N],w1[N],deg[N],u[N],v[N],w[N],pre[N],suf[N],stk[N],hed[N],to[N&lt;&lt;<span class="number">1</span>],val[N&lt;&lt;<span class="number">1</span>],nxt[N&lt;&lt;<span class="number">1</span>],fac[N*L],ifac[L];</span><br><span class="line"><span class="keyword">bool</span> vis[N],onc[N],inc[N];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">initgraph</span><span class="params">()</span></span>&#123;</span><br><span class="line">  tot=<span class="number">0</span>;</span><br><span class="line">  <span class="built_in">memset</span>(hed,<span class="number">-1</span>,<span class="keyword">sizeof</span>(hed));</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">initfac</span><span class="params">()</span></span>&#123;</span><br><span class="line">  fac[<span class="number">0</span>]=ifac[<span class="number">0</span>]=ifac[<span class="number">1</span>]=<span class="number">1</span>;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;N*L;i++)fac[i]=(<span class="keyword">long</span> <span class="keyword">long</span>)fac[i<span class="number">-1</span>]*i%mod;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;L;i++)ifac[i]=(<span class="keyword">long</span> <span class="keyword">long</span>)(mod-mod/i)*ifac[mod%i]%mod;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;L;i++)ifac[i]=(<span class="keyword">long</span> <span class="keyword">long</span>)ifac[i<span class="number">-1</span>]*ifac[i]%mod;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">C</span><span class="params">(<span class="keyword">int</span> n,<span class="keyword">int</span> m)</span></span>&#123;<span class="keyword">return</span> n&lt;m?<span class="number">0</span>:(<span class="keyword">long</span> <span class="keyword">long</span>)fac[n]*ifac[m]%mod*ifac[n-m]%mod;&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">link</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v,<span class="keyword">int</span> w)</span></span>&#123;nxt[tot]=hed[u],to[tot]=v,val[tot]=w,hed[u]=tot++;&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">calc_fac</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> res=<span class="number">1</span>;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=x;i++)res=(<span class="keyword">long</span> <span class="keyword">long</span>)res*i%mod;</span><br><span class="line">  <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve_tree</span><span class="params">()</span></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> ans=<span class="number">1</span>;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> u,v,w,i=<span class="number">1</span>;i&lt;=m;i++)&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d%d%d&quot;</span>,&amp;u,&amp;v,&amp;w);</span><br><span class="line">    <span class="keyword">if</span>(w&amp;<span class="number">1</span>)&#123;<span class="built_in">puts</span>(<span class="string">&quot;0&quot;</span>); <span class="keyword">return</span>;&#125;</span><br><span class="line">    deg[u]+=w&gt;&gt;<span class="number">1</span>,deg[v]+=w&gt;&gt;<span class="number">1</span>;</span><br><span class="line">    ans=(<span class="keyword">long</span> <span class="keyword">long</span>)ans*C(w,w&gt;&gt;<span class="number">1</span>)%mod*(w&gt;&gt;<span class="number">1</span>)%mod;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)ans=(<span class="keyword">long</span> <span class="keyword">long</span>)ans*fac[deg[i]<span class="number">-1</span>]%mod;</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,ans);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> fa)</span></span>&#123;</span><br><span class="line">  stk[++top]=u,vis[u]=<span class="number">1</span>;</span><br><span class="line">  <span class="comment">// printf(&quot;dfs %d %d\n&quot;,u,fa);</span></span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i=hed[u];~i;i=nxt[i])</span><br><span class="line">    <span class="keyword">if</span>(to[i]!=fa)&#123;</span><br><span class="line">      <span class="comment">// printf(&quot;%d -&gt; %d\n&quot;,u,to[i]);</span></span><br><span class="line">      <span class="keyword">if</span>(vis[to[i]])&#123;</span><br><span class="line">        <span class="keyword">if</span>(*cir)<span class="keyword">continue</span>;</span><br><span class="line">        cir[++*cir]=val[i];</span><br><span class="line">        <span class="comment">// printf(&quot;%d : %d\n&quot;,i,val[i]);</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> x=u;x!=to[i];x=to[pre[x]^<span class="number">1</span>])&#123;</span><br><span class="line">          cir[++*cir]=val[pre[x]];</span><br><span class="line">          <span class="comment">// printf(&quot;(%d) %d : %d\n&quot;,x,pre[x],val[pre[x]]);</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        pre[to[i]]=i;</span><br><span class="line">        dfs(to[i],u);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  --top;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ordered_circle</span><span class="params">()</span></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> same=<span class="number">-1</span>;</span><br><span class="line">  <span class="keyword">if</span>(u[cir[<span class="number">1</span>]]==u[cir[<span class="number">2</span>]])same=u[cir[<span class="number">1</span>]];</span><br><span class="line">  <span class="keyword">if</span>(u[cir[<span class="number">1</span>]]==v[cir[<span class="number">2</span>]])same=u[cir[<span class="number">1</span>]];</span><br><span class="line">  <span class="keyword">if</span>(v[cir[<span class="number">1</span>]]==u[cir[<span class="number">2</span>]])same=v[cir[<span class="number">1</span>]];</span><br><span class="line">  <span class="keyword">if</span>(v[cir[<span class="number">1</span>]]==v[cir[<span class="number">2</span>]])same=v[cir[<span class="number">1</span>]];</span><br><span class="line">  assert(~same);</span><br><span class="line">  <span class="keyword">int</span> s=u[cir[<span class="number">1</span>]]+v[cir[<span class="number">1</span>]]-same;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=*cir;i++)&#123;</span><br><span class="line">    <span class="comment">// printf(&quot;i=%d cir=%d s=%d : u=%d v=%d\n&quot;,i,cir[i],s,u[cir[i]],v[cir[i]]);</span></span><br><span class="line">    <span class="keyword">if</span>(u[cir[i]]!=s)<span class="built_in">std</span>::swap(u[cir[i]],v[cir[i]]);</span><br><span class="line">    s=v[cir[i]];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">calc</span><span class="params">(<span class="keyword">int</span> cur)</span></span>&#123;</span><br><span class="line">  <span class="built_in">memset</span>(deg,<span class="number">0</span>,<span class="keyword">sizeof</span>(deg));</span><br><span class="line">  <span class="keyword">int</span> ans=<span class="number">1</span>,sum=<span class="number">0</span>,ano=<span class="number">1</span>;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)&#123;</span><br><span class="line">    <span class="keyword">if</span>(inc[i])&#123;</span><br><span class="line">      <span class="keyword">if</span>((w[i]+cur)&amp;<span class="number">1</span>)<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">      w0[i]=(w[i]+cur)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">      w1[i]=(w[i]-cur)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">      w0[i]=w1[i]=w[i]&gt;&gt;<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    deg[u[i]]+=w1[i];</span><br><span class="line">    deg[v[i]]+=w0[i];</span><br><span class="line">    ans=(<span class="keyword">long</span> <span class="keyword">long</span>)ans*C(w[i],w0[i])%mod;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)ans=(<span class="keyword">long</span> <span class="keyword">long</span>)ans*fac[deg[i]<span class="number">-1</span>]%mod;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)<span class="keyword">if</span>(!inc[i])ano=(<span class="keyword">long</span> <span class="keyword">long</span>)ano*w0[i]%mod;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">1</span>;k&lt;=*cir;k++)pre[k]=(<span class="keyword">long</span> <span class="keyword">long</span>)pre[k<span class="number">-1</span>]*w0[cir[k]]%mod;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> k=*cir;k&gt;=<span class="number">1</span>;k--)suf[k]=(<span class="keyword">long</span> <span class="keyword">long</span>)suf[k+<span class="number">1</span>]*w1[cir[k]]%mod;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">1</span>;k&lt;=*cir;k++)&#123;</span><br><span class="line">    sum=(sum+(<span class="keyword">long</span> <span class="keyword">long</span>)pre[k<span class="number">-1</span>]*suf[k+<span class="number">1</span>]%mod*ano)%mod;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> (<span class="keyword">long</span> <span class="keyword">long</span>)sum*ans%mod;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> Ciel</span></span><br><span class="line">  freopen(<span class="string">&quot;1.in&quot;</span>,<span class="string">&quot;r&quot;</span>,<span class="built_in">stdin</span>);</span><br><span class="line">  <span class="comment">// freopen(&quot;comp/data.in&quot;,&quot;r&quot;,stdin);</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">  initfac();</span><br><span class="line">  initgraph();</span><br><span class="line">  <span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>,&amp;n,&amp;m);</span><br><span class="line">  <span class="keyword">if</span>(n==m+<span class="number">1</span>)<span class="keyword">return</span> solve_tree(),<span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d%d%d&quot;</span>,&amp;u[i],&amp;v[i],&amp;w[i]);</span><br><span class="line">    link(u[i],v[i],i);</span><br><span class="line">    link(v[i],u[i],i);</span><br><span class="line">    deg[u[i]]+=w[i];</span><br><span class="line">    deg[v[i]]+=w[i];</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)<span class="keyword">if</span>(deg[i]&amp;<span class="number">1</span>)<span class="keyword">return</span> <span class="built_in">puts</span>(<span class="string">&quot;0&quot;</span>),<span class="number">0</span>;</span><br><span class="line">  dfs(<span class="number">1</span>,<span class="number">0</span>);</span><br><span class="line">  ordered_circle();</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=*cir;i++)&#123;</span><br><span class="line">    inc[cir[i]]=onc[u[cir[i]]]=onc[v[cir[i]]]=<span class="literal">true</span>;</span><br><span class="line">    min=<span class="built_in">std</span>::min(min,w[cir[i]]);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// for(int i=1;i&lt;=m;i++)printf(&quot;%d %d %d %d\n&quot;,u[i],v[i],w[i],inc[i]);</span></span><br><span class="line">  pre[<span class="number">0</span>]=suf[<span class="number">0</span>]=pre[*cir+<span class="number">1</span>]=suf[*cir+<span class="number">1</span>]=<span class="number">1</span>;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> d=-min;d&lt;=min;d++)ans=(ans+calc(d))%mod;</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,ans);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+        <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+          <source type="audio/mpeg" src="">
+        </audio>
+        
+          <ul id="audio-list" style="display:none">
+            
+              
+                <li title='0' data-url='/music/観月あんみ - Memories are here (クロハネエンディング).mp3'></li>
+              
+            
+              
+                <li title='1' data-url='/music/やなぎなぎ - 恋文.mp3'></li>
+              
+            
+              
+                <li title='2' data-url='/music/DEPAPEPE - きっとまたいつか.mp3'></li>
+              
+            
+              
+                <li title='3' data-url='/music/Falcom Sound Team jdk - 星の在り処　 Instrumental Ver.mp3'></li>
+              
+            
+          </ul>
+        
+      </div>
+      
+    <div id='gitalk-container' class="comment link"
+		data-enable='true'
+        data-ae='true'
+        data-ci='9a58625d1ff4c0e473ac'
+        data-cs='6a26bac24632719df98b6c266dbb57931253ebf1'
+        data-r='new-blog'
+        data-o='memset0'
+        data-a='memset0'
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+  </div>
+  
+</div>
+  </div>
+</div>
+</body>
+<script>
+  window.ajaxLoadList = [];
+</script>
+
+	
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/jquery.md5.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+
+
+<script src="/js/diaspora.js?ver=20210417.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="pswp__bg"></div>
+  <div class="pswp__scroll-wrap">
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    <div class="pswp__ui pswp__ui--hidden">
+      <div class="pswp__top-bar">
+        <div class="pswp__counter"></div>
+        <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+        <button class="pswp__button pswp__button--share" title="Share"></button>
+        <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+        <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+        <div class="pswp__preloader">
+          <div class="pswp__preloader__icn">
+            <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+        <div class="pswp__share-tooltip"></div> 
+      </div>
+      <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+      </button>
+      <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+      </button>
+      <div class="pswp__caption">
+        <div class="pswp__caption__center"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
+<script>
+function renderLatex() {
+  renderMathInElement(document.body, {
+    delimiters: [
+      {left: "$", right: "$", display: false},
+      {left: "$$", right: "$$", display: true},
+    ]
+  });
+  $("script[type='math/tex; mode=display']").replaceWith(function () {
+    var rendered = katex.renderToString(this.innerText, {
+      displayMode: true
+    });
+    return '<div class="equation">' + rendered + '</div>';
+  });
+}
+ajaxLoadList.push(renderLatex);
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous" onload="renderLatex()"></script>
+
+
+
+</html>

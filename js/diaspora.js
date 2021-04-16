@@ -411,12 +411,10 @@ $(function () {
   if (document.getElementById('local-search-input') !== null) {
     searchFunc(path, 'local-search-input', 'local-search-result');
   }
-
-
   var typed = null;
   $('body').on('click', function (e) {
-    var tag = $(e.target).attr('class') || '',
-      rel = $(e.target).attr('rel') || '';
+    var tag = $(e.target).attr('class') || '';
+    var rel = $(e.target).attr('rel') || '';
     // .content > ... > img
     if (e.target.nodeName == "IMG" && $(e.target).parents('div.content').length > 0) {
       tag = 'pimg';
@@ -426,7 +424,6 @@ $(function () {
       // nav menu
       case (tag.indexOf('switchmenu') != -1):
         window.scrollTo(0, 0)
-
         $('html, body').toggleClass('mu');
         if (typed !== null) { typed.destroy(); typed = null; }
         else {
@@ -468,27 +465,35 @@ $(function () {
       case (tag.indexOf('more') != -1):
         tag = $('.more');
         if (tag.data('status') == 'loading') {
-          return false
+          return false;
         }
         var num = parseInt(tag.data('page')) || 1;
         if (num == 1) {
-          tag.data('page', 1)
+          tag.data('page', 1);
         }
         if (num >= Pages) {
-          return
+          return;
         }
         tag.html('加载中...').data('status', 'loading')
         Diaspora.loading()
-        Diaspora.L(tag.attr('href'), function (data) {
-          var link = $(data).find('.more').attr('href');
+        Diaspora.L(tag.attr('href'), function (res) {
+          var data = $(res);
+          var link = data.find('.more').attr('href');
           if (link != undefined) {
             tag.attr('href', link).html('加载更多').data('status', 'loaded')
             tag.data('page', parseInt(tag.data('page')) + 1)
           } else {
             $('#pager').remove()
           }
+          data.find('.post img.cover').hide();
           var tempScrollTop = $(window).scrollTop();
-          $('#primary').append($(data).find('.post'))
+          $('#primary').append(data.find('.post'));
+          $('#primary .post img.cover').each(function () {
+            this.onload = function () {
+              $(this).fadeIn();
+              console.info('image load', $(this).attr('src'));
+            }
+          });
           $(window).scrollTop(tempScrollTop + 100);
           Diaspora.loaded()
           $('html,body').animate({ scrollTop: tempScrollTop + 400 }, 500);
@@ -615,10 +620,10 @@ $(function () {
         return false;
         break;
       // comment
-      case - 1 != tag.indexOf("comment"):
+      case (tag.indexOf("comment") != -1):
         if ($('#gitalk-container').data('enable') == true) {
-          Diaspora.loading(),
-            comment = $('#gitalk-container');
+          Diaspora.loading();
+          comment = $('#gitalk-container');
           gitalk = new Gitalk({
             clientID: comment.data('ci'),
             clientSecret: comment.data('cs'),
@@ -638,7 +643,6 @@ $(function () {
         break;
       default:
         return true;
-        break;
     }
   })
   // 是否自动展开评论
