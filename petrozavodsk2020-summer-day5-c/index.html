@@ -24,9 +24,9 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
 
   
-<link rel="stylesheet" href="/css/diaspora.css?ver=20210416.css">
+<link rel="stylesheet" href="/css/diaspora.min.css?ver=20210417.css">
 
-  <style>@font-face{font-family:'FZSHJW';src:url('/font/FZSHJW.ttf?size=378736');font-weight:normal;font-style:normal;}</style>
+  <style>@font-face{font-family:'FZSHJW';src:url('/font/FZSHJW.ttf');font-weight:normal;font-style:normal;}</style>
 <meta name="generator" content="Hexo 5.2.0"></head>
 <div class="tips-box" style="display:table;position:fixed;height:100%;width:100%;top:0;left:0;z-index:114514;">
   <div style="display:table-cell;color:rgb(0,0,0,0.37);width:100%;text-align:center;vertical-align:middle;">
@@ -68,17 +68,18 @@ document.getElementsByClassName("tips")[0].innerHTML=tiplist[Math.floor(Math.ran
     <div class="cover">
       <img src="/cover/14.png" id="post-cover" crossorigin="anonymous" width="1920" height="1080">
     </div>
-    <div class="container">
-      <h1 class="title">「Petrozavodsk Summer 2020」Parity Sort</h1>
-      <div class="stuff">
-        <span>一月 21, 2021</span>
-        
+    <div class="shadow-container">
+      <div class="container">
+        <h1 class="title">「Petrozavodsk Summer 2020」Parity Sort</h1>
+        <div class="stuff">
+          <span>一月 21, 2021</span>
+          
   <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/" rel="tag">位运算</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/%E6%9E%84%E9%80%A0/" rel="tag">构造</a></li></ul>
 
 
-      </div>
-      <div class="content markdown">
-        <blockquote>
+        </div>
+        <div class="content markdown">
+          <blockquote>
 <p>定义一个排列 $P$ 上的操作 $(t,S)$ 为：</p>
 <ol>
 <li>有两个空序列 $A$ 和 $B$</li>
@@ -108,33 +109,33 @@ document.getElementsByClassName("tips")[0].innerHTML=tiplist[Math.floor(Math.ran
 <p>先进行一次 $(0,\texttt{111\ldots1})$ 操作后，所有偶数都在奇数前面，我们可以认为是两个序列；把偶数中需要放后面的数和奇数中需要放前面的数执行 $t=1$ 操作即可。但 $n$ 时可能两侧的数字个数不同，这时候给偶数序列中多丢一个 $0$ 就好了。</p>
 <h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">150009</span>;</span><br><span class="line"><span class="keyword">int</span> n,m,t,p[N],rk[N];</span><br><span class="line"><span class="built_in">string</span> s;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; a,b,c;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="built_in">pair</span>&lt;<span class="keyword">bool</span>,<span class="built_in">string</span>&gt;&gt; ans;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">apply</span><span class="params">(<span class="keyword">bool</span> t,<span class="keyword">const</span> <span class="built_in">string</span> &amp;s)</span></span>&#123;</span><br><span class="line">  a.clear(),b.clear();</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)<span class="keyword">if</span>(s[i]==<span class="string">&#x27;1&#x27;</span>)(p[i]&amp;<span class="number">1</span>?b:a).push_back(p[i]);</span><br><span class="line">  <span class="keyword">if</span>(t)swap(a,b);</span><br><span class="line">  c=a,c.insert(c.end(),b.begin(),b.end());</span><br><span class="line">  reverse(c.begin(),c.end());</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)<span class="keyword">if</span>(s[i]==<span class="string">&#x27;1&#x27;</span>)p[i]=c.back(),c.pop_back();</span><br><span class="line">  ans.push_back(<span class="built_in">make_pair</span>(t,s));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> s00=((n+<span class="number">1</span>)/<span class="number">2</span>+<span class="number">1</span>)/<span class="number">2</span>,s01=(n+<span class="number">1</span>)/<span class="number">4</span>,s10=s01,s11=n/<span class="number">2</span>-s10;</span><br><span class="line">  assert(s00+s01+s10+s11==n);</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;s00;i++)rk[i&lt;&lt;<span class="number">1</span>]=i&lt;&lt;<span class="number">1</span>;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;s10;i++)rk[(i+s00)&lt;&lt;<span class="number">1</span>]=i&lt;&lt;<span class="number">1</span>|<span class="number">1</span>;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;s01;i++)rk[i&lt;&lt;<span class="number">1</span>|<span class="number">1</span>]=(i+s00)&lt;&lt;<span class="number">1</span>;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;s11;i++)rk[(i+s10)&lt;&lt;<span class="number">1</span>|<span class="number">1</span>]=(i+s10)&lt;&lt;<span class="number">1</span>|<span class="number">1</span>;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;i+=<span class="number">2</span>)rk[i]=n<span class="number">-1</span>-rk[i]+(n&amp;<span class="number">1</span>);</span><br><span class="line">  <span class="comment">// for(int i=0;i&lt;n;i++)fprintf(stderr,&quot;%d%c&quot;,rk[i],&quot; \n&quot;[i+1==n]);</span></span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">0</span>;k&lt;<span class="number">14</span>;k++)&#123;</span><br><span class="line">    apply(<span class="number">0</span>,<span class="built_in">string</span>(n,<span class="string">&#x27;1&#x27;</span>));</span><br><span class="line">    s=<span class="built_in">string</span>(n,<span class="string">&#x27;0&#x27;</span>);</span><br><span class="line">    <span class="comment">// for(int i=0;i&lt;n;i++)cerr&lt;&lt;p[i]&lt;&lt;&quot; \n&quot;[i+1==n];</span></span><br><span class="line">    <span class="keyword">int</span> t=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)<span class="keyword">if</span>(p[i]%<span class="number">2</span>==<span class="number">0</span>&amp;&amp;(rk[p[i]]&gt;&gt;k)%<span class="number">2</span>==<span class="number">1</span>)s[i]=<span class="string">&#x27;1&#x27;</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)<span class="keyword">if</span>(p[i]%<span class="number">2</span>==<span class="number">1</span>&amp;&amp;(rk[p[i]]&gt;&gt;k)%<span class="number">2</span>==<span class="number">1</span>)s[i]=<span class="string">&#x27;1&#x27;</span>;</span><br><span class="line">    <span class="comment">// cerr&lt;&lt;s&lt;&lt;endl;</span></span><br><span class="line">    <span class="comment">// for(int i=0;i&lt;n;i++)cerr&lt;&lt;rk[p[i]]&lt;&lt;&quot; \n&quot;[i+1==n];</span></span><br><span class="line">    apply(<span class="number">1</span>,s);</span><br><span class="line">  &#125;</span><br><span class="line">  apply(<span class="number">0</span>,<span class="built_in">string</span>(n,<span class="string">&#x27;1&#x27;</span>));</span><br><span class="line">  s=<span class="built_in">string</span>(n,<span class="string">&#x27;0&#x27;</span>);</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)<span class="keyword">if</span>(p[i]!=i)s[i]=<span class="string">&#x27;1&#x27;</span>;</span><br><span class="line">  apply(<span class="number">1</span>,s);</span><br><span class="line">  <span class="comment">// for(int i=0;i&lt;n;i++)cerr&lt;&lt;p[i]&lt;&lt;&quot; \n&quot;[i+1==n];</span></span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)assert(p[i]==i);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> memset0</span></span><br><span class="line">  <span class="comment">// freopen(&quot;1.in&quot;,&quot;r&quot;,stdin);</span></span><br><span class="line">  freopen(<span class="string">&quot;2.in&quot;</span>,<span class="string">&quot;r&quot;</span>,<span class="built_in">stdin</span>);</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">  ios::sync_with_stdio(<span class="number">0</span>),<span class="built_in">cin</span>.tie(<span class="number">0</span>),<span class="built_in">cout</span>.tie(<span class="number">0</span>);</span><br><span class="line">  <span class="built_in">cin</span>&gt;&gt;n;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)<span class="built_in">cin</span>&gt;&gt;p[i];</span><br><span class="line">  solve();</span><br><span class="line">  <span class="built_in">cout</span>&lt;&lt;ans.size()&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">const</span> <span class="keyword">auto</span> &amp;it:ans)<span class="built_in">cout</span>&lt;&lt;(it.first?<span class="number">1</span>:<span class="number">0</span>)&lt;&lt;<span class="string">&quot; &quot;</span>&lt;&lt;it.second&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-        <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
-        <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
-          <source type="audio/mpeg" src="">
-        </audio>
+          <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+          <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+            <source type="audio/mpeg" src="">
+          </audio>
+          
+            <ul id="audio-list" style="display:none">
+              
+                
+                  <li title='0' data-url='/music/観月あんみ - Memories are here (クロハネエンディング).mp3'></li>
+                
+              
+                
+                  <li title='1' data-url='/music/やなぎなぎ - 恋文.mp3'></li>
+                
+              
+                
+                  <li title='2' data-url='/music/DEPAPEPE - きっとまたいつか.mp3'></li>
+                
+              
+                
+                  <li title='3' data-url='/music/Falcom Sound Team jdk - 星の在り処　 Instrumental Ver.mp3'></li>
+                
+              
+            </ul>
+          
+        </div>
         
-          <ul id="audio-list" style="display:none">
-            
-              
-                <li title='0' data-url='/music/観月あんみ - Memories are here (クロハネエンディング).mp3'></li>
-              
-            
-              
-                <li title='1' data-url='/music/やなぎなぎ - 恋文.mp3'></li>
-              
-            
-              
-                <li title='2' data-url='/music/DEPAPEPE - きっとまたいつか.mp3'></li>
-              
-            
-              
-                <li title='3' data-url='/music/Falcom Sound Team jdk - 星の在り処　 Instrumental Ver.mp3'></li>
-              
-            
-          </ul>
-        
-      </div>
-      
     <div id='gitalk-container' class="comment link"
 		data-enable='true'
         data-ae='true'
@@ -147,6 +148,7 @@ document.getElementsByClassName("tips")[0].innerHTML=tiplist[Math.floor(Math.ran
     >查看评论</div>
 
 
+      </div>
     </div>
   </div>
   

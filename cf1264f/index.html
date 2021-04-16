@@ -20,9 +20,9 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
 
   
-<link rel="stylesheet" href="/css/diaspora.css?ver=20210416.css">
+<link rel="stylesheet" href="/css/diaspora.min.css?ver=20210417.css">
 
-  <style>@font-face{font-family:'FZSHJW';src:url('/font/FZSHJW.ttf?size=378736');font-weight:normal;font-style:normal;}</style>
+  <style>@font-face{font-family:'FZSHJW';src:url('/font/FZSHJW.ttf');font-weight:normal;font-style:normal;}</style>
 <meta name="generator" content="Hexo 5.2.0"></head>
 <div class="tips-box" style="display:table;position:fixed;height:100%;width:100%;top:0;left:0;z-index:114514;">
   <div style="display:table-cell;color:rgb(0,0,0,0.37);width:100%;text-align:center;vertical-align:middle;">
@@ -64,17 +64,18 @@ document.getElementsByClassName("tips")[0].innerHTML=tiplist[Math.floor(Math.ran
     <div class="cover">
       <img src="/cover/35.webp" id="post-cover" crossorigin="anonymous" width="1920" height="1080">
     </div>
-    <div class="container">
-      <h1 class="title">「CF1264F」Beautiful Fibonacci Problem</h1>
-      <div class="stuff">
-        <span>九月 17, 2020</span>
-        
+    <div class="shadow-container">
+      <div class="container">
+        <h1 class="title">「CF1264F」Beautiful Fibonacci Problem</h1>
+        <div class="stuff">
+          <span>九月 17, 2020</span>
+          
   <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97/" rel="tag">斐波那契数列</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/%E6%9E%84%E9%80%A0/" rel="tag">构造</a></li></ul>
 
 
-      </div>
-      <div class="content markdown">
-        <blockquote>
+        </div>
+        <div class="content markdown">
+          <blockquote>
 <p>对于长度为 $n$ 的递增等差正整数序列 $\{a, a+d, a+2d \ldots a+(n-1)d\}$，我们用三元组 $(a,d,n)$ 表示。</p>
 <p>给定递增等差正整数序列 $(a,d,n)$，你需要构造递增等差正整数序列 $(b,e,n)$，满足：</p>
 <ul>
@@ -95,33 +96,33 @@ document.getElementsByClassName("tips")[0].innerHTML=tiplist[Math.floor(Math.ran
 <p>此例中，我们有 $F_{n+1} \equiv 2 t P + 1 \pmod P^2$，其中 $t$ 是与 $P$ 互质的整数。</p>
 <p>则 $F_{kn+1} \equiv F_{n+1}^k \equiv 2kt P + 1$，取 $k = 5 k’ t^{-1}$，则枚举 $1 \leq k’ &lt; 10^6$ 即可解决本题。</p>
 <h2 id="代码（Python）"><a href="#代码（Python）" class="headerlink" title="代码（Python）"></a>代码（Python）</h2><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">exgcd</span>(<span class="params">a,b</span>):</span></span><br><span class="line">    <span class="keyword">if</span> b==<span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>,<span class="number">0</span></span><br><span class="line">    x,y=exgcd(b,a%b)</span><br><span class="line">    <span class="keyword">return</span> y,x-y*(a//b)</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">inv</span>(<span class="params">a,p</span>):</span></span><br><span class="line">    x,y=exgcd(a,p)</span><br><span class="line">    <span class="keyword">return</span> (x%p+p)%p</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">xmul</span>(<span class="params">a,b</span>):</span></span><br><span class="line">    c=[[<span class="number">0</span>,<span class="number">0</span>],[<span class="number">0</span>,<span class="number">0</span>]]</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>,<span class="number">2</span>):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>,<span class="number">2</span>):</span><br><span class="line">            <span class="keyword">for</span> k <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>,<span class="number">2</span>):</span><br><span class="line">                c[i][j]=(c[i][j]+a[i][k]*b[k][j])%(<span class="number">10</span>**<span class="number">12</span>)</span><br><span class="line">    <span class="keyword">return</span> c</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">xpow</span>(<span class="params">a,b</span>):</span></span><br><span class="line">    s=[[<span class="number">1</span>,<span class="number">0</span>],[<span class="number">0</span>,<span class="number">1</span>]]</span><br><span class="line">    <span class="keyword">while</span> b:</span><br><span class="line">        <span class="keyword">if</span> b%<span class="number">2</span>:</span><br><span class="line">            s=xmul(s,a)</span><br><span class="line">        a=xmul(a,a)</span><br><span class="line">        b//=<span class="number">2</span></span><br><span class="line">    <span class="keyword">return</span> s</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fib</span>(<span class="params">n</span>):</span></span><br><span class="line">    <span class="keyword">if</span> n&lt;=<span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> n</span><br><span class="line">    <span class="keyword">return</span> xmul([[<span class="number">1</span>,<span class="number">0</span>],[<span class="number">0</span>,<span class="number">0</span>]],xpow([[<span class="number">1</span>,<span class="number">1</span>],[<span class="number">1</span>,<span class="number">0</span>]],n<span class="number">-1</span>))[<span class="number">0</span>][<span class="number">0</span>]</span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    t=fib(<span class="number">3</span>*(<span class="number">10</span>**<span class="number">6</span>)+<span class="number">1</span>)//(<span class="number">10</span>**<span class="number">6</span>)</span><br><span class="line">    u=<span class="number">15</span>*inv(t//<span class="number">2</span>,<span class="number">10</span>**<span class="number">6</span>)</span><br><span class="line">    n,a,d=<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split())</span><br><span class="line">    b=a*u*(<span class="number">10</span>**<span class="number">6</span>)+<span class="number">1</span></span><br><span class="line">    e=d*u*(<span class="number">10</span>**<span class="number">6</span>)</span><br><span class="line">    print(b,e)</span><br></pre></td></tr></table></figure>
-        <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
-        <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
-          <source type="audio/mpeg" src="">
-        </audio>
+          <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+          <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+            <source type="audio/mpeg" src="">
+          </audio>
+          
+            <ul id="audio-list" style="display:none">
+              
+                
+                  <li title='0' data-url='/music/観月あんみ - Memories are here (クロハネエンディング).mp3'></li>
+                
+              
+                
+                  <li title='1' data-url='/music/やなぎなぎ - 恋文.mp3'></li>
+                
+              
+                
+                  <li title='2' data-url='/music/DEPAPEPE - きっとまたいつか.mp3'></li>
+                
+              
+                
+                  <li title='3' data-url='/music/Falcom Sound Team jdk - 星の在り処　 Instrumental Ver.mp3'></li>
+                
+              
+            </ul>
+          
+        </div>
         
-          <ul id="audio-list" style="display:none">
-            
-              
-                <li title='0' data-url='/music/観月あんみ - Memories are here (クロハネエンディング).mp3'></li>
-              
-            
-              
-                <li title='1' data-url='/music/やなぎなぎ - 恋文.mp3'></li>
-              
-            
-              
-                <li title='2' data-url='/music/DEPAPEPE - きっとまたいつか.mp3'></li>
-              
-            
-              
-                <li title='3' data-url='/music/Falcom Sound Team jdk - 星の在り処　 Instrumental Ver.mp3'></li>
-              
-            
-          </ul>
-        
-      </div>
-      
     <div id='gitalk-container' class="comment link"
 		data-enable='true'
         data-ae='true'
@@ -134,6 +135,7 @@ document.getElementsByClassName("tips")[0].innerHTML=tiplist[Math.floor(Math.ran
     >查看评论</div>
 
 
+      </div>
     </div>
   </div>
   

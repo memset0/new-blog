@@ -19,9 +19,9 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
 
   
-<link rel="stylesheet" href="/css/diaspora.css?ver=20210416.css">
+<link rel="stylesheet" href="/css/diaspora.min.css?ver=20210417.css">
 
-  <style>@font-face{font-family:'FZSHJW';src:url('/font/FZSHJW.ttf?size=378736');font-weight:normal;font-style:normal;}</style>
+  <style>@font-face{font-family:'FZSHJW';src:url('/font/FZSHJW.ttf');font-weight:normal;font-style:normal;}</style>
 <meta name="generator" content="Hexo 5.2.0"></head>
 <div class="tips-box" style="display:table;position:fixed;height:100%;width:100%;top:0;left:0;z-index:114514;">
   <div style="display:table-cell;color:rgb(0,0,0,0.37);width:100%;text-align:center;vertical-align:middle;">
@@ -63,17 +63,18 @@ document.getElementsByClassName("tips")[0].innerHTML=tiplist[Math.floor(Math.ran
     <div class="cover">
       <img src="/cover/23.webp" id="post-cover" crossorigin="anonymous" width="1920" height="1080">
     </div>
-    <div class="container">
-      <h1 class="title">「校内模拟20201118C」张士超你到底把我家钥匙放在哪了？</h1>
-      <div class="stuff">
-        <span>十一月 18, 2020</span>
-        
+    <div class="shadow-container">
+      <div class="container">
+        <h1 class="title">「校内模拟20201118C」张士超你到底把我家钥匙放在哪了？</h1>
+        <div class="stuff">
+          <span>十一月 18, 2020</span>
+          
   <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/DP/" rel="tag">DP</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0/" rel="tag">生成函数</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/%E8%AE%A1%E6%95%B0/" rel="tag">计数</a></li></ul>
 
 
-      </div>
-      <div class="content markdown">
-        <blockquote>
+        </div>
+        <div class="content markdown">
+          <blockquote>
 <p>有 $m$ 个随机数生成器，每一个生成器会在 $[0,a_i] \cap \mathbb N^*$ 中均匀随机得到 $x_i$，再会有 $p_i$ 的概率令 $y_i=1$，否则 $y_i=0$ 。另外会有一个常数 $d$，保证 $d|(a_i+1)$。</p>
 <p>考虑 $s_0=\sum_{i=1}^n x_iy_i,\ s_1 = \sum_{i=1}^n x_i$，对于一种局面，若 $s_1 =n$，则称其是合法的；对于一种合法的局面，若 $s_0 \geq l$，则称其是好的。求得到好的情况的概率。</p>
 <p>对 $998244353$ 取模，且你只需要输出答案乘合法方案数的结果。</p>
@@ -94,33 +95,33 @@ document.getElementsByClassName("tips")[0].innerHTML=tiplist[Math.floor(Math.ran
 <script type="math/tex; mode=display">
 \sum_{i=0}^a \binom{a\!-\!i+k\!-\!1}{k\!-\!1} \binom{b\!-\!a\!+\!i+m\!-\!k\!-\!1}{m\!-\!k\!-\!1}</script><p>注意到这是一个关于 $a$ 的多项式，我们可以暴力插值解决。</p>
 
-        <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
-        <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
-          <source type="audio/mpeg" src="">
-        </audio>
+          <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+          <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+            <source type="audio/mpeg" src="">
+          </audio>
+          
+            <ul id="audio-list" style="display:none">
+              
+                
+                  <li title='0' data-url='/music/観月あんみ - Memories are here (クロハネエンディング).mp3'></li>
+                
+              
+                
+                  <li title='1' data-url='/music/やなぎなぎ - 恋文.mp3'></li>
+                
+              
+                
+                  <li title='2' data-url='/music/DEPAPEPE - きっとまたいつか.mp3'></li>
+                
+              
+                
+                  <li title='3' data-url='/music/Falcom Sound Team jdk - 星の在り処　 Instrumental Ver.mp3'></li>
+                
+              
+            </ul>
+          
+        </div>
         
-          <ul id="audio-list" style="display:none">
-            
-              
-                <li title='0' data-url='/music/観月あんみ - Memories are here (クロハネエンディング).mp3'></li>
-              
-            
-              
-                <li title='1' data-url='/music/やなぎなぎ - 恋文.mp3'></li>
-              
-            
-              
-                <li title='2' data-url='/music/DEPAPEPE - きっとまたいつか.mp3'></li>
-              
-            
-              
-                <li title='3' data-url='/music/Falcom Sound Team jdk - 星の在り処　 Instrumental Ver.mp3'></li>
-              
-            
-          </ul>
-        
-      </div>
-      
     <div id='gitalk-container' class="comment link"
 		data-enable='true'
         data-ae='true'
@@ -133,6 +134,7 @@ document.getElementsByClassName("tips")[0].innerHTML=tiplist[Math.floor(Math.ran
     >查看评论</div>
 
 
+      </div>
     </div>
   </div>
   

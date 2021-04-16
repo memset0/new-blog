@@ -21,9 +21,9 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
 
   
-<link rel="stylesheet" href="/css/diaspora.css?ver=20210416.css">
+<link rel="stylesheet" href="/css/diaspora.min.css?ver=20210417.css">
 
-  <style>@font-face{font-family:'FZSHJW';src:url('/font/FZSHJW.ttf?size=378736');font-weight:normal;font-style:normal;}</style>
+  <style>@font-face{font-family:'FZSHJW';src:url('/font/FZSHJW.ttf');font-weight:normal;font-style:normal;}</style>
 <meta name="generator" content="Hexo 5.2.0"></head>
 <div class="tips-box" style="display:table;position:fixed;height:100%;width:100%;top:0;left:0;z-index:114514;">
   <div style="display:table-cell;color:rgb(0,0,0,0.37);width:100%;text-align:center;vertical-align:middle;">
@@ -65,17 +65,18 @@ document.getElementsByClassName("tips")[0].innerHTML=tiplist[Math.floor(Math.ran
     <div class="cover">
       <img src="/cover/2.png" id="post-cover" crossorigin="anonymous" width="1920" height="1080">
     </div>
-    <div class="container">
-      <h1 class="title">「UR #17」滑稽树前做游戏</h1>
-      <div class="stuff">
-        <span>五月 06, 2020</span>
-        
+    <div class="shadow-container">
+      <div class="container">
+        <h1 class="title">「UR #17」滑稽树前做游戏</h1>
+        <div class="stuff">
+          <span>五月 06, 2020</span>
+          
   <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/%E8%AE%A1%E6%95%B0/" rel="tag">计数</a></li></ul>
 
 
-      </div>
-      <div class="content markdown">
-        <blockquote>
+        </div>
+        <div class="content markdown">
+          <blockquote>
 <p>给定一个 $n$ 个点 $m$ 条边的无向图，其中每个点的点权是 $[0;1]$ 范围内生成的连续型随机变量，求：</p>
 <script type="math/tex; mode=display">
 \max \{ \max_{i \in V} x_i + \max_{(u,v) \in E} (x_u + x_v) \}</script><p>的期望，答案对 $998244353$ 取模。</p>
@@ -96,33 +97,33 @@ g(s,y,t) = (\tfrac t 2)^{|s|} + \sum_{i \in s} \int_{\tfrac t 2}^y g(s_i, x, t) 
 <p>最后，我们需要注意 $g(s,y,t)$ 的取值范围 $\tfrac t 2 \leq y \leq \min(1, t)$，所以答案是</p>
 <script type="math/tex; mode=display">
 ans = 2 - \int_0^1 f(t,t) \text dt  - \int_1^2 f(1,t) \text dt</script><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">30</span>,mod=<span class="number">998244353</span>,inv2=(mod+<span class="number">1</span>)&gt;&gt;<span class="number">1</span>;</span><br><span class="line"><span class="keyword">int</span> n,m,tim,G[N],vis[N];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">z</span> &#123;</span></span><br><span class="line">  <span class="keyword">int</span> x;</span><br><span class="line">  z(<span class="keyword">int</span> x=<span class="number">0</span>):x(x)&#123;&#125;</span><br><span class="line">  <span class="keyword">friend</span> <span class="keyword">inline</span> z <span class="keyword">operator</span>*(z a,z b)&#123;<span class="keyword">return</span> (<span class="keyword">long</span> <span class="keyword">long</span>)a.x*b.x%mod;&#125;</span><br><span class="line">  <span class="keyword">friend</span> <span class="keyword">inline</span> z <span class="keyword">operator</span>-(z a,z b)&#123;<span class="keyword">return</span> (a.x-=b.x)&lt;<span class="number">0</span>?a.x+mod:a.x;&#125;</span><br><span class="line">  <span class="keyword">friend</span> <span class="keyword">inline</span> z <span class="keyword">operator</span>+(z a,z b)&#123;<span class="keyword">return</span> (a.x+=b.x)&gt;=mod?a.x-mod:a.x;&#125;</span><br><span class="line">&#125;ans,inp[N],inv[N],C[N][N];</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">unordered_map</span>&lt;<span class="keyword">int</span>,<span class="built_in">std</span>::<span class="built_in">vector</span>&lt;z&gt;&gt; <span class="built_in">map</span>;</span><br><span class="line"><span class="keyword">inline</span> <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;z&gt; <span class="keyword">operator</span>*(<span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;z&gt; &amp;a,<span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;z&gt; &amp;b)&#123;</span><br><span class="line">  <span class="function"><span class="built_in">std</span>::<span class="built_in">vector</span>&lt;z&gt; <span class="title">c</span><span class="params">(a.size()+b.size()<span class="number">-1</span>)</span></span>;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;a.size();i++)</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;b.size();j++)</span><br><span class="line">      c[i+j]=c[i+j]+a[i]*b[j];</span><br><span class="line">  <span class="keyword">return</span> c;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;z&gt; <span class="title">integral</span><span class="params">(<span class="built_in">std</span>::<span class="built_in">vector</span>&lt;z&gt; f)</span></span>&#123;</span><br><span class="line">  <span class="function"><span class="built_in">std</span>::<span class="built_in">vector</span>&lt;z&gt; <span class="title">g</span><span class="params">(f.size()+<span class="number">1</span>)</span></span>;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=f.size();i++)g[i]=f[i<span class="number">-1</span>]*inv[i];</span><br><span class="line">  <span class="keyword">return</span> g;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> z <span class="title">evaluation</span><span class="params">(<span class="built_in">std</span>::<span class="built_in">vector</span>&lt;z&gt; a,<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span>&#123;</span><br><span class="line">  a=integral(a); z p,s; <span class="keyword">int</span> i;</span><br><span class="line">  <span class="keyword">for</span>(p=<span class="number">1</span>,i=<span class="number">0</span>;i&lt;a.size();i++)s=s+a[i]*p,p=p*r;</span><br><span class="line">  <span class="keyword">for</span>(p=<span class="number">1</span>,i=<span class="number">0</span>;i&lt;a.size();i++)s=s-a[i]*p,p=p*l;</span><br><span class="line">  <span class="keyword">return</span> s;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">initfac</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">  inp[<span class="number">0</span>]=inv[<span class="number">0</span>]=inv[<span class="number">1</span>]=<span class="number">1</span>;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;n;i++)inv[i]=(mod-mod/i)*inv[mod%i];</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;i++)inp[i]=inp[i<span class="number">-1</span>]*inv2;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">    C[i][<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=i;j++)C[i][j]=C[i<span class="number">-1</span>][j]+C[i<span class="number">-1</span>][j<span class="number">-1</span>];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> s)</span></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> res=<span class="number">1</span>&lt;&lt;u; vis[u]=tim;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> v=<span class="number">0</span>;v&lt;n;v++)<span class="keyword">if</span>(((s&gt;&gt;v)&amp;<span class="number">1</span>)&amp;&amp;((G[u]&gt;&gt;v)&amp;<span class="number">1</span>)&amp;&amp;vis[v]!=tim)res|=dfs(v,s);</span><br><span class="line">  <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="built_in">std</span>::<span class="built_in">vector</span>&lt;z&gt; &amp;s,<span class="built_in">std</span>::<span class="built_in">vector</span>&lt;z&gt; a,<span class="keyword">int</span> k)</span></span>&#123;</span><br><span class="line">  <span class="function"><span class="built_in">std</span>::<span class="built_in">vector</span>&lt;z&gt; <span class="title">b</span><span class="params">(k+<span class="number">1</span>)</span></span>;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=k;i++)b[i]=C[k][i]*(i&amp;<span class="number">1</span>?mod<span class="number">-1</span>:<span class="number">1</span>);</span><br><span class="line">  a=integral(a*b);</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;a.size();i++)s[i]=s[i]+a[i],s[<span class="number">0</span>]=s[<span class="number">0</span>]-inp[i]*a[i];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="built_in">std</span>::<span class="built_in">vector</span>&lt;z&gt; <span class="title">solve</span><span class="params">(<span class="keyword">int</span> s)</span></span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(<span class="built_in">map</span>.count(s))<span class="keyword">return</span> <span class="built_in">map</span>[s];</span><br><span class="line">  <span class="keyword">int</span> l=__builtin_popcount(s); <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;z&gt; res; <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="built_in">set</span>;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> t,i=<span class="number">0</span>;i&lt;n;i++)<span class="keyword">if</span>((s&gt;&gt;i)&amp;<span class="number">1</span>)++tim,t=dfs(i,s),<span class="built_in">set</span>.push_back(t),s^=t;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> x:<span class="built_in">set</span>)s|=x;</span><br><span class="line">  <span class="keyword">if</span>(<span class="built_in">set</span>.size()&gt;<span class="number">1</span>)&#123;res=&#123;<span class="number">1</span>&#125;; <span class="keyword">for</span>(<span class="keyword">auto</span> t:<span class="built_in">set</span>)res=res*solve(t);&#125;</span><br><span class="line">  <span class="keyword">else</span>&#123;</span><br><span class="line">    res.resize(l+<span class="number">1</span>),res[<span class="number">0</span>]=inp[l];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)<span class="keyword">if</span>((s&gt;&gt;i)&amp;<span class="number">1</span>)&#123;</span><br><span class="line">      <span class="keyword">int</span> t=s^(s&amp;(G[i]|(<span class="number">1</span>&lt;&lt;i)));</span><br><span class="line">      update(res,solve(t),__builtin_popcount(s&amp;G[i]));</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">map</span>[s]=res;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">  <span class="built_in">std</span>::<span class="built_in">cin</span>&gt;&gt;n&gt;&gt;m,initfac(N),<span class="built_in">map</span>[<span class="number">0</span>]=&#123;<span class="number">1</span>&#125;;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> u,v,i=<span class="number">0</span>;i&lt;m;i++)<span class="built_in">std</span>::<span class="built_in">cin</span>&gt;&gt;u&gt;&gt;v,--u,--v,G[u]|=<span class="number">1</span>&lt;&lt;v,G[v]|=<span class="number">1</span>&lt;&lt;u;</span><br><span class="line">  <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;z&gt; s=solve((<span class="number">1</span>&lt;&lt;n)<span class="number">-1</span>),a(n+<span class="number">1</span>);</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;s.size();i++)a[n]=a[n]+s[i];</span><br><span class="line">  <span class="built_in">std</span>::reverse(s.begin(),s.end());</span><br><span class="line">  <span class="built_in">std</span>::<span class="built_in">cout</span>&lt;&lt;(<span class="number">2</span>-evaluation(s,<span class="number">1</span>,<span class="number">2</span>)-evaluation(a,<span class="number">0</span>,<span class="number">1</span>)).x&lt;&lt;<span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-        <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
-        <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
-          <source type="audio/mpeg" src="">
-        </audio>
+          <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+          <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+            <source type="audio/mpeg" src="">
+          </audio>
+          
+            <ul id="audio-list" style="display:none">
+              
+                
+                  <li title='0' data-url='/music/観月あんみ - Memories are here (クロハネエンディング).mp3'></li>
+                
+              
+                
+                  <li title='1' data-url='/music/やなぎなぎ - 恋文.mp3'></li>
+                
+              
+                
+                  <li title='2' data-url='/music/DEPAPEPE - きっとまたいつか.mp3'></li>
+                
+              
+                
+                  <li title='3' data-url='/music/Falcom Sound Team jdk - 星の在り処　 Instrumental Ver.mp3'></li>
+                
+              
+            </ul>
+          
+        </div>
         
-          <ul id="audio-list" style="display:none">
-            
-              
-                <li title='0' data-url='/music/観月あんみ - Memories are here (クロハネエンディング).mp3'></li>
-              
-            
-              
-                <li title='1' data-url='/music/やなぎなぎ - 恋文.mp3'></li>
-              
-            
-              
-                <li title='2' data-url='/music/DEPAPEPE - きっとまたいつか.mp3'></li>
-              
-            
-              
-                <li title='3' data-url='/music/Falcom Sound Team jdk - 星の在り処　 Instrumental Ver.mp3'></li>
-              
-            
-          </ul>
-        
-      </div>
-      
     <div id='gitalk-container' class="comment link"
 		data-enable='true'
         data-ae='true'
@@ -135,6 +136,7 @@ ans = 2 - \int_0^1 f(t,t) \text dt  - \int_1^2 f(1,t) \text dt</script><h2 id="�
     >查看评论</div>
 
 
+      </div>
     </div>
   </div>
   

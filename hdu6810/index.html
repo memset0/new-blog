@@ -20,9 +20,9 @@ $m$ 个人所在位置在 $n$ 个点中随机选择（即总方案数 $\binom,">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
 
   
-<link rel="stylesheet" href="/css/diaspora.css?ver=20210416.css">
+<link rel="stylesheet" href="/css/diaspora.min.css?ver=20210417.css">
 
-  <style>@font-face{font-family:'FZSHJW';src:url('/font/FZSHJW.ttf?size=378736');font-weight:normal;font-style:normal;}</style>
+  <style>@font-face{font-family:'FZSHJW';src:url('/font/FZSHJW.ttf');font-weight:normal;font-style:normal;}</style>
 <meta name="generator" content="Hexo 5.2.0"></head>
 <div class="tips-box" style="display:table;position:fixed;height:100%;width:100%;top:0;left:0;z-index:114514;">
   <div style="display:table-cell;color:rgb(0,0,0,0.37);width:100%;text-align:center;vertical-align:middle;">
@@ -64,17 +64,18 @@ document.getElementsByClassName("tips")[0].innerHTML=tiplist[Math.floor(Math.ran
     <div class="cover">
       <img src="/cover/33.webp" id="post-cover" crossorigin="anonymous" width="1920" height="1080">
     </div>
-    <div class="container">
-      <h1 class="title">「HDU6810」Imperative Meeting</h1>
-      <div class="stuff">
-        <span>七月 30, 2020</span>
-        
+    <div class="shadow-container">
+      <div class="container">
+        <h1 class="title">「HDU6810」Imperative Meeting</h1>
+        <div class="stuff">
+          <span>七月 30, 2020</span>
+          
   <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/%E5%8D%95%E8%B0%83%E6%80%A7/" rel="tag">单调性</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/%E7%82%B9%E5%87%8F%E8%BE%B9/" rel="tag">点减边</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/%E7%BB%84%E5%90%88%E6%84%8F%E4%B9%89/" rel="tag">组合意义</a></li></ul>
 
 
-      </div>
-      <div class="content markdown">
-        <blockquote>
+        </div>
+        <div class="content markdown">
+          <blockquote>
 <p>给定 $n$ 个点的树，定义 $m$ 个人的约会点 $x$ 为使得 $m$ 个人所在的点到 $x$ 的距离之和最小的点。</p>
 <p>$m$ 个人所在位置在 $n$ 个点中随机选择（即总方案数 $\binom nm$），问所有方案到约会点距离之和的和。</p>
 <p>$n \leq 10^6$，答案对 $10^9 + 7$ 取模。</p>
@@ -90,33 +91,33 @@ document.getElementsByClassName("tips")[0].innerHTML=tiplist[Math.floor(Math.ran
 <p>「Part2」一条边上的两个点能同时成为约会点当且仅当两侧被选中的点的个数都恰为 $\frac m 2$，这一部分容易直接计算。</p>
 <p>于是点减边就做完了，时间复杂度 $O(n)$。</p>
 <h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> S=<span class="number">1</span>&lt;&lt;<span class="number">21</span>; <span class="keyword">char</span> ibuf[S],*iS,*iT;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> getchar() (iS==iT?(iT=(iS=ibuf)+fread(ibuf,1,S,stdin),(iS==iT?EOF:*iS++)):*iS++)</span></span><br><span class="line"><span class="function"><span class="keyword">template</span>&lt;class T&gt; <span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">read</span><span class="params">(T &amp;x)</span></span>&#123;</span><br><span class="line">  x=<span class="number">0</span>; <span class="keyword">register</span> <span class="keyword">char</span> c=getchar();</span><br><span class="line">  <span class="keyword">while</span>(!<span class="built_in">isdigit</span>(c))c=getchar();</span><br><span class="line">  <span class="keyword">while</span>(<span class="built_in">isdigit</span>(c))x=x*<span class="number">10</span>+c-<span class="string">&#x27;0&#x27;</span>,c=getchar();</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">template</span>&lt;class T&gt; <span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">(T x)</span></span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(x&lt;<span class="number">0</span>)<span class="built_in">putchar</span>(<span class="string">&#x27;-&#x27;</span>),x=-x;</span><br><span class="line">  <span class="keyword">if</span>(x&gt;<span class="number">9</span>)print(x/<span class="number">10</span>); <span class="built_in">putchar</span>(x%<span class="number">10</span>+<span class="string">&#x27;0&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">template</span>&lt;class T&gt; <span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">(T x,<span class="keyword">char</span> c)</span></span>&#123;print(x),<span class="built_in">putchar</span>(c);&#125;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">1e6</span>+<span class="number">10</span>,mod=<span class="number">1e9</span>+<span class="number">7</span>;</span><br><span class="line"><span class="keyword">int</span> T,n,m,fa[N],siz[N];</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; G[N];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">z</span>&#123;</span></span><br><span class="line">  <span class="keyword">int</span> x;</span><br><span class="line">  z(<span class="keyword">int</span> x=<span class="number">0</span>):x(x)&#123;&#125;</span><br><span class="line">  <span class="keyword">friend</span> <span class="keyword">inline</span> z <span class="keyword">operator</span>*(z a,z b)&#123;<span class="keyword">return</span> (<span class="keyword">long</span> <span class="keyword">long</span>)a.x*b.x%mod;&#125;</span><br><span class="line">  <span class="keyword">friend</span> <span class="keyword">inline</span> z <span class="keyword">operator</span>-(z a,z b)&#123;<span class="keyword">return</span> (a.x-=b.x)&lt;<span class="number">0</span>?a.x+mod:a.x;&#125;</span><br><span class="line">  <span class="keyword">friend</span> <span class="keyword">inline</span> z <span class="keyword">operator</span>+(z a,z b)&#123;<span class="keyword">return</span> (a.x+=b.x)&gt;=mod?a.x-mod:a.x;&#125;</span><br><span class="line">&#125;F0[N],F1[N],fac[N],inv[N],ifac[N],sumall[N],sumsub[N];</span><br><span class="line"><span class="function"><span class="keyword">inline</span> z <span class="title">fpow</span><span class="params">(z a,<span class="keyword">int</span> b)</span></span>&#123;z s=<span class="number">1</span>;<span class="keyword">for</span>(;b;b&gt;&gt;=<span class="number">1</span>,a=a*a)<span class="keyword">if</span>(b&amp;<span class="number">1</span>)s=s*a;<span class="keyword">return</span> s;&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> z <span class="title">finv</span><span class="params">(z a)</span></span>&#123;<span class="keyword">return</span> fpow(a,mod<span class="number">-2</span>);&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> z <span class="title">C</span><span class="params">(<span class="keyword">int</span> n,<span class="keyword">int</span> m)</span></span>&#123;<span class="keyword">return</span> n&lt;m?<span class="number">0</span>:fac[n]*ifac[m]*ifac[n-m];&#125;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">atom</span>&#123;</span><span class="keyword">int</span> siz; z sum;&#125;;</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">vector</span>&lt;atom&gt; A[N];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u)</span></span>&#123;</span><br><span class="line">  siz[u]=<span class="number">1</span>;</span><br><span class="line">  sumsub[u]=<span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> v:G[u])&#123;</span><br><span class="line">    fa[v]=u,dfs(v),siz[u]+=siz[v];</span><br><span class="line">    sumsub[u]=sumsub[u]+sumsub[v]+siz[v];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs2</span><span class="params">(<span class="keyword">int</span> u,z fr)</span></span>&#123;</span><br><span class="line">  sumall[u]=fr+sumsub[u],fr=fr+n;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> v:G[u])&#123;</span><br><span class="line">    fr=fr+sumsub[v]+siz[v];</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> v:G[u])&#123;</span><br><span class="line">    dfs2(v,fr-sumsub[v]-siz[v]-siz[v]);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">sol0</span><span class="params">(<span class="keyword">int</span> n,<span class="keyword">int</span> m,<span class="keyword">int</span> l,<span class="keyword">int</span> r,z *F)</span></span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(l&gt;m||l&gt;r)&#123;</span><br><span class="line">    <span class="built_in">memset</span>(F,<span class="number">0</span>,(n+<span class="number">1</span>)&lt;&lt;<span class="number">2</span>);</span><br><span class="line">  &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    F[n]=C(n,m);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=n<span class="number">-1</span>;i&gt;=<span class="number">0</span>;i--)F[i]=F[i+<span class="number">1</span>]-C(i,l<span class="number">-1</span>)*C(n-i<span class="number">-1</span>,m-l);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j=m+<span class="number">1</span>;j&lt;=r;j++)<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=n;i++)F[i]=F[i]+C(i,j)*C(n-i,m-j);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">z <span class="title">sol1</span><span class="params">()</span></span>&#123;</span><br><span class="line">  z res=<span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> u=<span class="number">1</span>;u&lt;=n;u++)&#123;</span><br><span class="line">    res=res+C(n<span class="number">-1</span>,m<span class="number">-1</span>)*sumall[u];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> &amp;x:A[u])&#123;</span><br><span class="line">      res=res-F0[x.siz<span class="number">-1</span>]*(x.sum+x.siz)-F1[x.siz]*(sumall[u]-x.sum-x.siz);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">z <span class="title">sol2</span><span class="params">()</span></span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(m&amp;<span class="number">1</span>)<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  z res=<span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> u=<span class="number">1</span>;u&lt;=n;u++)</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> &amp;x:A[u])&#123;</span><br><span class="line">      res=res+C(x.siz,m&gt;&gt;<span class="number">1</span>)*C(n-x.siz,m&gt;&gt;<span class="number">1</span>)*(inv[x.siz]*(x.sum+x.siz)+inv[n-x.siz]*(sumall[u]-x.sum-x.siz));</span><br><span class="line">    &#125;</span><br><span class="line">  <span class="keyword">return</span> res*(m&gt;&gt;<span class="number">1</span>)*finv(<span class="number">2</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> memset0</span></span><br><span class="line">  freopen(<span class="string">&quot;2.in&quot;</span>,<span class="string">&quot;r&quot;</span>,<span class="built_in">stdin</span>);</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">  fac[<span class="number">0</span>]=ifac[<span class="number">0</span>]=inv[<span class="number">0</span>]=inv[<span class="number">1</span>]=<span class="number">1</span>;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;N;i++)fac[i]=fac[i<span class="number">-1</span>]*i;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;N;i++)inv[i]=(mod-mod/i)*inv[mod%i];</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;N;i++)ifac[i]=ifac[i<span class="number">-1</span>]*inv[i];</span><br><span class="line">  <span class="keyword">for</span>(read(T);T--;)&#123;</span><br><span class="line">    read(n),read(m);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)G[i].clear(),A[i].clear();</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> fa,i=<span class="number">2</span>;i&lt;=n;i++)&#123;</span><br><span class="line">      read(fa);</span><br><span class="line">      G[fa].push_back(i);</span><br><span class="line">    &#125;</span><br><span class="line">    dfs(<span class="number">1</span>);</span><br><span class="line">    dfs2(<span class="number">1</span>,<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> u=<span class="number">1</span>;u&lt;=n;u++)&#123;</span><br><span class="line">      <span class="keyword">for</span>(<span class="keyword">int</span> v:G[u])A[u].push_back(&#123;siz[v],sumsub[v]&#125;);</span><br><span class="line">      A[u].push_back(&#123;n-siz[u],sumall[fa[u]]-sumsub[u]-siz[u]&#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> l=(m&gt;&gt;<span class="number">1</span>)+<span class="number">1</span>;</span><br><span class="line">    sol0(n<span class="number">-1</span>,m<span class="number">-1</span>,l<span class="number">-1</span>,m<span class="number">-1</span>,F0);</span><br><span class="line">    sol0(n<span class="number">-1</span>,m<span class="number">-1</span>,l,m,F1);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,(sol1()-sol2()).x);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-        <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
-        <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
-          <source type="audio/mpeg" src="">
-        </audio>
+          <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+          <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+            <source type="audio/mpeg" src="">
+          </audio>
+          
+            <ul id="audio-list" style="display:none">
+              
+                
+                  <li title='0' data-url='/music/観月あんみ - Memories are here (クロハネエンディング).mp3'></li>
+                
+              
+                
+                  <li title='1' data-url='/music/やなぎなぎ - 恋文.mp3'></li>
+                
+              
+                
+                  <li title='2' data-url='/music/DEPAPEPE - きっとまたいつか.mp3'></li>
+                
+              
+                
+                  <li title='3' data-url='/music/Falcom Sound Team jdk - 星の在り処　 Instrumental Ver.mp3'></li>
+                
+              
+            </ul>
+          
+        </div>
         
-          <ul id="audio-list" style="display:none">
-            
-              
-                <li title='0' data-url='/music/観月あんみ - Memories are here (クロハネエンディング).mp3'></li>
-              
-            
-              
-                <li title='1' data-url='/music/やなぎなぎ - 恋文.mp3'></li>
-              
-            
-              
-                <li title='2' data-url='/music/DEPAPEPE - きっとまたいつか.mp3'></li>
-              
-            
-              
-                <li title='3' data-url='/music/Falcom Sound Team jdk - 星の在り処　 Instrumental Ver.mp3'></li>
-              
-            
-          </ul>
-        
-      </div>
-      
     <div id='gitalk-container' class="comment link"
 		data-enable='true'
         data-ae='true'
@@ -129,6 +130,7 @@ document.getElementsByClassName("tips")[0].innerHTML=tiplist[Math.floor(Math.ran
     >查看评论</div>
 
 
+      </div>
     </div>
   </div>
   
