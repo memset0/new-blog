@@ -145,9 +145,9 @@
       
         <tags>
             
-            <tag> 计数 </tag>
-            
             <tag> 生成函数 </tag>
+            
+            <tag> 计数 </tag>
             
             <tag> DP </tag>
             
@@ -556,9 +556,9 @@
       
         <tags>
             
-            <tag> 多项式 </tag>
-            
             <tag> 树分治 </tag>
+            
+            <tag> 多项式 </tag>
             
         </tags>
       
@@ -747,11 +747,11 @@
             
             <tag> 生成函数 </tag>
             
-            <tag> bluestain </tag>
-            
             <tag> 图计数 </tag>
             
             <tag> 期望 </tag>
+            
+            <tag> bluestain </tag>
             
         </tags>
       
@@ -776,9 +776,9 @@
       
         <tags>
             
-            <tag> 多项式平移 </tag>
-            
             <tag> bluestain </tag>
+            
+            <tag> 多项式平移 </tag>
             
         </tags>
       
@@ -832,9 +832,9 @@
             
             <tag> 计数 </tag>
             
-            <tag> 杨表 </tag>
-            
             <tag> 多项式 </tag>
+            
+            <tag> 杨表 </tag>
             
         </tags>
       
